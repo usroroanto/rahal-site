@@ -39,7 +39,7 @@ export const accueil = {
 
   founder: {
     kicker: 'Le fondateur',
-    title: 'Tout est parti d’un rêve de gamin.',
+    title: 'Tout est parti d’un rêve d’enfant.',
     text: 'Je m’appelle Yassine. Le kung-fu, j’en rêvais enfant devant les films. Un jour, je suis parti m’y frotter en Chine, seul, sans rien connaître. J’en suis revenu avec l’envie de partager cette façon de voyager : apprendre quelque chose sur place, se laisser bousculer, et vivre ça à plusieurs. RAHAL est né de là.',
     cta: 'Découvrir l’histoire de RAHAL',
     portrait: {
