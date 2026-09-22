@@ -32,10 +32,10 @@ export const chine: Experience = {
   },
 
   // Bandeau d'informations — à renseigner dès confirmation.
-  dates: undefined, // ex. 'Du 12 au 24 avril 2027'
+  dates: 'Du 8 au 18 janvier',
   duration: undefined, // ex. '12 jours'
   groupSize: 'Petit groupe', // ex. '8 à 12 personnes'
-  price: undefined, // ex. '2 450 € par personne'
+  price: '1 890 €',
   priceNote: undefined, // ex. 'Hors vols internationaux'
 
   dimensions: [
@@ -117,8 +117,8 @@ export const chine: Experience = {
       answer: 'Oui. Le séjour est pensé pour être vécu en petit groupe : que tu viennes seul ou accompagné, tu fais vite partie de l’équipe.',
     },
     {
-      question: 'Quand connaîtra-t-on les dates et le prix ?',
-      answer: 'Dès qu’ils sont confirmés, ils sont publiés sur cette page. En demandant le programme, tu es prévenu directement par email.',
+      question: 'Quelles sont les dates et le tarif du séjour ?',
+      answer: 'Le séjour en Chine se déroule du 8 au 18 janvier, au tarif de 1 890 €.',
     },
     {
       question: 'Demander le programme, est-ce que ça m’engage ?',
