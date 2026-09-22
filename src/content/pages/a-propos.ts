@@ -20,7 +20,7 @@ export const aPropos = {
 
   hero: {
     kicker: 'L’esprit RAHAL',
-    title: 'Je m’appelle Yassine, et RAHAL est né d’un rêve de gamin.',
+    title: 'Je m’appelle Yassine, et RAHAL est né d’un rêve d’enfant.',
     text: 'Passionné de voyage et d’apprentissage, j’ai créé RAHAL pour partager une façon de partir qui m’a marqué : apprendre une pratique sur place, avec les gens qui la vivent, et vivre l’aventure à plusieurs.',
     portrait: {
       src: 'yassine/portrait.jpg',
@@ -59,7 +59,7 @@ export const aPropos = {
     {
       kicker: 'En petit groupe',
       title: 'Parce qu’on ose plus à plusieurs.',
-      text: 'Un entraînement difficile passe mieux quand quelqu’un souffle à côté de toi. Les meilleurs moments d’un voyage sont souvent ceux qu’on n’avait pas prévus, autour d’une table ou sur un chemin. C’est pour ça que les expériences RAHAL se vivent en petit groupe : assez petit pour que chacun compte, assez grand pour que l’aventure soit partagée.',
+      text: 'Un entraînement difficile passe mieux quand on le vit ensemble. Les meilleurs moments d’un voyage sont souvent ceux qu’on n’avait pas prévus, autour d’une table ou sur un chemin. C’est pour ça que les expériences RAHAL se vivent en petit groupe : assez petit pour que chacun compte, assez grand pour que l’aventure soit partagée.',
       image: {
         src: 'yassine/chine-3.jpg',
         alt: 'Photo personnelle de Yassine : paysage traversé pendant son voyage en Chine.',
