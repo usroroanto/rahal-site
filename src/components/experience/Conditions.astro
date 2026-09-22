@@ -1,0 +1,60 @@
+---
+/** Modalités d'inscription, paiement et annulation — affichées uniquement si renseignées. */
+import SectionHead from '../SectionHead.astro';
+
+interface Props {
+  items?: { title: string; text: string }[];
+}
+const { items = [] } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="cond section" id="inscription" aria-labelledby="cond-titre">
+      <div class="container">
+        <SectionHead kicker="Inscription" title="Comment ça se passe." level="h2" />
+        <dl class="cond__list">
+          {items.map((item) => (
+            <div class="cond__item" data-reveal>
+              <dt>{item.title}</dt>
+              <dd>{item.text}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .cond__list {
+    display: grid;
+    gap: 0;
+    max-width: 48rem;
+    border-top: 1px solid var(--c-sable-3);
+  }
+
+  .cond__item {
+    display: grid;
+    gap: 0.4rem;
+    padding: 1.4rem 0;
+    border-bottom: 1px solid var(--c-sable-3);
+  }
+
+  .cond__item dt {
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .cond__item dd {
+    margin: 0;
+    color: var(--c-gris);
+  }
+
+  @media (min-width: 48rem) {
+    .cond__item {
+      grid-template-columns: 14rem 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

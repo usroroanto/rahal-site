@@ -1,0 +1,84 @@
+---
+import Base from '@/layouts/Base.astro';
+import HeroFeature from '@/components/HeroFeature.astro';
+import InfoBand from '@/components/experience/InfoBand.astro';
+import Dimensions from '@/components/experience/Dimensions.astro';
+import Programme from '@/components/experience/Programme.astro';
+import Practical from '@/components/experience/Practical.astro';
+import Included from '@/components/experience/Included.astro';
+import Conditions from '@/components/experience/Conditions.astro';
+import ExperienceFaq from '@/components/experience/ExperienceFaq.astro';
+import ProgrammeForm from '@/components/forms/ProgrammeForm.astro';
+import MobileCta from '@/components/MobileCta.astro';
+import { experiences } from '@/content/experiences';
+import type { Experience } from '@/content/types';
+import { resolveImage } from '@/lib/images';
+import { getImage } from 'astro:assets';
+
+export function getStaticPaths() {
+  return experiences.map((exp) => ({ params: { slug: exp.slug }, props: { experience: exp } }));
+}
+
+interface Props {
+  experience: Experience;
+}
+const { experience: exp } = Astro.props;
+
+const heroMeta = resolveImage(exp.hero.src);
+const ogImage = heroMeta ? (await getImage({ src: heroMeta, width: 1200, height: 630, format: 'jpg' })).src : undefined;
+---
+
+<Base
+  title={exp.seo.title}
+  description={exp.seo.description}
+  ogImage={ogImage}
+  ogImageAlt={exp.hero.alt}
+  ogType="article"
+  bodyClass="has-mobile-cta"
+>
+  <HeroFeature
+    image={exp.hero}
+    labels={exp.labels}
+    title={exp.name}
+    text={exp.tagline}
+    primary={{ label: 'Recevoir le programme', href: '#programme' }}
+    secondary={{ label: 'Découvrir le séjour', href: '#dimensions' }}
+    compact
+  />
+
+  <InfoBand experience={exp} />
+
+  {
+    exp.intro && (
+      <section class="xintro section">
+        <div class="container">
+          <p class="lede xintro__text" data-reveal>
+            {exp.intro}
+          </p>
+        </div>
+      </section>
+    )
+  }
+
+  <Dimensions items={exp.dimensions} />
+  <Programme experience={exp} />
+  {exp.practical && exp.practical.length > 0 && <Practical items={exp.practical} />}
+  <Included included={exp.included} notIncluded={exp.notIncluded} />
+  <Conditions items={exp.conditions} />
+  <ExperienceFaq items={exp.faq} />
+  <ProgrammeForm experience={exp} />
+  <MobileCta />
+</Base>
+
+<style>
+  .xintro {
+    padding-block: clamp(3rem, 7vw, 5.5rem) 0;
+  }
+
+  .xintro__text {
+    max-width: 46rem;
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    line-height: 1.4;
+  }
+</style>

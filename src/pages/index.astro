@@ -1,0 +1,43 @@
+---
+import Base from '@/layouts/Base.astro';
+import HeroFeature from '@/components/HeroFeature.astro';
+import Concept from '@/components/home/Concept.astro';
+import ExperiencesSection from '@/components/home/ExperiencesSection.astro';
+import Founder from '@/components/home/Founder.astro';
+import FinalCta from '@/components/home/FinalCta.astro';
+import { accueil } from '@/content/pages/accueil';
+import { site } from '@/content/site';
+import { featuredExperience } from '@/content/experiences';
+import { resolveImage } from '@/lib/images';
+import { getImage } from 'astro:assets';
+
+const featured = featuredExperience;
+const heroMeta = featured ? resolveImage(featured.hero.src) : undefined;
+const ogImage = heroMeta ? (await getImage({ src: heroMeta, width: 1200, height: 630, format: 'jpg' })).src : undefined;
+---
+
+<Base title={accueil.seo.title} description={accueil.seo.description} ogImage={ogImage} ogImageAlt={featured?.hero.alt}>
+  {
+    featured ? (
+      <HeroFeature
+        image={featured.hero}
+        labels={featured.labels}
+        title={featured.name}
+        text={featured.tagline}
+        primary={{ label: accueil.hero.cta, href: `/experiences/${featured.slug}` }}
+      />
+    ) : (
+      <HeroFeature
+        image={{ src: 'accueil/ouverture.jpg', alt: 'Paysage de voyage.' }}
+        labels={['Voyages', 'Petit groupe']}
+        title={site.name}
+        text={site.description}
+        primary={{ label: 'Nous écrire', href: '/faq-contact#contact' }}
+      />
+    )
+  }
+  <Concept />
+  <ExperiencesSection />
+  <Founder />
+  <FinalCta />
+</Base>

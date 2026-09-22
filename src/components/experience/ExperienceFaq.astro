@@ -1,0 +1,43 @@
+---
+/** FAQ propre au séjour. Masquée si aucune question n'est renseignée. */
+import type { Faq } from '@/content/types';
+import FaqList from '../FaqList.astro';
+import SectionHead from '../SectionHead.astro';
+
+interface Props {
+  items?: Faq[];
+}
+const { items = [] } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="xfaq section" id="questions" aria-labelledby="xfaq-titre">
+      <div class="container xfaq__inner">
+        <SectionHead kicker="Questions" title="Avant de te lancer." level="h2" class="xfaq__head" />
+        <div data-reveal>
+          <FaqList items={items} id="faq-sejour" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .xfaq__inner {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .xfaq :global(.xfaq__head) {
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 64rem) {
+    .xfaq__inner {
+      grid-template-columns: 1fr 1.5fr;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+</style>

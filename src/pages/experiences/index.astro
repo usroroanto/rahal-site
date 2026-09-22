@@ -1,0 +1,89 @@
+---
+import Base from '@/layouts/Base.astro';
+import ExperienceCard from '@/components/ExperienceCard.astro';
+import SectionHead from '@/components/SectionHead.astro';
+import Arrow from '@/components/Arrow.astro';
+import SunMark from '@/components/SunMark.astro';
+import Topo from '@/components/Topo.astro';
+import { experiences } from '@/content/experiences';
+import { experiencesPage as copy } from '@/content/pages/experiences';
+
+const single = experiences.length === 1;
+---
+
+<Base title={copy.seo.title} description={copy.seo.description}>
+  <section class="intro">
+    <Topo class="intro__topo" />
+    <div class="container intro__inner">
+      <SectionHead kicker={copy.kicker} title={copy.title} lede={copy.text} level="h1" serif />
+    </div>
+  </section>
+
+  <section class="list section section--sand" aria-label="Expériences disponibles">
+    <div class="container">
+      <div class:list={['list__grid', { 'list__grid--single': single }]}>
+        {experiences.map((exp) => <ExperienceCard experience={exp} variant={single ? 'feature' : 'grid'} headingLevel="h2" />)}
+      </div>
+
+      <aside class="next" data-reveal>
+        <SunMark size={28} />
+        <h2 class="h3">{copy.next.title}</h2>
+        <p>{copy.next.text}</p>
+        <a class="link-arrow" href={copy.next.cta.href}>
+          {copy.next.cta.label}
+          <Arrow class="" />
+        </a>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .intro {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3.5rem, 8vw, 6.5rem) clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .intro :global(.intro__topo) {
+    --topo-opacity: 0.1;
+    inset: -30% -20% auto auto;
+    width: 70%;
+    height: 160%;
+  }
+
+  .intro__inner {
+    position: relative;
+  }
+
+  .intro :global(.section-head) {
+    margin-bottom: 0;
+    max-width: 48rem;
+  }
+
+  .list__grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .next {
+    display: grid;
+    gap: 0.75rem;
+    justify-items: start;
+    max-width: 34rem;
+    margin-top: clamp(2.5rem, 6vw, 4rem);
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border-radius: var(--r-l);
+    border: 1px dashed rgb(128 96 57 / 0.4);
+  }
+
+  .next p {
+    color: var(--c-gris);
+  }
+
+  @media (min-width: 64rem) {
+    .list__grid:not(.list__grid--single) {
+      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+  }
+</style>

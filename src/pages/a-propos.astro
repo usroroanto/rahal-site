@@ -1,0 +1,206 @@
+---
+import Base from '@/layouts/Base.astro';
+import Photo from '@/components/Photo.astro';
+import Arrow from '@/components/Arrow.astro';
+import SunMark from '@/components/SunMark.astro';
+import Topo from '@/components/Topo.astro';
+import { aPropos as copy } from '@/content/pages/a-propos';
+---
+
+<Base title={copy.seo.title} description={copy.seo.description}>
+  <section class="ahero">
+    <Topo class="ahero__topo" />
+    <div class="container ahero__inner">
+      <div class="ahero__text">
+        <p class="kicker">{copy.hero.kicker}</p>
+        <h1 class="h-serif">{copy.hero.title}</h1>
+        <p class="lede">{copy.hero.text}</p>
+      </div>
+      <div class="ahero__media" data-reveal>
+        <Photo image={copy.hero.portrait} ratio="4 / 5" mobileRatio="1 / 1" rounded caption sizes="(min-width: 64rem) 40vw, 100vw" />
+      </div>
+    </div>
+  </section>
+
+  <div class="story">
+    {
+      copy.sections.map((section, i) => (
+        <section class:list={['chapter', { 'chapter--reverse': i % 2 === 1, 'chapter--text-only': !section.image }]}>
+          <div class="container chapter__inner">
+            <div class="chapter__body" data-reveal>
+              <p class="kicker">{section.kicker}</p>
+              <h2 class="chapter__title">{section.title}</h2>
+              <p class="chapter__text">{section.text}</p>
+            </div>
+            {section.image && (
+              <div class="chapter__media" data-reveal style="--reveal-delay:100ms">
+                <Photo image={section.image} ratio="4 / 3" rounded caption sizes="(min-width: 64rem) 50vw, 100vw" />
+              </div>
+            )}
+          </div>
+        </section>
+      ))
+    }
+  </div>
+
+  <section class="pillars section section--sand" aria-labelledby="piliers-titre">
+    <div class="container">
+      <p class="kicker">{copy.pillars.kicker}</p>
+      <h2 class="h-serif pillars__title" id="piliers-titre">{copy.pillars.title}</h2>
+      <ol class="pillars__list" role="list">
+        {
+          copy.pillars.items.map((item, i) => (
+            <li class="pillars__item" data-reveal style={`--reveal-delay:${i * 100}ms`}>
+              <SunMark size={18} />
+              <h3 class="pillars__name">{item.title}</h3>
+              <p class="pillars__text">{item.text}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="acta section">
+    <div class="container acta__inner" data-reveal>
+      <h2 class="h-serif">{copy.cta.title}</h2>
+      <p class="lede">{copy.cta.text}</p>
+      <a class="btn" href={copy.cta.button.href}>
+        {copy.cta.button.label}
+        <Arrow />
+      </a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .ahero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3rem, 7vw, 6rem) clamp(2rem, 5vw, 4rem);
+  }
+
+  .ahero :global(.ahero__topo) {
+    --topo-opacity: 0.1;
+    inset: -20% auto auto -30%;
+    width: 80%;
+    height: 140%;
+  }
+
+  .ahero__inner {
+    position: relative;
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .ahero__text {
+    display: grid;
+    gap: 1.25rem;
+    max-width: 36rem;
+  }
+
+  .ahero__media {
+    max-width: 28rem;
+  }
+
+  .chapter {
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .chapter__inner {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .chapter__body {
+    display: grid;
+    gap: 0.9rem;
+    max-width: 34rem;
+  }
+
+  .chapter__title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  .chapter__text {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    text-wrap: pretty;
+  }
+
+  .pillars__title {
+    margin-top: 0.75rem;
+  }
+
+  .pillars__list {
+    list-style: none;
+    display: grid;
+    gap: 1.25rem;
+    margin-top: var(--s-block);
+  }
+
+  .pillars__item {
+    display: grid;
+    gap: 0.6rem;
+    padding: clamp(1.4rem, 2.5vw, 2rem);
+    border-radius: var(--r-m);
+    background: var(--c-ivoire);
+    border: 1px solid var(--c-sable-3);
+  }
+
+  .pillars__name {
+    font-weight: 700;
+    font-size: 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .pillars__text {
+    color: var(--c-gris);
+  }
+
+  .acta__inner {
+    display: grid;
+    gap: 1.25rem;
+    justify-items: start;
+    max-width: 40rem;
+  }
+
+  @media (min-width: 64rem) {
+    .ahero__inner {
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 5rem;
+    }
+
+    .ahero__media {
+      justify-self: end;
+      width: 100%;
+    }
+
+    .chapter__inner {
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+    }
+
+    .chapter--reverse .chapter__media {
+      order: -1;
+    }
+
+    .chapter--text-only .chapter__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .chapter--text-only .chapter__body {
+      max-width: 44rem;
+    }
+
+    .pillars__list {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

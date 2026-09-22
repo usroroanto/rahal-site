@@ -1,0 +1,94 @@
+---
+/** Les trois dimensions de l'expérience, en alternance photo / texte. */
+import type { Dimension } from '@/content/types';
+import Photo from '../Photo.astro';
+import SectionHead from '../SectionHead.astro';
+
+interface Props {
+  items: Dimension[];
+  kicker?: string;
+  title?: string;
+}
+const { items, kicker = 'L’expérience', title = 'Trois dimensions, un même séjour.' } = Astro.props;
+---
+
+<section class="dims section" id="dimensions" aria-labelledby="dims-titre">
+  <div class="container">
+    <SectionHead kicker={kicker} title={title} level="h2" />
+    <div class="dims__list">
+      {
+        items.map((item, i) => (
+          <article class:list={['dim', { 'dim--reverse': i % 2 === 1 }]} data-reveal>
+            {item.image && (
+              <div class="dim__media">
+                <Photo image={item.image} ratio="4 / 3" rounded sizes="(min-width: 64rem) 50vw, 100vw" />
+              </div>
+            )}
+            <div class="dim__body">
+              <p class="dim__num" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 class="dim__title">{item.title}</h3>
+              <p class="dim__text">{item.text}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .dims__list {
+    display: grid;
+    gap: clamp(3rem, 7vw, 5.5rem);
+  }
+
+  .dim {
+    display: grid;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .dim__body {
+    display: grid;
+    gap: 0.75rem;
+    max-width: 30rem;
+  }
+
+  .dim__num {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--c-or);
+  }
+
+  .dim__title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  .dim__text {
+    color: var(--c-gris);
+    text-wrap: pretty;
+  }
+
+  @media (min-width: 64rem) {
+    .dim {
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 6vw, 6rem);
+    }
+
+    .dim--reverse .dim__media {
+      order: 2;
+    }
+
+    .dim__body {
+      padding-inline: 1rem;
+    }
+  }
+</style>
