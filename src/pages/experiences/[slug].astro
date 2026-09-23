@@ -1,6 +1,6 @@
 ---
 import Base from '@/layouts/Base.astro';
-import HeroFeature from '@/components/HeroFeature.astro';
+import Arrow from '@/components/Arrow.astro';
 import InfoBand from '@/components/experience/InfoBand.astro';
 import Dimensions from '@/components/experience/Dimensions.astro';
 import Programme from '@/components/experience/Programme.astro';
@@ -36,17 +36,27 @@ const ogImage = heroMeta ? (await getImage({ src: heroMeta, width: 1200, height:
   ogType="article"
   bodyClass="has-mobile-cta"
 >
-  <HeroFeature
-    image={exp.hero}
-    labels={exp.labels}
-    title={exp.name}
-    text={exp.tagline}
-    primary={{ label: 'Recevoir le programme', href: '#programme' }}
-    secondary={{ label: 'Découvrir le séjour', href: '#dimensions' }}
-    compact
-  />
+  <section class="journey-hero">
+    <div class="container journey-grid">
+      <div class="journey-heading">
+        <a class="journey-back" href="/">← Les voyages RAHAL</a>
+        <p class="kicker">Le prochain départ · {exp.name}</p>
+        <h1>{exp.country === 'Chine' ? 'La Chine,' : exp.country}<br /><em>à vivre ensemble.</em></h1>
+        <p class="journey-lede">{exp.tagline}</p>
+        <a class="btn" href="#etapes">Explorer le programme <Arrow /></a>
+      </div>
+      <aside class="journey-card" aria-label="Le voyage en un regard">
+        <div class="journey-card-top"><span>RAHAL / 01</span><span aria-hidden="true">✳</span></div>
+        <p class="journey-route">Pékin<span>↓</span>Kung-fu<span>↓</span>Shanghai</p>
+        <div class="journey-fare"><strong>{exp.price}</strong><span>Hors vols internationaux</span></div>
+        <p class="journey-payment">En 1 à 3 fois sans frais</p>
+        <a href="#inscription">Voir les modalités <Arrow /></a>
+      </aside>
+    </div>
+  </section>
 
   <InfoBand experience={exp} />
+  <nav class="journey-nav container" aria-label="Explorer la fiche du voyage"><a href="#etapes">01 · Programme</a><a href="#pratique">02 · Avant de partir</a><a href="#inclus">03 · Le tarif</a><a href="#inscription">04 · Paiement</a></nav>
 
   {
     exp.intro && (
@@ -60,7 +70,7 @@ const ogImage = heroMeta ? (await getImage({ src: heroMeta, width: 1200, height:
     )
   }
 
-  <Dimensions items={exp.dimensions} />
+  <div class="journey-dimensions"><Dimensions items={exp.dimensions} /></div>
   <Programme experience={exp} />
   {exp.practical && exp.practical.length > 0 && <Practical items={exp.practical} />}
   <Included included={exp.included} notIncluded={exp.notIncluded} />
@@ -71,6 +81,10 @@ const ogImage = heroMeta ? (await getImage({ src: heroMeta, width: 1200, height:
 </Base>
 
 <style>
+  .journey-hero{padding-block:clamp(2rem,6vw,5rem);background:linear-gradient(120deg,#f7f3eb 65%,#eee5d6 65%)}
+  .journey-grid{display:grid;gap:2.5rem;align-items:center}.journey-heading{display:grid;gap:1.3rem;justify-items:start}.journey-back{font-size:.8rem;color:var(--c-gris);text-decoration:none;margin-bottom:.5rem}.journey-heading h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(3.4rem,6.7vw,6rem);line-height:1;letter-spacing:-.035em}.journey-heading h1 em{font-weight:400;color:#875430}.journey-lede{max-width:34rem;font-size:1.1rem;color:var(--c-gris)}.journey-card{background:#254139;color:#f7f3eb;padding:2rem;border-radius:.75rem;position:relative}.journey-card-top{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;letter-spacing:.15em}.journey-card-top span:last-child{font-size:2.5rem;color:#e9bd72}.journey-route{font-family:var(--font-serif);font-size:2.4rem;line-height:1.05;margin-block:.6rem 1.4rem}.journey-route>span{display:block;font-family:var(--font-sans);font-size:1rem;color:#e9bd72;line-height:1.7}.journey-fare{display:flex;flex-wrap:wrap;gap:.35rem 1rem;align-items:baseline;border-top:1px solid #798f83;padding-top:1rem}.journey-fare strong{font-size:2.25rem;letter-spacing:-.05em}.journey-fare>span{font-size:.72rem}.journey-payment{font-size:.85rem;color:#e9bd72;margin-bottom:1rem}.journey-card a{display:inline-flex;align-items:center;gap:.75rem;font-size:.8rem;text-underline-offset:.3rem}.journey-card a :global(svg){width:1em}.journey-card a:focus-visible{outline-color:#e9bd72}.journey-nav{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;padding-block:1.1rem;border-bottom:1px solid var(--c-sable-3)}.journey-nav a{font-size:.78rem;text-decoration:none;padding:.4rem 0}.journey-nav a:hover{text-decoration:underline;text-underline-offset:.35rem}
+  .journey-dimensions :global(.dims){padding-block:3.5rem}.journey-dimensions :global(.dims__list){display:grid;gap:2rem}.journey-dimensions :global(.dim){display:block;border-top:1px solid var(--c-sable-3);padding-top:1.2rem}.journey-dimensions :global(.dim__body){padding:0}.journey-dimensions :global(.dim__text){font-size:.95rem}.journey-dimensions :global(.dim__title){font-size:1.9rem}
+  @media(min-width:64rem){.journey-grid{grid-template-columns:1.5fr 1fr;gap:5rem}.journey-card{padding:2.5rem}.journey-dimensions :global(.dims__list){grid-template-columns:repeat(3,1fr)}}
   .xintro {
     padding-block: clamp(3rem, 7vw, 5.5rem) 0;
   }
