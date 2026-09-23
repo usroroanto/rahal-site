@@ -29,7 +29,7 @@ export const site = {
   ],
 
   /** Bouton mis en avant dans le menu. */
-  navCta: { label: 'Découvrir la Chine', href: '/experiences/chine' },
+  navCta: { label: 'Prochain départ : Chine', href: '/experiences/chine' },
 
   /** Liens légaux du pied de page (configurables). */
   legalLinks: [
