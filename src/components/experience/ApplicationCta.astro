@@ -1,0 +1,46 @@
+---
+import type { Experience } from '@/content/types';
+import Arrow from '../Arrow.astro';
+import SunMark from '../SunMark.astro';
+
+interface Props {
+  experience: Experience;
+}
+
+const { experience } = Astro.props;
+---
+
+{
+  experience.applicationUrl && (
+    <section class="application section section--sand" id="programme" aria-labelledby="application-title">
+      <div class="container application__grid">
+        <div class="application__copy" data-reveal>
+          <p class="kicker">Ta demande d’inscription</p>
+          <h2 class="h-serif" id="application-title">Prêt(e) à vivre l’expérience ?</h2>
+          <p class="lede">
+            Remplis le formulaire pour nous parler de toi et recevoir les prochaines étapes. Une demande ne valide pas
+            automatiquement ta place.
+          </p>
+          <p class="application__note">
+            <SunMark size={14} /> 9 places maximum · acompte de 630&nbsp;€ après validation
+          </p>
+          <a class="btn" href={experience.applicationUrl} target="_blank" rel="noopener">
+            Faire ma demande
+            <Arrow />
+          </a>
+        </div>
+
+        <ol class="application__steps" role="list" data-reveal style="--reveal-delay:120ms">
+          <li><span>01</span><div><strong>Tu remplis le formulaire.</strong><p>Quelques informations pour mieux te connaître et préparer la suite.</p></div></li>
+          <li><span>02</span><div><strong>On revient vers toi.</strong><p>Si ta demande est retenue, tu reçois un email ou un message de confirmation.</p></div></li>
+          <li><span>03</span><div><strong>Tu confirmes ta place.</strong><p>L’acompte de 630&nbsp;€ valide ton inscription, puis tu rejoins le groupe WhatsApp.</p></div></li>
+        </ol>
+      </div>
+    </section>
+  )
+}
+
+<style>
+  .application__grid{display:grid;gap:2.5rem;align-items:start}.application__copy{display:grid;gap:1rem;justify-items:start}.application__copy .lede{max-width:38rem}.application__note{display:flex;align-items:center;gap:.55rem;color:var(--c-brun);font-size:.9rem;font-weight:650;margin-bottom:.4rem}.application__steps{list-style:none;display:grid;background:var(--c-ivoire);border:1px solid var(--c-sable-3);border-radius:var(--r-l);padding:clamp(1.3rem,3vw,2rem)}.application__steps li{display:grid;grid-template-columns:2.4rem 1fr;gap:1rem;padding:1.2rem 0;border-bottom:1px solid var(--c-sable-3)}.application__steps li:last-child{border-bottom:0}.application__steps>li>span{font-family:var(--font-serif);font-style:italic;color:var(--c-brun);font-size:1.35rem}.application__steps strong{display:block;margin-bottom:.3rem}.application__steps p{color:var(--c-gris);font-size:.9rem}
+  @media(min-width:64rem){.application__grid{grid-template-columns:1fr 1fr;gap:5rem}}
+</style>
