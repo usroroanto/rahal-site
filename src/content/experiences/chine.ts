@@ -1,201 +1,223 @@
 import type { Experience } from '../types';
 
-// Contenu public du séjour. Les activités envisagées sont distinguées des éléments confirmés.
 export const chine: Experience = {
-  "slug": "chine",
-  "name": "DISCIPLINE",
-  "country": "Chine",
-  "practice": "Kung-fu",
-  "labels": [
-    "Le prochain départ RAHAL",
-    "Chine",
-    "Janvier 2027"
-  ],
-  "tagline": "Pékin, une immersion dans le kung-fu, Shanghai. Dix jours pour apprendre, explorer et vivre l’aventure ensemble.",
-  "summary": "De la Grande Muraille aux rues de Shanghai, avec cinq journées consacrées au kung-fu. Notre prochain voyage : une Chine à découvrir autant qu’à pratiquer.",
-  "intro": "La Chine ouvre le premier chapitre des voyages RAHAL. Deux villes, une pratique à découvrir et un groupe de neuf participants accompagné par Yassine. Le kung-fu donne le rythme au cœur du séjour ; les visites, les repas et les rencontres font le reste.",
-  "status": "demandes-ouvertes",
-  "published": true,
-  "hero": {
-    "src": "chine/muraille.jpg",
-    "alt": "La Grande Muraille de Chine serpentant sur les crêtes, au petit matin.",
-    "position": "center 45%",
-    "mobilePosition": "40% center"
+  slug: 'chine',
+  name: 'Chapitre 1',
+  country: 'Chine',
+  practice: 'Kung-fu',
+  labels: ['Le prochain départ RAHAL', 'Chine', 'Janvier 2027'],
+  tagline: '10 jours pour sortir de ta routine, découvrir la Chine autrement et t’initier au kung-fu.',
+  summary:
+    'Pékin, une immersion kung-fu à Tengzhou, puis Shanghai. Une première aventure faite pour découvrir, apprendre et redevenir débutant.',
+  intro:
+    'Une expérience, pas un voyage classique. Cette première aventure a été pensée pour découvrir la Chine, mais surtout pour vivre une immersion qui demande de la discipline, de l’humilité et le courage de redevenir débutant.',
+  status: 'demandes-ouvertes',
+  published: true,
+
+  hero: {
+    src: 'chine/muraille.jpg',
+    alt: 'La Grande Muraille de Chine serpentant sur les crêtes, au petit matin.',
+    position: 'center 45%',
+    mobilePosition: '40% center',
   },
-  "card": {
-    "src": "chine/entrainement.jpg",
-    "alt": "Séance d’entraînement de kung-fu en extérieur.",
-    "position": "center"
+  card: {
+    src: 'chine/entrainement.jpg',
+    alt: 'Séance d’entraînement de kung-fu en extérieur.',
+    position: 'center',
   },
-  "dates": "Du 8 au 18 janvier 2027",
-  "duration": "10 jours",
-  "groupSize": "9 personnes",
-  "price": "1 890 €",
-  "priceNote": "Paiement en 1 à 3 fois sans frais · Hors vols internationaux",
-  "dimensions": [
+
+  dates: 'Du 8 au 18 janvier 2027',
+  duration: '10 jours',
+  groupSize: '9 personnes',
+  price: '1 890 €',
+  priceNote: 'Paiement en 3 fois sans frais · Hors vols internationaux',
+
+  dimensions: [
     {
-      "title": "Explorer",
-      "text": "Commencer à Pékin et terminer à Shanghai. Entre les deux, prendre le train et changer de rythme pour découvrir une autre facette du pays."
+      title: 'Découvrir autrement',
+      text: 'Commencer à Pékin, changer de rythme à Tengzhou et terminer à Shanghai. Trois temps pour voir plusieurs visages de la Chine.',
     },
     {
-      "title": "Apprendre",
-      "text": "Cinq journées consacrées à l’initiation au kung-fu, du 11 au 15 janvier. Une pratique nouvelle au centre du voyage, accessible aux débutants."
+      title: 'Redevenir débutant',
+      text: 'Cinq journées d’immersion, environ 6 heures d’entraînement par jour. Le programme s’adapte au niveau du groupe, à sa progression et à la météo.',
     },
     {
-      "title": "Partager",
-      "text": "Neuf participants et Yassine, présent pendant le séjour. Un entraînement difficile passe mieux quand on le vit ensemble."
-    }
+      title: 'Vivre l’expérience ensemble',
+      text: '9 voyageurs maximum, des efforts partagés et des souvenirs qui se construisent au fil des journées. Tu peux venir seul ou accompagné.',
+    },
   ],
-  "programme": {
-    "intro": "10 jours sur place, du 9 au 18 janvier 2027, avec un départ international le 8 janvier. Voici l’itinéraire prévu. L’ordre des visites et les horaires de transport seront ajustés aux réservations et aux conditions sur place.",
-    "steps": [
+
+  programme: {
+    intro:
+      'Le voyage commence à Pékin et se termine à Shanghai. Les horaires des trains et l’ordre des visites seront confirmés, mais le contenu essentiel de l’expérience reste inchangé.',
+    steps: [
       {
-        "kicker": "9–10 janvier · Jours 1 et 2",
-        "title": "Pékin, les premiers pas",
-        "text": "Se retrouver à Pékin, découvrir la capitale et rejoindre la Grande Muraille avant de prendre le train vers le lieu de pratique du kung-fu.",
-        "days": [
+        kicker: '8–10 janvier · Pékin',
+        title: 'Commencer par la Chine impériale',
+        text: 'Rejoindre le groupe à Pékin, découvrir la capitale et la Grande Muraille, puis prendre le train rapide vers Tengzhou.',
+        days: [
           {
-            "title": "9 janvier · Arrivée à Pékin",
-            "text": "Arrivée, transfert collectif vers l’hôtel et installation. Première découverte de la ville selon les horaires d’arrivée. Une nuit à Pékin. La Cité interdite fait partie des visites prévues, sous réserve des créneaux disponibles."
+            title: 'Vendredi 8 janvier · Départ direction la Chine',
+            text: 'Chacun organise librement son vol international pour être à Pékin le samedi 9 janvier au matin. Ne réserve pas ton billet avant le feu vert de RAHAL.',
           },
           {
-            "title": "10 janvier · Grande Muraille et train",
-            "text": "Excursion à la Grande Muraille, puis transfert à la gare pour le train du soir. Transfert à l’arrivée vers le lieu de séjour kung-fu. Le toboggan est envisagé selon les conditions d’ouverture ; il ne constitue pas une activité garantie."
-          }
-        ]
+            title: 'Samedi 9 janvier · Pékin impérial',
+            text: 'Arrivée le matin, transfert collectif vers l’hôtel et rendez-vous du groupe à 12 h. Découverte de la Cité interdite et de la capitale impériale.',
+          },
+          {
+            title: 'Dimanche 10 janvier · Grande Muraille et Tengzhou',
+            text: 'Visite de la Grande Muraille, montée en téléphérique et descente en toboggan si la météo le permet. Après le déjeuner, transfert vers la gare et train rapide pour Tengzhou East.',
+          },
+        ],
       },
       {
-        "kicker": "11–15 janvier · Jours 3 à 7",
-        "title": "Entrer dans la pratique",
-        "text": "Cinq journées autour du kung-fu, avec du temps pour récupérer et partager la vie du groupe. Le contenu et les horaires des séances sont organisés sur place avec les encadrants.",
-        "days": [
+        kicker: '11–15 janvier · Tengzhou',
+        title: 'Entrer dans l’immersion kung-fu',
+        text: 'Cinq journées au cœur des montagnes de Lianqing, avec environ 6 heures d’entraînement par jour. Le maître adapte les séances au niveau du groupe, à sa progression et à la météo.',
+        days: [
           {
-            "title": "11 janvier · Découvrir",
-            "text": "Première journée de pratique : rencontre avec les encadrants, découverte du cadre d’entraînement et premiers apprentissages."
+            title: 'Une pratique complète',
+            text: 'Qigong, conditionnement, formes Shaolin, Sanda, travail de la force, souplesse et méditation rythment l’immersion.',
           },
           {
-            "title": "12 janvier · Pratiquer",
-            "text": "Poursuite de l’initiation au kung-fu et temps de récupération entre les séances."
+            title: 'Un rythme progressif',
+            text: 'Tu viens pour apprendre et essayer. Aucune expérience préalable du kung-fu n’est nécessaire ; l’entraînement est ajusté au groupe.',
           },
           {
-            "title": "13 janvier · Approfondir",
-            "text": "Journée d’entraînement pour reprendre les apprentissages, à son rythme et avec le groupe."
+            title: 'La vie sur place',
+            text: 'Six nuits sur le lieu d’immersion, chambres non mixtes partagées à deux, trois repas par jour à la cantine et uniforme fourni.',
           },
-          {
-            "title": "14 janvier · Continuer",
-            "text": "Nouvelle journée de pratique. L’organisation des séances suit le programme des encadrants sur place."
-          },
-          {
-            "title": "15 janvier · Terminer l’immersion",
-            "text": "Dernière journée consacrée au kung-fu et préparation du départ vers Shanghai le lendemain."
-          }
-        ]
+        ],
       },
       {
-        "kicker": "16–18 janvier · Jours 8 à 10",
-        "title": "Shanghai, un autre tempo",
-        "text": "Prendre le train pour Shanghai le 16 janvier, puis découvrir ses quartiers et les rives du Huangpu avant le retour le 18.",
-        "days": [
+        kicker: '16–18 janvier · Shanghai',
+        title: 'Terminer entre tradition et futur',
+        text: 'Rejoindre Shanghai en train rapide, découvrir Yuyuan, le Bund et Lujiazui, puis prendre le temps de clôturer l’aventure ensemble.',
+        days: [
           {
-            "title": "16 janvier · Train et premières découvertes",
-            "text": "Transfert à la gare et train du matin vers Shanghai. Installation à l’hôtel, puis découverte du Bund selon l’heure d’arrivée. Deux nuits à Shanghai, du 16 au 18 janvier."
+            title: 'Samedi 16 janvier · Tengzhou → Shanghai',
+            text: 'Train rapide vers Shanghai Hongqiao, transfert et installation à l’hôtel. En fin de journée : ruelles illuminées de Yuyuan, Bund et croisière nocturne sur le Huangpu.',
           },
           {
-            "title": "17 janvier · Explorer Shanghai",
-            "text": "Jardin Yu, rues de Yuyuan et promenade entre les quartiers de la ville et les rives du fleuve. Le musée de Shanghai, le temple du Bouddha de jade et une croisière figurent parmi les options envisagées ; la sélection finale sera précisée avant le départ."
+            title: 'Dimanche 17 janvier · Shanghai traditionnel et futuriste',
+            text: 'Découverte de Lujiazui et montée à l’observatoire de la Shanghai Tower. Balades et temps libre selon les envies du groupe, puis dîner d’au revoir.',
           },
           {
-            "title": "18 janvier · Retour",
-            "text": "Derniers moments à Shanghai selon l’horaire du vol, puis transfert collectif vers l’aéroport. Vol international retour à organiser séparément."
-          }
-        ]
-      }
-    ]
+            title: 'Lundi 18 janvier · Retour',
+            text: 'Check-out et transfert collectif vers l’aéroport de Shanghai dans le créneau communiqué au groupe.',
+          },
+        ],
+      },
+    ],
   },
-  "practical": [
+
+  practical: [
     {
-      "title": "Dates et durée",
-      "text": "Départ international le 8 janvier 2027. Le programme sur place va du 9 au 18 janvier : 10 jours. Arrivée à Pékin, départ de Shanghai."
+      title: 'Tes vols',
+      text: 'Les vols internationaux ne sont pas inclus. Prévois une arrivée à Pékin le samedi 9 janvier au matin et un départ de Shanghai le 18 janvier. Ne réserve rien avant le feu vert : on peut t’aider à trouver des horaires adaptés.',
     },
     {
-      "title": "Taille du groupe",
-      "text": "Le voyage est prévu pour 9 participants, accompagnés par Yassine : 10 voyageurs au total. Tu peux rejoindre le groupe seul ou accompagné."
+      title: 'Le groupe',
+      text: 'L’expérience est limitée à 9 voyageurs. Tu peux venir seul ou accompagné. Après validation de ta place, tu rejoins le groupe WhatsApp pour faire connaissance et recevoir les informations pratiques.',
     },
     {
-      "title": "Kung-fu et niveau",
-      "text": "Cinq journées de pratique, du 11 au 15 janvier. Le séjour est une initiation : aucune pratique préalable du kung-fu n’est demandée. Prévois une tenue souple et des chaussures adaptées à l’entraînement."
+      title: 'Le niveau demandé',
+      text: 'Tu n’as pas besoin d’avoir déjà pratiqué. Prévois simplement une condition physique correcte et l’envie de t’investir pendant cinq journées d’entraînement.',
     },
     {
-      "title": "Hébergement",
-      "text": "Une nuit à Pékin du 9 au 10 janvier, un hébergement sur le lieu de pratique entre les deux villes, puis deux nuits à Shanghai du 16 au 18 janvier. À Pékin et Shanghai, la base prévue est une chambre partagée à deux. La configuration des chambres pendant l’immersion reste à confirmer."
+      title: 'Les chambres',
+      text: '9 nuits sont prévues : 1 à Pékin, 6 pendant l’immersion et 2 à Shanghai. Les chambres sont non mixtes et partagées à deux. Une chambre individuelle peut être demandée avec supplément, selon disponibilité.',
     },
     {
-      "title": "Trains et transferts",
-      "text": "Deux trajets en train : au départ de Pékin le 10 janvier au soir, puis vers Shanghai le 16 janvier au matin. Des transferts collectifs sont prévus entre les aéroports, les hébergements et les gares. Les billets et horaires définitifs restent à confirmer."
+      title: 'Les repas',
+      text: 'Pendant les cinq journées d’immersion, trois repas par jour sont fournis par la cantine. À Pékin et Shanghai, les repas qui ne sont pas expressément annoncés comme repas de groupe restent à ta charge.',
     },
     {
-      "title": "Vols internationaux",
-      "text": "Les vols internationaux ne sont pas inclus dans les 1 890 €. Prévois une arrivée à Pékin le 9 janvier et un départ de Shanghai le 18. Fais valider les horaires avec RAHAL avant d’acheter tes billets pour rejoindre les transferts collectifs."
+      title: 'Visa et assurance',
+      text: 'Selon ta nationalité et les règles applicables en janvier 2027, un visa peut être nécessaire. Une assurance voyage couvrant le séjour et la pratique du kung-fu est obligatoire pour participer.',
     },
     {
-      "title": "Repas",
-      "text": "Une organisation des repas est prévue pendant l’immersion kung-fu. Le détail des repas pris en charge doit encore être précisé. Les trois repas de groupe évoqués dans la préparation ne sont pas annoncés comme inclus à ce stade."
+      title: 'Transferts collectifs',
+      text: 'Les transferts prévus entre les aéroports, les gares et les hébergements sont inclus dans les créneaux communiqués. Tout transfert organisé en dehors de ces créneaux reste à ta charge.',
     },
     {
-      "title": "À mettre dans ton sac",
-      "text": "Le séjour a lieu en hiver : emporte des vêtements chauds pour les visites à Pékin et à la Grande Muraille, une tenue d’entraînement, des chaussures confortables et une gourde."
+      title: 'À mettre dans ton sac',
+      text: 'Le voyage a lieu en hiver. Emporte des vêtements chauds pour Pékin et la Grande Muraille, une tenue souple, des chaussures confortables et une gourde. L’uniforme de kung-fu est fourni.',
     },
-    {
-      "title": "Documents de voyage",
-      "text": "Avant de réserver tes vols, vérifie les conditions d’entrée en Chine applicables à ton passeport et aux dates du voyage auprès des autorités officielles. Vérifie également la couverture de ton assurance pour le voyage et la pratique du kung-fu."
-    }
   ],
-  "notIncluded": [
-    "Vols internationaux aller et retour"
+
+  included: [
+    '9 nuits d’hébergement : 1 à Pékin, 6 pendant l’immersion kung-fu et 2 à Shanghai',
+    'Chambres non mixtes partagées à deux durant tout le séjour',
+    '5 journées d’immersion, environ 6 h d’entraînement par jour',
+    'Uniforme de kung-fu',
+    '3 repas par jour pendant l’immersion',
+    '2 trains rapides : Pékin → Tengzhou East et Tengzhou East → Shanghai Hongqiao',
+    'Transferts collectifs prévus entre les aéroports, les gares et les hébergements',
+    'Cité interdite, Grande Muraille, croisière sur le Huangpu et Shanghai Tower',
+    'Accompagnement pendant toute l’expérience',
   ],
-  "conditions": [
-    {
-      "title": "1 890 € au total",
-      "text": "Le tarif du séjour est de 1 890 €, hors vols internationaux. Le paiement est possible en 1, 2 ou 3 fois sans frais."
-    },
-    {
-      "title": "Trois possibilités de paiement",
-      "text": "En une fois : 1 890 €. En deux fois : 2 × 945 €. En trois fois : 3 × 630 €. Les dates des échéances sont fixées lors de l’inscription."
-    },
-    {
-      "title": "Avant de t’engager",
-      "text": "Le programme est consultable sur cette page. Les modalités de réservation, les échéances de paiement et les conditions d’annulation doivent être communiquées avant tout règlement. Consulter ou demander le programme ne réserve pas une place."
-    }
+  notIncluded: [
+    'Vols internationaux aller-retour',
+    'Visa éventuel selon ta nationalité',
+    'Assurance voyage obligatoire',
+    'Repas à Pékin et Shanghai hors repas de groupe annoncés',
+    'Supplément chambre individuelle',
+    'Transferts effectués en dehors des créneaux collectifs',
+    'Dépenses personnelles',
   ],
-  "faq": [
+
+  conditions: [
     {
-      "question": "Faut-il avoir déjà pratiqué le kung-fu ?",
-      "answer": "Non. Le voyage comprend une initiation, avec cinq journées de pratique du 11 au 15 janvier. Tu peux commencer sans expérience préalable."
+      title: '1 890 € au total',
+      text: 'Le tarif est de 1 890 € par personne, hors vols internationaux. Le paiement est possible en 3 fois sans frais.',
     },
     {
-      "question": "Peut-on venir seul ?",
-      "answer": "Oui. Le groupe est prévu pour neuf participants accompagnés par Yassine. Les journées de pratique, les visites et les trajets se vivent ensemble."
+      title: '630 € pour réserver ta place',
+      text: 'Après validation de ta demande, un acompte obligatoire de 630 € confirme ta place. Le solde de 1 260 € peut ensuite être réglé en une fois ou en deux mensualités de 630 €, sans frais.',
     },
     {
-      "question": "Pourquoi 10 jours du 8 au 18 janvier ?",
-      "answer": "Le 8 janvier correspond au départ international. Les dix jours du programme sur place vont du 9 au 18 janvier 2027, de l’arrivée à Pékin au départ de Shanghai."
+      title: 'Une demande, puis une validation',
+      text: 'Le formulaire constitue une demande d’inscription. Si ta demande est retenue, tu reçois un email ou un message de confirmation avec les prochaines étapes.',
     },
     {
-      "question": "Peut-on payer en plusieurs fois ?",
-      "answer": "Oui, en 1 à 3 fois sans frais : 1 890 € en une fois, 2 × 945 € ou 3 × 630 €. Les dates de paiement sont convenues lors de l’inscription."
+      title: '9 places maximum',
+      text: 'Une fois ta place validée, tu es ajouté au groupe WhatsApp pour rencontrer les autres participants et recevoir toutes les informations pratiques.',
     },
-    {
-      "question": "Les vols internationaux sont-ils inclus ?",
-      "answer": "Non. Prévois une arrivée à Pékin le 9 janvier 2027 et un retour au départ de Shanghai le 18 janvier. Vérifie les horaires avec RAHAL avant d’acheter tes billets."
-    },
-    {
-      "question": "Le programme est-il définitif ?",
-      "answer": "L’itinéraire prévu passe par Pékin, l’immersion kung-fu et Shanghai, avec une arrivée à Shanghai le 16 janvier. L’ordre des visites, certaines activités et les horaires des trains restent soumis aux réservations et aux conditions sur place."
-    }
   ],
-  "brevo": {},
-  "seo": {
-    "title": "Voyage en Chine · 10 jours, kung-fu et découvertes — RAHAL",
-    "description": "Le prochain voyage RAHAL : Pékin, cinq journées de kung-fu et Shanghai en janvier 2027. 10 jours, 1 890 €, paiement en 1 à 3 fois sans frais. Hors vols internationaux."
-  }
+
+  faq: [
+    {
+      question: 'Faut-il avoir déjà pratiqué le kung-fu ?',
+      answer: 'Non. L’expérience est ouverte aux débutants. Le maître adapte le programme au niveau du groupe, à sa progression et à la météo.',
+    },
+    {
+      question: 'Combien d’heures va-t-on s’entraîner ?',
+      answer: 'Environ 6 heures par jour pendant cinq journées, du 11 au 15 janvier. Le programme mêle notamment Qigong, conditionnement, formes Shaolin, Sanda, force, souplesse et méditation.',
+    },
+    {
+      question: 'Peut-on venir seul ?',
+      answer: 'Oui. L’expérience accueille 9 voyageurs maximum. Tu peux venir seul ou accompagné, puis faire connaissance avec le groupe avant le départ.',
+    },
+    {
+      question: 'Peut-on payer en plusieurs fois ?',
+      answer: 'Oui. Après validation de ta demande, l’acompte est de 630 €. Le solde peut être réglé en une fois ou en deux mensualités de 630 €, sans frais.',
+    },
+    {
+      question: 'Les vols internationaux sont-ils inclus ?',
+      answer: 'Non. Tu dois arriver à Pékin le 9 janvier au matin et repartir de Shanghai le 18 janvier. Attends le feu vert de RAHAL avant de réserver.',
+    },
+    {
+      question: 'Le programme peut-il changer ?',
+      answer: 'Les horaires des trains et l’ordre des visites seront confirmés. Le contenu essentiel du voyage reste inchangé.',
+    },
+  ],
+
+  applicationUrl: 'https://tally.so/r/rj7y2L',
+  brevo: {},
+  seo: {
+    title: 'Chapitre 1 : Chine · 10 jours et immersion kung-fu — RAHAL',
+    description:
+      'Du 8 au 18 janvier 2027 : Pékin, immersion kung-fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 3 fois sans frais.',
+  },
 };
