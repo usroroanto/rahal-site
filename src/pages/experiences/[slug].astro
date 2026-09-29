@@ -8,7 +8,7 @@ import Practical from '@/components/experience/Practical.astro';
 import Included from '@/components/experience/Included.astro';
 import Conditions from '@/components/experience/Conditions.astro';
 import ExperienceFaq from '@/components/experience/ExperienceFaq.astro';
-import ProgrammeForm from '@/components/forms/ProgrammeForm.astro';
+import ApplicationCta from '@/components/experience/ApplicationCta.astro';
 import MobileCta from '@/components/MobileCta.astro';
 import { experiences } from '@/content/experiences';
 import type { Experience } from '@/content/types';
@@ -47,9 +47,9 @@ const ogImage = heroMeta ? (await getImage({ src: heroMeta, width: 1200, height:
       </div>
       <aside class="journey-card" aria-label="Le voyage en un regard">
         <div class="journey-card-top"><span>RAHAL / 01</span><span aria-hidden="true">✳</span></div>
-        <p class="journey-route">Pékin<span>↓</span>Kung-fu<span>↓</span>Shanghai</p>
+        <p class="journey-route">Pékin<span>↓</span>Tengzhou<span>↓</span>Shanghai</p>
         <div class="journey-fare"><strong>{exp.price}</strong><span>Hors vols internationaux</span></div>
-        <p class="journey-payment">En 1 à 3 fois sans frais</p>
+        <p class="journey-payment">En 3 fois sans frais</p>
         <a href="#inscription">Voir les modalités <Arrow /></a>
       </aside>
     </div>
@@ -76,8 +76,8 @@ const ogImage = heroMeta ? (await getImage({ src: heroMeta, width: 1200, height:
   <Included included={exp.included} notIncluded={exp.notIncluded} />
   <Conditions items={exp.conditions} />
   <ExperienceFaq items={exp.faq} />
-  <ProgrammeForm experience={exp} />
-  <MobileCta />
+  <ApplicationCta experience={exp} />
+  <MobileCta label="Faire ma demande" target="#programme" />
 </Base>
 
 <style>
