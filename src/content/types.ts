@@ -104,6 +104,9 @@ export interface Experience {
   /** Lien vers le programme (ex. `/programmes/chine.pdf` placé dans `public/programmes/`). */
   programmeUrl?: string;
 
+  /** Lien externe vers le formulaire de demande d'inscription. */
+  applicationUrl?: string;
+
   /** Paramètres Brevo propres à l'expérience (identifiants non secrets). */
   brevo?: {
     /** Liste de contacts Brevo dans laquelle ranger les demandes. */
