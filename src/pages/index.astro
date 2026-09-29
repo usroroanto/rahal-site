@@ -26,7 +26,7 @@ const next = featuredExperience;
         </g>
         <path d="M85 156 C310 100 70 360 380 320" fill="none" stroke="#e9bd72" stroke-width="2" stroke-dasharray="4 8" />
         <g fill="#f7f3eb" stroke="#254139" stroke-width="5"><circle cx="85" cy="156" r="8"/><circle cx="204" cy="256" r="8"/><circle cx="380" cy="320" r="8"/></g>
-        <g fill="#f7f3eb" font-family="sans-serif" font-size="15" letter-spacing="2"><text x="55" y="135">PÉKIN</text><text x="220" y="248">KUNG-FU</text><text x="287" y="355">SHANGHAI</text></g>
+        <g fill="#f7f3eb" font-family="sans-serif" font-size="15" letter-spacing="2"><text x="55" y="135">PÉKIN</text><text x="220" y="248">TENGZHOU</text><text x="287" y="355">SHANGHAI</text></g>
       </svg>
       <div class="poster-bottom"><span>Janvier 2027</span><span>{next.duration} <span aria-hidden="true">↗</span></span></div>
     </a>}
@@ -41,11 +41,11 @@ const next = featuredExperience;
     </div>
   </section>
   {next && <section class="next-trip section" id="prochain-depart" aria-labelledby="next-title"><div class="container next-grid">
-    <div class="next-heading"><p class="kicker">Notre prochain départ</p><h2 id="next-title">La Chine.<br /><em>Trois étapes,<br />une aventure.</em></h2><p>Pékin, le kung-fu, Shanghai. Le premier voyage RAHAL réunit découverte du pays, apprentissage et vie à neuf.</p><div class="route-tags"><span>Pékin</span><span aria-hidden="true">→</span><span>Kung-fu</span><span aria-hidden="true">→</span><span>Shanghai</span></div></div>
+    <div class="next-heading"><p class="kicker">Notre prochain départ</p><h2 id="next-title">La Chine.<br /><em>Trois étapes,<br />une aventure.</em></h2><p>10 jours pour sortir de ta routine, découvrir la Chine autrement et t’initier au kung-fu.</p><div class="route-tags"><span>Pékin</span><span aria-hidden="true">→</span><span>Tengzhou</span><span aria-hidden="true">→</span><span>Shanghai</span></div></div>
     <div class="trip-ticket"><div class="ticket-top"><p>CHINE / {next.name}</p><span>Janvier 2027</span></div>
       <dl><div><dt>Départ</dt><dd>{next.dates}</dd></div><div><dt>Sur place</dt><dd>{next.duration} · du 9 au 18 janvier</dd></div><div><dt>Le groupe</dt><dd>{next.groupSize}</dd></div></dl>
       <div class="ticket-price"><strong>{next.price}</strong><span>Hors vols internationaux</span></div>
-      <p class="ticket-payment">En 1 à 3 fois sans frais <span>· 3 × 630 €</span></p>
+      <p class="ticket-payment">En 3 fois sans frais <span>· 3 × 630 €</span></p>
       <a class="btn btn--block" href={`/experiences/${next.slug}`}>Explorer le voyage <Arrow /></a><a class="ticket-programme" href={`/experiences/${next.slug}#etapes`}>Lire le programme jour par jour</a>
     </div>
   </div></section>}
