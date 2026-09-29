@@ -47,10 +47,10 @@ export const faqContact = {
       },
       {
         "question": "Comment se déroule l’inscription ?",
-        "answer": "Le séjour en Chine coûte 1 890 €, hors vols internationaux, et peut être réglé en 1 à 3 fois sans frais. Les échéances et les conditions de réservation et d’annulation doivent être précisées avant tout règlement.",
+        "answer": "Le séjour coûte 1 890 €, hors vols internationaux. Après validation de ta demande, un acompte de 630 € réserve ta place. Le solde peut être réglé en une fois ou en deux mensualités de 630 €, sans frais.",
         "link": {
-          "label": "Voir la page du séjour",
-          "href": "/experiences/chine"
+          "label": "Faire une demande d’inscription",
+          "href": "https://tally.so/r/rj7y2L"
         }
       }
     ] as Faq[]
