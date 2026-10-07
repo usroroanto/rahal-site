@@ -1,8 +1,8 @@
 ---
+import BrandMark from '@/components/BrandMark.astro';
 /** Informations pratiques du séjour (niveau, école, hébergement, repas, transports, rôle de Yassine). */
 import type { PracticalItem } from '@/content/types';
 import SectionHead from '../SectionHead.astro';
-import SunMark from '../SunMark.astro';
 
 interface Props {
   items: PracticalItem[];
@@ -12,12 +12,12 @@ const { items } = Astro.props;
 
 <section class="practical section" id="pratique" aria-labelledby="pratique-titre">
   <div class="container">
-    <SectionHead kicker="Informations pratiques" title="Ce qu’il faut savoir avant de partir." level="h2" />
+    <SectionHead kicker="Informations pratiques" title="Ce qu’il faut savoir avant de partir." level="h2" id="pratique-titre" />
     <div class="practical__grid">
       {
         items.map((item, i) => (
           <article class="practical__item" data-reveal style={`--reveal-delay:${(i % 2) * 90}ms`}>
-            <SunMark size={16} class="practical__sun" />
+            <BrandMark height={26} class="practical__sun" />
             <h3 class="practical__title">{item.title}</h3>
             <p class="practical__text">{item.text}</p>
           </article>

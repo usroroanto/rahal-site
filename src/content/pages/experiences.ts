@@ -9,8 +9,7 @@ export const experiencesPage = {
   title: 'Un pays. Une pratique. Un petit groupe.',
   text: 'Chaque expérience RAHAL réunit une destination et une discipline à apprendre sur place, avec un groupe volontairement réduit. Pas de circuit à enchaîner : un lieu, une pratique, et le temps de s’y plonger.',
   next: {
-    title: 'Et ensuite ?',
-    text: 'La Chine est notre prochain départ. Les autres destinations seront présentées ici au fil des prochains chapitres RAHAL.',
-    cta: { label: 'Nous écrire', href: '/faq-contact#contact' },
+    title: 'Une autre destination te tente ?',
+    text: 'Inscris-toi à notre liste d’attente pour découvrir les prochaines expériences RAHAL en avant-première.',
   },
 } as const;

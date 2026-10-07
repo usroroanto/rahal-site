@@ -58,9 +58,9 @@ export interface Experience {
   /** Nom de l'expérience (ex. DISCIPLINE). */
   name: string;
   country: string;
-  /** Pratique principale (ex. Kung-fu). */
+  /** Pratique principale (ex. Kung‑fu). */
   practice: string;
-  /** Mots du label d'ouverture, ex. ['Chine', 'Kung-fu', 'Petit groupe']. */
+  /** Mots du label d'ouverture, ex. ['Chine', 'Kung‑fu', 'Petit groupe']. */
   labels: string[];
   /** Phrase d'accroche (hero). */
   tagline: string;

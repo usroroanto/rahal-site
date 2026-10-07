@@ -16,10 +16,18 @@ export const site = {
 
   /** Coordonnées : laisser vide pour masquer. */
   contact: {
-    email: '',
+    email: 'rahal.experience@gmail.com',
     instagram: '', // ex. 'https://www.instagram.com/rahal'
     instagramHandle: '', // ex. '@rahal'
     whatsapp: '', // ex. 'https://wa.me/33600000000'
+  },
+
+  /**
+   * Réception des formulaires (contact, liste d'attente) par email, via FormSubmit (fonctionne sans serveur).
+   * Le premier envoi déclenche un email d'activation à cette adresse : cliquer sur « Activate Form ».
+   */
+  forms: {
+    email: 'rahal.experience@gmail.com',
   },
 
   nav: [

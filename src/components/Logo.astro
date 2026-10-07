@@ -2,9 +2,10 @@
 /**
  * Logo RAHAL.
  * Utilise `src/assets/brand/logo.(svg|png|webp)` et, sur fond sombre, `logo-clair.*` (traits ivoire, disque doré inchangé).
+ * Un logo matriciel est servi en WebP, en 1x, 2x et 3x à taille fixe.
  * Sans fichier, un mot-symbole typographique temporaire est affiché.
  */
-import { Image } from 'astro:assets';
+import { getImage } from 'astro:assets';
 import { brandLogo, brandLogoLight } from '@/lib/images';
 import SunMark from './SunMark.astro';
 
@@ -17,23 +18,29 @@ interface Props {
 const { variant = 'dark', height = 48, class: className } = Astro.props;
 const logo = variant === 'light' ? brandLogoLight : brandLogo;
 const width = logo ? Math.round((logo.width / logo.height) * height) : undefined;
+
+// « densities » avec un layout fixe : accepté à l'exécution, mais pas par les types d'Astro (layout global « constrained »).
+type ImageOptions = Parameters<typeof getImage>[0];
+const raster =
+  logo && logo.format !== 'svg'
+    ? await getImage({ src: logo, width, height, densities: [1, 2, 3], layout: 'none', quality: 90 } as unknown as ImageOptions)
+    : undefined;
 ---
 
 {
   logo ? (
-    logo.format === 'svg' ? (
-      <img class:list={['logo-img', className]} src={logo.src} alt="RAHAL" width={width} height={height} decoding="async" />
-    ) : (
-      <Image
+    raster ? (
+      <img
         class:list={['logo-img', className]}
-        src={logo}
+        src={raster.src}
+        srcset={raster.srcSet.attribute || undefined}
         alt="RAHAL"
         width={width}
         height={height}
-        densities={[1, 2, 3]}
-        layout="none"
-        quality={90}
+        decoding="async"
       />
+    ) : (
+      <img class:list={['logo-img', className]} src={logo.src} alt="RAHAL" width={width} height={height} decoding="async" />
     )
   ) : (
     <span class:list={['wordmark', `wordmark--${variant}`, className]} style={`--logo-h:${height}px`}>

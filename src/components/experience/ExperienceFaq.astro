@@ -14,7 +14,7 @@ const { items = [] } = Astro.props;
   items.length > 0 && (
     <section class="xfaq section" id="questions" aria-labelledby="xfaq-titre">
       <div class="container xfaq__inner">
-        <SectionHead kicker="Questions" title="Avant de te lancer." level="h2" class="xfaq__head" />
+        <SectionHead kicker="Questions" title="Avant de te lancer." level="h2" id="xfaq-titre" class="xfaq__head" />
         <div data-reveal>
           <FaqList items={items} id="faq-sejour" />
         </div>

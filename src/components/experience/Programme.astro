@@ -1,9 +1,9 @@
 ---
+import BrandMark from '@/components/BrandMark.astro';
 /** Programme par étapes, avec photos et détail jour par jour dépliable. */
 import type { Experience } from '@/content/types';
 import Photo from '../Photo.astro';
 import SectionHead from '../SectionHead.astro';
-import SunMark from '../SunMark.astro';
 import Arrow from '../Arrow.astro';
 
 interface Props {
@@ -15,7 +15,7 @@ const steps = exp.programme?.steps ?? [];
 
 <section class="prog section section--sand" id="etapes" aria-labelledby="prog-titre">
   <div class="container">
-    <SectionHead kicker="Le programme" title="Le séjour, étape par étape." lede={exp.programme?.intro} level="h2" />
+    <SectionHead kicker="Le programme" title="Le séjour, étape par étape." lede={exp.programme?.intro} level="h2" id="prog-titre" />
 
     {
       steps.length > 0 ? (
@@ -23,7 +23,7 @@ const steps = exp.programme?.steps ?? [];
           {steps.map((step, i) => (
             <li class="step" data-reveal>
               <div class="step__marker" aria-hidden="true">
-                <SunMark size={18} />
+                <BrandMark height={20} />
               </div>
               <div class="step__body">
                 {step.kicker && <p class="step__kicker">{step.kicker}</p>}
@@ -61,7 +61,7 @@ const steps = exp.programme?.steps ?? [];
         </ol>
       ) : (
         <div class="prog__pending" data-reveal>
-          <SunMark size={30} />
+          <BrandMark height={34} />
           <h3 class="h3">Programme détaillé prochainement disponible</h3>
           <p>
             Le déroulé jour par jour est en cours de finalisation. Demande le programme : tu le recevras par email dès sa

@@ -1,7 +1,7 @@
 ---
+import BrandMark from '@/components/BrandMark.astro';
 import Base from '@/layouts/Base.astro';
 import Arrow from '@/components/Arrow.astro';
-import SunMark from '@/components/SunMark.astro';
 import Topo from '@/components/Topo.astro';
 import { site } from '@/content/site';
 ---
@@ -10,7 +10,7 @@ import { site } from '@/content/site';
   <section class="nf">
     <Topo class="nf__topo" />
     <div class="container nf__inner">
-      <SunMark size={44} />
+      <BrandMark height={52} />
       <p class="kicker">Erreur 404</p>
       <h1 class="h-serif">Ce chemin ne mène nulle part.</h1>
       <p class="lede">La page que tu cherches n’existe pas, ou elle a changé d’adresse. Pas de panique : le voyage continue.</p>

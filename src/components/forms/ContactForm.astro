@@ -1,7 +1,11 @@
 ---
-/** Formulaire de contact (page FAQ / Contact). Envoi vers /api/contact (email via Brevo). */
+import BrandMark from '@/components/BrandMark.astro';
+/** Formulaire de contact (page FAQ / Contact). Les messages arrivent par email via FormSubmit (adresse : site.forms.email). */
 import Arrow from '../Arrow.astro';
-import SunMark from '../SunMark.astro';
+import { site } from '@/content/site';
+
+const inbox = site.forms.email;
+const errorMessage = `L’envoi n’a pas abouti. Réessaie dans quelques minutes ou écris-nous directement à ${inbox}.`;
 
 interface Props {
   subjects: readonly string[];
@@ -10,9 +14,11 @@ const { subjects } = Astro.props;
 ---
 
 <div class="contact-form" data-form-root="contact">
-  <form class="form" method="post" action="/api/contact" novalidate>
+  <form class="form" method="post" action={`https://formsubmit.co/${inbox}`} data-endpoint={`https://formsubmit.co/ajax/${inbox}`} data-error-message={errorMessage} novalidate>
+    <input type="hidden" name="_subject" value="Nouveau message depuis le site RAHAL" />
+    <input type="hidden" name="_template" value="table" />
     <div class="honeypot" aria-hidden="true">
-      <label>Ne pas remplir <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+      <label>Ne pas remplir <input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
     </div>
 
     <div class="form__row">
@@ -52,7 +58,7 @@ const { subjects } = Astro.props;
   </form>
 
   <div class="success" hidden data-success>
-    <SunMark size={36} />
+    <BrandMark height={40} />
     <h3 class="h3" tabindex="-1">Message envoyé !</h3>
     <p><span data-success-name>Merci. </span>On te répond dès que possible, à l’adresse que tu as indiquée.</p>
     <a hidden data-success-link href="#">Lien</a>

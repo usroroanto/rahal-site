@@ -9,15 +9,17 @@ interface Props {
   /** Titre en Cormorant (éditorial) plutôt qu'en Manrope. */
   serif?: boolean;
   align?: 'start' | 'center';
+  /** Identifiant du titre, cible d'un aria-labelledby. */
+  id?: string;
   class?: string;
 }
-const { kicker, title, lede, level = 'h2', serif = false, align = 'start', class: className } = Astro.props;
+const { kicker, title, lede, level = 'h2', serif = false, align = 'start', id, class: className } = Astro.props;
 const Heading = level;
 ---
 
 <div class:list={['section-head', { 'section-head--center': align === 'center' }, className]}>
   {kicker && <p class="kicker">{kicker}</p>}
-  <Heading class={serif ? 'h-serif' : 'h2'}>{title}</Heading>
+  <Heading class={serif ? 'h-serif' : 'h2'} id={id}>{title}</Heading>
   {lede && <p class="lede">{lede}</p>}
   <slot />
 </div>

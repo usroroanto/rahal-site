@@ -119,19 +119,22 @@ export function enhanceForm(name: string) {
     });
 
     try {
-      const response = await fetch(form.action, {
+      // Point d'envoi : data-endpoint (ex. FormSubmit en AJAX) ou, à défaut, l'action du formulaire.
+      const response = await fetch(form.dataset.endpoint || form.action, {
         method: 'POST',
         headers: { 'content-type': 'application/json', accept: 'application/json' },
         body: JSON.stringify(payload),
       });
       const data = (await response.json().catch(() => ({}))) as {
         ok?: boolean;
+        success?: boolean | string;
         message?: string;
         errors?: Record<string, string>;
         programmeUrl?: string | null;
       };
 
-      if (response.ok && data.ok) {
+      const accepted = data.ok === true || data.success === true || data.success === 'true';
+      if (response.ok && accepted) {
         showSuccess(root, form, { prenom: payload.prenom, programmeUrl: data.programmeUrl ?? null });
         return;
       }
@@ -139,9 +142,9 @@ export function enhanceForm(name: string) {
       if (data.errors) {
         for (const [field, message] of Object.entries(data.errors)) setFieldError(form, field, message);
       }
-      showStatus(status, data.message ?? 'L’envoi a échoué. Réessaie dans quelques minutes.', 'error');
+      showStatus(status, form.dataset.errorMessage ?? data.message ?? 'L’envoi a échoué. Réessaie dans quelques minutes.', 'error');
     } catch {
-      showStatus(status, 'Impossible de joindre le serveur. Vérifie ta connexion et réessaie.', 'error');
+      showStatus(status, form.dataset.errorMessage ?? 'Impossible de joindre le serveur. Vérifie ta connexion et réessaie.', 'error');
     } finally {
       setLoading(false);
     }

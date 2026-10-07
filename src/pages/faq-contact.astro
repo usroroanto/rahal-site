@@ -15,7 +15,7 @@ const hasContact = Boolean(email || instagram || whatsapp);
   <section class="faqp section" id="faq" aria-labelledby="faq-titre">
     <Topo class="faqp__topo" />
     <div class="container faqp__inner">
-      <SectionHead kicker={copy.faq.kicker} title={copy.faq.title} level="h1" serif class="faqp__head" />
+      <SectionHead kicker={copy.faq.kicker} title={copy.faq.title} level="h1" serif id="faq-titre" class="faqp__head" />
       <div data-reveal>
         <FaqList items={copy.faq.items} id="faq" />
       </div>
@@ -25,7 +25,7 @@ const hasContact = Boolean(email || instagram || whatsapp);
   <section class="contact section section--sand" id="contact" aria-labelledby="contact-titre">
     <div class="container contact__inner">
       <div class="contact__text" data-reveal>
-        <SectionHead kicker={copy.contact.kicker} title={copy.contact.title} lede={copy.contact.text} level="h2" serif />
+        <SectionHead kicker={copy.contact.kicker} title={copy.contact.title} lede={copy.contact.text} level="h2" serif id="contact-titre" />
         {
           hasContact && (
             <ul class="contact__links" role="list">

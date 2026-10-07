@@ -25,7 +25,11 @@ const { label = 'Recevoir le programme', target = '#programme' } = Astro.props;
   if (bar && target && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) bar.toggleAttribute('data-hidden', entry.isIntersecting);
+        for (const entry of entries) {
+          bar.toggleAttribute('data-hidden', entry.isIntersecting);
+          // Masqué : ni cliquable, ni atteignable au clavier, ni lu par les lecteurs d'écran.
+          bar.inert = entry.isIntersecting;
+        }
       },
       { threshold: 0.15 },
     );
@@ -54,6 +58,11 @@ const { label = 'Recevoir le programme', target = '#programme' } = Astro.props;
     transform: translateY(110%);
     opacity: 0;
     pointer-events: none;
+    visibility: hidden;
+    transition:
+      transform var(--t-base) var(--ease-out),
+      opacity var(--t-base) var(--ease-out),
+      visibility 0s linear var(--t-base);
   }
 
   .mobile-cta__btn {

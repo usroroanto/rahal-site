@@ -14,14 +14,14 @@ const { items, kicker = 'L’expérience', title = 'Trois dimensions, un même s
 
 <section class="dims section" id="dimensions" aria-labelledby="dims-titre">
   <div class="container">
-    <SectionHead kicker={kicker} title={title} level="h2" />
+    <SectionHead kicker={kicker} title={title} level="h2" id="dims-titre" />
     <div class="dims__list">
       {
         items.map((item, i) => (
           <article class:list={['dim', { 'dim--reverse': i % 2 === 1 }]} data-reveal>
             {item.image && (
               <div class="dim__media">
-                <Photo image={item.image} ratio="4 / 3" rounded sizes="(min-width: 64rem) 50vw, 100vw" />
+                <Photo image={item.image} ratio="4 / 3" rounded sizes="(min-width: 76rem) 360px, (min-width: 64rem) 30vw, calc(100vw - 2.5rem)" />
               </div>
             )}
             <div class="dim__body">

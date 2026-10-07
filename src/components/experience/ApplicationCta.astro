@@ -1,7 +1,7 @@
 ---
+import BrandMark from '@/components/BrandMark.astro';
 import type { Experience } from '@/content/types';
 import Arrow from '../Arrow.astro';
-import SunMark from '../SunMark.astro';
 
 interface Props {
   experience: Experience;
@@ -22,7 +22,7 @@ const { experience } = Astro.props;
             automatiquement ta place.
           </p>
           <p class="application__note">
-            <SunMark size={14} /> 9 places maximum · acompte de 630&nbsp;€ après validation
+            <BrandMark height={20} /> 9 places maximum · acompte de 630&nbsp;€ après validation
           </p>
           <a class="btn" href={experience.applicationUrl} target="_blank" rel="noopener">
             Faire ma demande

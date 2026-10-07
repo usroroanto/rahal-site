@@ -8,6 +8,8 @@ import { readdirSync, statSync, readFileSync, writeFileSync, mkdirSync, copyFile
 import { join, relative, dirname, posix } from 'node:path';
 
 const OUT = 'dist-preview';
+// Avec --artifact, la page d'accueil est réduite à son contenu (format Artifact Claude). Par défaut (GitHub Pages) : page complète.
+const ARTIFACT_MODE = process.argv.includes('--artifact');
 const CLIENT = join(OUT, 'client');
 const ART = join(OUT, 'artifact');
 
@@ -32,11 +34,11 @@ for (const page of pages) {
 }
 
 const BANNER =
-  '<div class="apercu-bandeau" role="note">Aperçu du site RAHAL — les photos seront ajoutées et les formulaires activés sur la version en ligne.</div>';
+  '<div class="apercu-bandeau" role="note">Aperçu du site RAHAL — version de travail.</div>';
 const BANNER_CSS =
   '<style>.apercu-bandeau{background:#22211f;color:#f7f3eb;font:600 .8rem/1.4 "Manrope Variable",Manrope,system-ui,sans-serif;text-align:center;padding:.55rem 1rem;letter-spacing:.01em}</style>';
 const INTERCEPT =
-  '<script>document.addEventListener("submit",function(e){var f=e.target;if(!f||!f.matches||!f.matches("form"))return;e.preventDefault();e.stopImmediatePropagation();var s=f.querySelector("[data-status]");if(s){s.textContent="Aperçu : ce formulaire sera actif sur le site en ligne.";s.className="form-status form-status--info";}},true);</script>';
+  '<script>document.addEventListener("submit",function(e){var f=e.target;if(!f||!f.matches||!f.matches("form"))return;var a=f.getAttribute("action")||"";if(a.indexOf("api/")===-1&&a!=="#apercu")return;e.preventDefault();e.stopImmediatePropagation();var s=f.querySelector("[data-status]");if(s){s.textContent="Aperçu : ce formulaire sera actif sur le site en ligne.";s.className="form-status form-status--info";}},true);</script>';
 
 function rewriteUrl(value, prefix) {
   if (!value.startsWith('/') || value.startsWith('//')) return value;
@@ -72,7 +74,7 @@ for (const page of pages) {
   const target = join(ART, page);
   mkdirSync(dirname(target), { recursive: true });
 
-  if (page === 'index.html') {
+  if (page === 'index.html' && ARTIFACT_MODE) {
     // Page principale de l'artifact : sans <html>/<head>/<body> (ajoutés à la publication).
     const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1] ?? '';
     const body = html.match(/<body[^>]*>([\s\S]*?)<\/body>/i)?.[1] ?? '';

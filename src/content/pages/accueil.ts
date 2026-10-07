@@ -3,7 +3,7 @@ export const accueil = {
   seo: {
     title: 'RAHAL — Voyages en petit groupe : apprendre, essayer, se dépasser',
     description:
-      'RAHAL, ce sont des voyages en petit groupe pour découvrir un pays à travers une pratique. Première expérience : DISCIPLINE, une initiation au kung-fu en Chine.',
+      'RAHAL, ce sont des voyages en petit groupe pour découvrir un pays à travers une pratique. Première expérience : DISCIPLINE, une initiation au kung‑fu en Chine.',
   },
 
   hero: {
@@ -39,13 +39,14 @@ export const accueil = {
 
   founder: {
     kicker: 'Le fondateur',
-    title: 'Tout est parti d’un rêve d’enfant.',
-    text: 'Je m’appelle Yassine. Le kung-fu, j’en rêvais enfant devant les films. Un jour, je suis parti m’y frotter en Chine, seul, sans rien connaître. J’en suis revenu avec l’envie de partager cette façon de voyager : apprendre quelque chose sur place, se laisser bousculer, et vivre ça à plusieurs. RAHAL est né de là.',
+    title: 'Le voyage comme un moyen, pas une finalité.',
+    text: 'On part souvent en voyage pour fuir la routine. On revient reposé, avec des photos plein le téléphone, et le quotidien reprend vite le dessus. J’ai créé RAHAL pour voyager autrement : partir pour apprendre une pratique, un savoir-faire, une façon de vivre, et rentrer avec quelque chose qui reste. C’est l’idée qui guide chaque expérience RAHAL, en Chine comme ailleurs.',
     cta: 'Découvrir l’histoire de RAHAL',
     portrait: {
       src: 'yassine/portrait.jpg',
-      alt: 'Portrait de Yassine, fondateur de RAHAL.',
-      position: 'center 30%',
+      alt: 'Yassine, en t-shirt noir, adossé à l’encadrement d’une ouverture voûtée en pierre ; derrière lui, la Muraille grimpe une colline boisée.',
+      position: 'center 50%',
+      mobilePosition: 'center 55%',
     },
   },
 

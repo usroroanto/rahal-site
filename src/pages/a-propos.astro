@@ -2,7 +2,7 @@
 import Base from '@/layouts/Base.astro';
 import Photo from '@/components/Photo.astro';
 import Arrow from '@/components/Arrow.astro';
-import SunMark from '@/components/SunMark.astro';
+import BrandMark from '@/components/BrandMark.astro';
 import Topo from '@/components/Topo.astro';
 import { aPropos as copy } from '@/content/pages/a-propos';
 ---
@@ -16,57 +16,42 @@ import { aPropos as copy } from '@/content/pages/a-propos';
         <h1 class="h-serif">{copy.hero.title}</h1>
         <p class="lede">{copy.hero.text}</p>
       </div>
-      <div class="ahero__media" data-reveal>
-        <Photo image={copy.hero.portrait} ratio="4 / 5" mobileRatio="1 / 1" rounded caption sizes="(min-width: 64rem) 40vw, 100vw" />
+      <div class="ahero__media">
+        <Photo image={copy.hero.portrait} ratio="4 / 5" mobileRatio="1 / 1" rounded priority sizes="(min-width: 76rem) 26rem, (min-width: 64rem) calc(36vw - 2rem), (min-width: 31rem) 28rem, calc(100vw - 2.5rem)" />
       </div>
     </div>
   </section>
 
-  <div class="story">
-    {
-      copy.sections.map((section, i) => (
-        <section class:list={['chapter', { 'chapter--reverse': i % 2 === 1, 'chapter--text-only': !section.image }]}>
-          <div class="container chapter__inner">
-            <div class="chapter__body" data-reveal>
-              <p class="kicker">{section.kicker}</p>
-              <h2 class="chapter__title">{section.title}</h2>
-              <p class="chapter__text">{section.text}</p>
-            </div>
-            {section.image && (
-              <div class="chapter__media" data-reveal style="--reveal-delay:100ms">
-                <Photo image={section.image} ratio="4 / 3" rounded caption sizes="(min-width: 64rem) 50vw, 100vw" />
-              </div>
-            )}
-          </div>
-        </section>
-      ))
-    }
-  </div>
-
-  <section class="pillars section section--sand" aria-labelledby="piliers-titre">
+  <section class="astory" aria-label="Ce qui a donné naissance à RAHAL">
     <div class="container">
-      <p class="kicker">{copy.pillars.kicker}</p>
-      <h2 class="h-serif pillars__title" id="piliers-titre">{copy.pillars.title}</h2>
-      <ol class="pillars__list" role="list">
+      <div class="astory__grid">
         {
-          copy.pillars.items.map((item, i) => (
-            <li class="pillars__item" data-reveal style={`--reveal-delay:${i * 100}ms`}>
-              <SunMark size={18} />
-              <h3 class="pillars__name">{item.title}</h3>
-              <p class="pillars__text">{item.text}</p>
-            </li>
+          copy.sections.map((section, i) => (
+            <article class="story-card" data-reveal style={`--reveal-delay:${i * 90}ms`}>
+              {section.image && (
+                <Photo image={section.image} ratio="4 / 5" mobileRatio="4 / 3" rounded sizes="(min-width: 76rem) 360px, (min-width: 64rem) calc(33vw - 3rem), calc(100vw - 2.5rem)" />
+              )}
+              <div class="story-card__body">
+                <p class="kicker">{section.kicker}</p>
+                <h2 class="story-card__title">{section.title}</h2>
+                <p class="story-card__text">{section.text}</p>
+              </div>
+            </article>
           ))
         }
-      </ol>
+      </div>
     </div>
   </section>
 
-  <section class="acta section">
-    <div class="container acta__inner" data-reveal>
-      <h2 class="h-serif">{copy.cta.title}</h2>
-      <p class="lede">{copy.cta.text}</p>
-      <a class="btn" href={copy.cta.button.href}>
-        {copy.cta.button.label}
+  <section class="aclose on-dark" aria-labelledby="aclose-titre">
+    <Topo class="aclose__topo" />
+    <div class="container aclose__inner" data-reveal>
+      <BrandMark variant="light" height={64} />
+      <p class="kicker">{copy.closing.kicker}</p>
+      <h2 class="h-serif aclose__title" id="aclose-titre">{copy.closing.title}</h2>
+      <p class="aclose__text">{copy.closing.text}</p>
+      <a class="btn btn--light" href={copy.closing.button.href}>
+        {copy.closing.button.label}
         <Arrow />
       </a>
     </div>
@@ -74,106 +59,124 @@ import { aPropos as copy } from '@/content/pages/a-propos';
 </Base>
 
 <style>
+  /* Ouverture sur fond sable : texte et portrait. */
   .ahero {
     position: relative;
     overflow: hidden;
-    padding-block: clamp(3rem, 7vw, 6rem) clamp(2rem, 5vw, 4rem);
+    background: linear-gradient(170deg, var(--c-sable-2) 0%, var(--c-sable) 100%);
+    padding-block: clamp(2.5rem, 6vw, 5rem);
   }
 
   .ahero :global(.ahero__topo) {
-    --topo-opacity: 0.1;
+    --topo-opacity: 0.14;
     inset: -20% auto auto -30%;
-    width: 80%;
+    width: 85%;
     height: 140%;
   }
 
   .ahero__inner {
     position: relative;
     display: grid;
-    gap: 2.5rem;
+    gap: 2rem;
     align-items: center;
   }
 
   .ahero__text {
     display: grid;
-    gap: 1.25rem;
-    max-width: 36rem;
+    gap: 1.1rem;
+    max-width: 38rem;
   }
 
   .ahero__media {
-    max-width: 28rem;
+    max-width: 26rem;
   }
 
-  .chapter {
-    padding-block: clamp(2.5rem, 6vw, 5rem);
+  /* Trois cartes : photo, puis texte court. */
+  .astory {
+    padding-block: clamp(3rem, 7vw, 5.5rem);
   }
 
-  .chapter__inner {
+  .astory__grid {
     display: grid;
     gap: 2rem;
-    align-items: center;
   }
 
-  .chapter__body {
+  .story-card {
     display: grid;
-    gap: 0.9rem;
-    max-width: 34rem;
+    gap: 1.1rem;
+    align-content: start;
   }
 
-  .chapter__title {
+  .story-card__body {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .story-card__title {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.9rem, 3.4vw, 2.8rem);
+    font-size: clamp(1.7rem, 2.4vw, 2.1rem);
     line-height: 1.08;
     letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
-  .chapter__text {
-    font-size: 1.08rem;
-    line-height: 1.65;
+  .story-card__text {
+    color: var(--c-gris);
     text-wrap: pretty;
   }
 
-  .pillars__title {
-    margin-top: 0.75rem;
+  /* Fermeture sur fond vert : la devise et l'appel à l'action. */
+  .aclose {
+    position: relative;
+    overflow: hidden;
+    background: var(--c-foret, #254139);
+    color: var(--c-ivoire);
+    padding-block: clamp(3.5rem, 8vw, 6rem);
+    text-align: center;
   }
 
-  .pillars__list {
-    list-style: none;
+  .aclose :global(.aclose__topo) {
+    --topo-color: var(--c-or);
+    --topo-opacity: 0.12;
+  }
+
+  .aclose__inner {
+    position: relative;
     display: grid;
-    gap: 1.25rem;
-    margin-top: var(--s-block);
+    justify-items: center;
+    gap: 1.1rem;
   }
 
-  .pillars__item {
-    display: grid;
-    gap: 0.6rem;
-    padding: clamp(1.4rem, 2.5vw, 2rem);
-    border-radius: var(--r-m);
-    background: var(--c-ivoire);
-    border: 1px solid var(--c-sable-3);
+  .aclose .kicker {
+    color: #e9bd72;
   }
 
-  .pillars__name {
-    font-weight: 700;
-    font-size: 1.25rem;
-    letter-spacing: -0.02em;
+  .aclose__title {
+    max-width: 18ch;
   }
 
-  .pillars__text {
-    color: var(--c-gris);
+  .aclose__text {
+    color: #c9d4cc;
+    max-width: 34rem;
   }
 
-  .acta__inner {
-    display: grid;
-    gap: 1.25rem;
-    justify-items: start;
-    max-width: 40rem;
+  .aclose .btn {
+    margin-top: 0.5rem;
+  }
+
+  /* Tablette : chaque carte en ligne (photo à gauche, texte à droite) plutôt qu'une grille à trou. */
+  @media (min-width: 48rem) and (max-width: 63.99rem) {
+    .story-card {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 2rem;
+    }
   }
 
   @media (min-width: 64rem) {
     .ahero__inner {
-      grid-template-columns: 1.15fr 0.85fr;
+      grid-template-columns: 1.2fr 0.8fr;
       gap: 5rem;
     }
 
@@ -182,25 +185,9 @@ import { aPropos as copy } from '@/content/pages/a-propos';
       width: 100%;
     }
 
-    .chapter__inner {
-      grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-    }
-
-    .chapter--reverse .chapter__media {
-      order: -1;
-    }
-
-    .chapter--text-only .chapter__inner {
-      grid-template-columns: 1fr;
-    }
-
-    .chapter--text-only .chapter__body {
-      max-width: 44rem;
-    }
-
-    .pillars__list {
+    .astory__grid {
       grid-template-columns: repeat(3, 1fr);
+      gap: 2.5rem;
     }
   }
 </style>

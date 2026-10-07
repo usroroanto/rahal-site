@@ -88,14 +88,28 @@ Typographie française : les espaces avant `? ! : ;` et à l'intérieur des guil
 ### Photos
 Déposer les fichiers dans `src/assets/images/` avec **exactement** ces noms (JPG, PNG ou WebP, largeur conseillée 2 400 px minimum pour les grands visuels) :
 
-| Fichier attendu | Utilisation | Cadrage conseillé |
+Photos en place (voyage de Yassine en Chine, juillet 2026, converties depuis les originaux HEIC, recadrées au format de leur emplacement) :
+
+| Fichier | Photo d'origine | Utilisation |
 |---|---|---|
-| `chine/muraille.jpg` | Visuel d'ouverture de l'accueil et de la page Chine + image de partage | Paysage, sujet au centre / tiers supérieur |
-| `chine/entrainement.jpg` | Carte de l'expérience + dimension « S'initier au kung-fu » | Paysage |
-| `chine/paysage.jpg` | Dimension « Explorer la Chine » | Paysage |
-| `chine/groupe.jpg` | Dimension « Partager l'aventure » (moment de vie) | Paysage |
-| `yassine/portrait.jpg` | Portrait du fondateur (accueil + À propos) | Portrait 4:5 |
-| `yassine/chine-1.jpg`, `chine-2.jpg`, `chine-3.jpg` | Photos personnelles de la page À propos | Paysage |
+| `chine/entrainement.jpg` | IMG_7452 · Yassine de dos, en tenue, devant un temple près de Tengzhou | Carte du voyage et fond flouté de « Nos expériences » |
+| `chine/muraille.jpg` | IMG_2308 · la Muraille à Mutianyu | Fond du « prochain départ » (accueil) et image de partage de la page Chine |
+| `chine/decouvrir.jpg` | IMG_2305 · la Muraille dans la vallée | Page Chine, « Découvrir autrement » |
+| `chine/zone-de-confort.jpg` | IMG_7505 · chemin rocheux vers l'entraînement | Page Chine, « Sortir de sa zone de confort » |
+| `chine/ensemble.jpg` | IMG_2278 · marcheurs sur la Muraille | Page Chine, « Vivre l'expérience ensemble » |
+| `chine/etape-pekin.jpg` | IMG_2275 · la Muraille entre deux créneaux | Programme, étape Pékin |
+| `chine/etape-tengzhou.jpg` | IMG_2963 · coucher de soleil sur les montagnes | Programme, étape Tengzhou |
+| `chine/etape-shanghai.jpg` | IMG_3328 · Lujiazui au crépuscule | Programme, étape Shanghai |
+| `yassine/portrait.jpg` | IMG_7144 · Yassine dans une arche de la Muraille | Portrait de « L'esprit RAHAL » |
+| `yassine/chine-1.jpg` | IMG_1946 · une meurtrière de la Muraille | « Je n'ai jamais voyagé pour cocher des lieux » |
+| `yassine/chine-2.jpg` | IMG_7500 · sur le chemin de l'école de kung-fu | « Un rêve d'enfant, pris au sérieux » |
+| `yassine/chine-3.jpg` | IMG_2287 · compagnon de route sur la Muraille | « Parce qu'on ose plus à plusieurs » |
+
+Les photos s'affichent sans légende (demande de Yassine) ; leur texte alternatif décrit ce qu'elles montrent.
+
+Pour remplacer une photo : convertir l'original (`sips -s format jpeg photo.HEIC --out photo.jpg` sur Mac), puis `node scripts/prepare-photo.cjs photo.jpg src/assets/images/<fichier>.jpg 4:3 50` (ratio de l'emplacement, position verticale du cadrage en %). Le script supprime les métadonnées : les coordonnées GPS ne sont jamais publiées. Les cadrages se règlent avec `position` et `mobilePosition` dans les fichiers de contenu.
+
+Fichiers prévus mais non utilisés par la mise en page actuelle : `chine/paysage.jpg` et `chine/groupe.jpg` (anciennes illustrations des dimensions du séjour).
 
 Tant qu'un fichier manque, le site affiche un **visuel de substitution** de marque (dégradé sable, lignes topographiques). Dès que le fichier est déposé, il est optimisé automatiquement (formats WebP, plusieurs tailles, chargement différé sous le premier écran).
 
@@ -112,9 +126,12 @@ Pour repartir d'un nouveau fichier source : `node scripts/prepare-logo.cjs <fich
 
 Le petit disque doré du logo sert de motif graphique sur tout le site (puces, décor, favicon). Le favicon (`public/favicon.svg`) et l'icône Apple reprennent ce disque sur fond ivoire.
 
+### Symbole « h + soleil »
+Le h du logo et son soleil doré, extraits du logo sans être redessinés (`node scripts/extract-brand-mark.cjs` → `src/assets/brand/h-soleil.png` et `h-soleil-clair.png`). Il s'affiche avec le composant `BrandMark` (`variant="light"` sur fond sombre) partout où le site utilisait un pictogramme soleil.
+
 ### Image de partage (réseaux sociaux)
 - Par défaut : `public/og/rahal.png`, générée par `npm run og`.
-- Accueil et page Chine : dès que `chine/muraille.jpg` existe, elle est utilisée automatiquement (recadrée en 1200×630).
+- Page Chine : `chine/muraille.jpg` est utilisée automatiquement (recadrée en 1200×630). Les autres pages utilisent l’image par défaut.
 
 ---
 
@@ -180,6 +197,13 @@ Dans `.env` (copie de `.env.example`) :
 - Validation des champs côté navigateur **et** côté serveur, champ pot-de-miel anti-robots, aucune confirmation sans réussite réelle de l'envoi.
 - Sans JavaScript, les formulaires fonctionnent quand même (envoi classique puis retour sur la page avec l'état affiché).
 
+### Formulaires de contact et liste d'attente
+Le formulaire de contact (page FAQ / Contact) et la liste d'attente (page « Nos expériences ») envoient leurs réponses par email à **rahal.experience@gmail.com** via [FormSubmit](https://formsubmit.co), un service gratuit qui fonctionne sans serveur (donc aussi sur GitHub Pages). L'adresse se change dans `src/content/site.ts` (`forms.email`).
+
+**Activation obligatoire, une seule fois** : au tout premier envoi, FormSubmit envoie à rahal.experience@gmail.com un email « Activate Form ». Il faut cliquer sur le lien ; avant cela, aucun message n'est transmis (le visiteur voit un message l'invitant à écrire directement à l'adresse). Après activation, FormSubmit propose un identifiant aléatoire qui peut remplacer l'adresse dans le code pour la masquer.
+
+La politique de confidentialité devra mentionner FormSubmit (formulaires) et Tally (demandes d'inscription).
+
 ### Tester en local
 ```bash
 curl -X POST http://localhost:4321/api/programme \
@@ -206,7 +230,7 @@ Avant la mise en ligne : renseigner `PUBLIC_SITE_URL` avec le vrai domaine et re
 
 **Assets**
 - [x] Logo (intégré depuis le formulaire Tally ; fournir l'original vectoriel si disponible).
-- [ ] Photos listées au §3 (Muraille, entraînement, paysage, groupe, portrait, 3 photos personnelles).
+- [x] Photos : 6 photos du voyage de Yassine en place (voir §3). À confirmer : c'est bien Yassine sur le portrait.
 
 **Informations du séjour Chine** (`src/content/experiences/chine.ts`) — non inventées, donc absentes ou en formulation d'attente :
 - [ ] Dates, durée, taille du groupe, prix (et note de prix).

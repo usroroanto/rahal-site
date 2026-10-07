@@ -2,13 +2,18 @@
 import Base from '@/layouts/Base.astro';
 import ExperienceCard from '@/components/ExperienceCard.astro';
 import SectionHead from '@/components/SectionHead.astro';
-import Arrow from '@/components/Arrow.astro';
-import SunMark from '@/components/SunMark.astro';
+import BrandMark from '@/components/BrandMark.astro';
 import Topo from '@/components/Topo.astro';
+import WaitlistForm from '@/components/forms/WaitlistForm.astro';
 import { experiences } from '@/content/experiences';
 import { experiencesPage as copy } from '@/content/pages/experiences';
+import { resolveImage } from '@/lib/images';
+import { getImage } from 'astro:assets';
 
 const single = experiences.length === 1;
+// Fond flouté : la photo de la première expérience, en petite taille (le flou masque la résolution).
+const bgMeta = experiences[0] ? resolveImage(experiences[0].card.src) : undefined;
+const bg = bgMeta ? await getImage({ src: bgMeta, width: 480, format: 'webp', quality: 60 }) : undefined;
 ---
 
 <Base title={copy.seo.title} description={copy.seo.description}>
@@ -19,20 +24,21 @@ const single = experiences.length === 1;
     </div>
   </section>
 
-  <section class="list section section--sand" aria-label="Expériences disponibles">
-    <div class="container">
+  <section class="list section" aria-label="Expériences disponibles">
+    {bg && <img class="list__bg" src={bg.src} alt="" aria-hidden="true" width="480" height="640" loading="eager" decoding="async" />}
+    <div class="list__veil" aria-hidden="true"></div>
+    <div class="container list__inner">
       <div class:list={['list__grid', { 'list__grid--single': single }]}>
-        {experiences.map((exp) => <ExperienceCard experience={exp} variant={single ? 'feature' : 'grid'} headingLevel="h2" />)}
+        {experiences.map((exp, i) => <ExperienceCard experience={exp} variant={single ? 'feature' : 'grid'} headingLevel="h2" priority={i === 0} />)}
       </div>
 
-      <aside class="next" data-reveal>
-        <SunMark size={28} />
-        <h2 class="h3">{copy.next.title}</h2>
-        <p>{copy.next.text}</p>
-        <a class="link-arrow" href={copy.next.cta.href}>
-          {copy.next.cta.label}
-          <Arrow class="" />
-        </a>
+      <aside class="next" aria-labelledby="next-titre" data-reveal>
+        <div class="next__text">
+          <BrandMark height={36} />
+          <h2 class="h3" id="next-titre">{copy.next.title}</h2>
+          <p>{copy.next.text}</p>
+        </div>
+        <WaitlistForm />
       </aside>
     </div>
   </section>
@@ -61,6 +67,40 @@ const single = experiences.length === 1;
     max-width: 48rem;
   }
 
+  /* Fond flouté qui habille les côtés de la carte. */
+  .list {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    background: var(--c-sable);
+  }
+
+  .list__bg {
+    position: absolute;
+    inset: -8%;
+    z-index: -2;
+    width: 116%;
+    height: 116%;
+    max-width: none;
+    object-fit: cover;
+    object-position: center 45%;
+    filter: blur(42px) saturate(1.05);
+    opacity: 0.85;
+  }
+
+  .list__veil {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      radial-gradient(120% 90% at 50% 40%, rgb(232 221 204 / 0.35) 0%, rgb(232 221 204 / 0.7) 70%),
+      linear-gradient(180deg, rgb(247 243 235 / 0.35), rgb(232 221 204 / 0.55));
+  }
+
+  .list__inner {
+    position: relative;
+  }
+
   .list__grid {
     display: grid;
     gap: 1.5rem;
@@ -68,22 +108,36 @@ const single = experiences.length === 1;
 
   .next {
     display: grid;
-    gap: 0.75rem;
-    justify-items: start;
-    max-width: 34rem;
+    gap: 1.5rem;
     margin-top: clamp(2.5rem, 6vw, 4rem);
     padding: clamp(1.5rem, 3vw, 2.25rem);
     border-radius: var(--r-l);
-    border: 1px dashed rgb(128 96 57 / 0.4);
+    background: rgb(255 253 249 / 0.92);
+    border: 1px solid var(--c-sable-3);
+    box-shadow: var(--shadow-s);
   }
 
-  .next p {
+  .next__text {
+    display: grid;
+    gap: 0.6rem;
+    justify-items: start;
+    align-content: start;
+  }
+
+  .next__text p {
     color: var(--c-gris);
+    max-width: 30rem;
   }
 
   @media (min-width: 64rem) {
     .list__grid:not(.list__grid--single) {
       grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    }
+
+    .next {
+      grid-template-columns: 1fr 1.1fr;
+      align-items: end;
+      gap: 3rem;
     }
   }
 </style>

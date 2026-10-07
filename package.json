@@ -10,7 +10,8 @@
     "start": "node ./dist/server/entry.mjs",
     "preview": "npm run build && node ./dist/server/entry.mjs",
     "check": "astro check",
-    "og": "node scripts/generate-og.mjs"
+    "og": "node scripts/generate-og.mjs",
+    "check:site": "node scripts/check-site.mjs"
   },
   "engines": {
     "node": ">=22.12.0"

@@ -10,9 +10,11 @@ interface Props {
   /** `feature` : grande carte horizontale ; `grid` : carte verticale pour une grille. */
   variant?: 'feature' | 'grid';
   headingLevel?: 'h2' | 'h3';
+  /** Image chargée en priorité (carte visible dès l'ouverture de la page). */
+  priority?: boolean;
   class?: string;
 }
-const { experience: exp, variant = 'feature', headingLevel = 'h3', class: className } = Astro.props;
+const { experience: exp, variant = 'feature', headingLevel = 'h3', priority = false, class: className } = Astro.props;
 const Heading = headingLevel;
 const href = `/experiences/${exp.slug}`;
 ---
@@ -23,7 +25,8 @@ const href = `/experiences/${exp.slug}`;
       image={exp.card}
       ratio={variant === 'feature' ? '4 / 5' : '4 / 3'}
       mobileRatio="4 / 3"
-      sizes={variant === 'feature' ? '(min-width: 64rem) 46vw, 100vw' : '(min-width: 64rem) 33vw, 100vw'}
+      sizes={variant === 'feature' ? '(min-width: 76rem) 575px, (min-width: 64rem) 47vw, calc(100vw - 2.5rem)' : '(min-width: 64rem) 33vw, calc(100vw - 2.5rem)'}
+      priority={priority}
     />
   </div>
   <div class="card__body">

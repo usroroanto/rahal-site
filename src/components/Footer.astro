@@ -1,8 +1,8 @@
 ---
+import BrandMark from '@/components/BrandMark.astro';
 /** Pied de page commun : logo, navigation, Instagram, contact et liens légaux (tous configurables). */
 import { site } from '@/content/site';
 import Logo from './Logo.astro';
-import SunMark from './SunMark.astro';
 
 const year = new Date().getFullYear();
 const { email, instagram, instagramHandle, whatsapp } = site.contact;
@@ -10,7 +10,7 @@ const hasContact = Boolean(email || instagram || whatsapp);
 ---
 
 <footer class="footer on-dark">
-  <SunMark class="footer__sun" size={220} />
+  <BrandMark class="footer__sun" variant="light" height={300} />
   <div class="container footer__inner">
     <div class="footer__brand">
       <a href="/" class="footer__logo" aria-label="RAHAL, retour à l’accueil">
@@ -95,9 +95,9 @@ const hasContact = Boolean(email || instagram || whatsapp);
 
   .footer :global(.footer__sun) {
     position: absolute;
-    right: -3rem;
-    top: -4rem;
-    opacity: 0.09;
+    right: 1rem;
+    top: -2rem;
+    opacity: 0.1;
     pointer-events: none;
   }
 

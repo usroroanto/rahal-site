@@ -11,35 +11,27 @@ export const faqContact = {
     "items": [
       {
         "question": "Peut-on venir seul ?",
-        "answer": "Oui. Pour le prochain départ en Chine, le groupe est limité à 9 personnes. Que tu viennes seul ou accompagné, tu fais vite partie de l’équipe."
+        "answer": "Oui. Les groupes sont volontairement petits (9 personnes pour la Chine) : tu arrives seul, tu repars avec des compagnons de route."
       },
       {
-        "question": "Faut-il avoir déjà pratiqué l’activité ?",
-        "answer": "Non. Chaque expérience est une initiation : tu apprends sur place, avec des pratiquants. Les éventuels prérequis sont précisés sur la page de chaque séjour.",
+        "question": "Faut-il déjà pratiquer, ou avoir un bon niveau physique ?",
+        "answer": "Non. Chaque expérience est une initiation ouverte aux débutants : tu apprends sur place, avec des pratiquants. Une condition physique correcte et l’envie de t’investir suffisent. Le rythme de chaque voyage est détaillé sur sa page.",
         "link": {
-          "label": "Voir le séjour DISCIPLINE en Chine",
-          "href": "/experiences/chine"
-        }
-      },
-      {
-        "question": "Quel niveau physique est nécessaire ?",
-        "answer": "Ça dépend de la pratique. Pour DISCIPLINE en Chine, une condition physique correcte et l’envie de s’y mettre suffisent. Tout est détaillé dans les informations pratiques du séjour.",
-        "link": {
-          "label": "Lire les informations pratiques",
+          "label": "Voir les informations pratiques de la Chine",
           "href": "/experiences/chine#pratique"
         }
       },
       {
         "question": "Comment connaître les prochains départs ?",
-        "answer": "Notre prochain départ est la Chine, du 8 au 18 janvier 2027 : dix jours sur place à partir du 9 janvier. Les prochaines destinations seront présentées ici lorsqu’elles seront annoncées.",
+        "answer": "Le prochain départ est la Chine, du 8 au 18 janvier 2027. Pour découvrir les prochaines destinations en avant-première, inscris-toi à la liste d’attente.",
         "link": {
-          "label": "Voir les expériences",
-          "href": "/experiences"
+          "label": "Rejoindre la liste d’attente",
+          "href": "/experiences#next-titre"
         }
       },
       {
-        "question": "Où consulter le programme ?",
-        "answer": "L’itinéraire et le détail jour par jour sont consultables directement sur la page du séjour. La consultation du programme ne constitue pas une réservation.",
+        "question": "Où trouver le programme ?",
+        "answer": "Le programme jour par jour est sur la page de chaque voyage, avec ce qui est inclus et les informations pratiques.",
         "link": {
           "label": "Voir le programme de la Chine",
           "href": "/experiences/chine#etapes"
