@@ -59,7 +59,7 @@ const [titleHead, titleLast] = splitIndex === -1 ? ['', reg.title] : [reg.title.
 
 const tripHref = `/experiences/${exp.slug}`;
 const applicationSteps = (exp.applicationSteps ?? []).map((s) => s.title.replace(/\.$/, ''));
-// Itinéraire tiré des étapes du programme : « 9–10 janvier · Pékin » → date + lieu.
+// Itinéraire tiré des étapes du programme : « 8–10 janvier · Pékin » → date + lieu.
 const stops = (exp.programme?.steps ?? []).flatMap((step) => {
   const parts = step.kicker?.split(' · ') ?? [];
   return parts.length >= 2 ? [{ when: parts[0].trim(), place: parts.slice(1).join(' · ').trim() }] : [];

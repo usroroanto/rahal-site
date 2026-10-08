@@ -97,7 +97,7 @@ const pillars: { title: string; text: string; image: ImageRef }[] = [
   {next && <section class="next-trip section on-dark" id="prochain-depart" aria-labelledby="next-title"><Image class="next-bg" src={nextTripBg} alt="" widths={[768, 1280, 1920]} sizes="100vw" loading="lazy" /><div class="next-veil" aria-hidden="true"></div><div class="container next-grid">
     <div class="next-heading"><p class="kicker">Notre prochain départ</p><h2 id="next-title">La Chine.<br /><em>Trois étapes,<br />une aventure.</em></h2><p>{next.tagline}</p><div class="route-tags"><span>Pékin</span><span aria-hidden="true">→</span><span>Kung&#8209;fu à Tengzhou</span><span aria-hidden="true">→</span><span>Shanghai</span></div></div>
     <div class="trip-ticket"><div class="ticket-top"><p>CHINE / {next.name}</p></div>
-      <dl><div><dt>Sur place</dt><dd>{next.dates}</dd></div><div><dt>Durée</dt><dd>{next.duration}, de Pékin à Shanghai</dd></div><div><dt>Le groupe</dt><dd>{next.groupSize}</dd></div></dl>
+      <dl><div><dt>Dates</dt><dd>{next.dates}</dd></div><div><dt>Durée</dt><dd>{next.duration}, de Pékin à Shanghai</dd></div><div><dt>Le groupe</dt><dd>{next.groupSize}</dd></div></dl>
       <div class="ticket-price"><strong>{next.price}</strong><span>Hors vols internationaux</span></div>
       <p class="ticket-payment">En 3 fois sans frais <span>· 3 × 630&nbsp;€</span></p>
       <a class="btn btn--block" href={`/experiences/${next.slug}`}>Explorer le voyage <Arrow /></a><a class="ticket-programme" href={`/experiences/${next.slug}#etapes`}>Lire le programme jour par jour</a>

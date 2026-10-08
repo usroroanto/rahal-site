@@ -29,7 +29,7 @@ export const faqContact = {
       },
       {
         "question": "Comment connaître les prochains départs ?",
-        "answer": "Le prochain départ est la Chine : sur place du 9 au 18 janvier 2027. Pour découvrir les prochaines destinations en avant-première, inscris-toi à la liste d’attente.",
+        "answer": "Le prochain départ est la Chine, du 8 au 18 janvier 2027. Pour découvrir les prochaines destinations en avant-première, inscris-toi à la liste d’attente.",
         "link": {
           "label": "Rejoindre la liste d’attente",
           "href": "/experiences#next-titre"

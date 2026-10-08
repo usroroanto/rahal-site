@@ -14,7 +14,7 @@ interface Props {
 }
 const { experience: exp } = Astro.props;
 
-// Itinéraire tiré des étapes du programme (« 9–10 janvier · Pékin » → « Pékin »).
+// Itinéraire tiré des étapes du programme (« 8–10 janvier · Pékin » → « Pékin »).
 const stops = (exp.programme?.steps ?? [])
   .map((step) => {
     const parts = step.kicker?.split(/\s+·\s+/) ?? [];

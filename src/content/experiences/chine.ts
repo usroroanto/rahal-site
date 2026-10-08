@@ -27,7 +27,7 @@ export const chine: Experience = {
     mobilePosition: '50% 48%',
   },
 
-  dates: 'Du 9 au 18 janvier 2027',
+  dates: 'Du 8 au 18 janvier 2027',
   datesNote: 'Arrivée à Pékin le 9 au matin',
   duration: '10 jours',
   groupSize: '9 personnes',
@@ -68,7 +68,7 @@ export const chine: Experience = {
       'Le voyage commence à Pékin et se termine à Shanghai. Trois étapes, dix jours, une seule aventure.',
     steps: [
       {
-        kicker: '9–10 janvier · Pékin',
+        kicker: '8–10 janvier · Pékin',
         title: 'Commencer par la Chine impériale',
         text: 'Rejoindre le groupe à Pékin, découvrir la capitale et la Grande Muraille, puis prendre le train rapide vers Tengzhou.',
         image: {
@@ -77,7 +77,7 @@ export const chine: Experience = {
         },
         days: [
           {
-            title: 'La veille · vendredi 8 janvier',
+            title: 'Vendredi 8 janvier · Départ direction la Chine',
             text: 'Vol vers Pékin : chacun rejoint la capitale pour le samedi 9 janvier au matin. Les billets d’avion pourront être coordonnés selon les villes et les dates de départ de chacun : un groupe sera créé pour s’organiser ensemble. Ne réserve pas ton billet avant la validation de ta demande.',
           },
           {
@@ -200,7 +200,7 @@ export const chine: Experience = {
     },
     {
       question: 'Quand commence le voyage, et les vols sont-ils inclus ?',
-      answer: 'Le voyage commence à Pékin le samedi 9 janvier 2027 au matin et se termine à Shanghai le lundi 18 janvier. Les vols internationaux ne sont pas inclus, ce qui implique généralement un départ la veille, le 8 janvier. Attends la validation de ta demande avant de réserver ton billet. Un groupe est créé pour coordonner les billets selon les villes et les dates de départ de chacun, et le transfert collectif vers l’aéroport de Shanghai est inclus.',
+      answer: 'Le voyage a lieu du 8 au 18 janvier 2027 : départ le vendredi 8 janvier pour arriver à Pékin le samedi 9 au matin, puis fin du séjour à Shanghai le lundi 18 janvier. Les vols internationaux ne sont pas inclus. Attends la validation de ta demande avant de réserver ton billet. Un groupe est créé pour coordonner les billets selon les villes et les dates de départ de chacun, et le transfert collectif vers l’aéroport de Shanghai est inclus.',
     },
     {
       question: 'Où dort-on, et comment se passent les repas ?',
@@ -279,6 +279,6 @@ export const chine: Experience = {
   seo: {
     title: 'Chapitre 1 : Chine · 10 jours et immersion kung‑fu — RAHAL',
     description:
-      'Du 9 au 18 janvier 2027 en Chine : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 3 fois sans frais.',
+      'Du 8 au 18 janvier 2027 : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 3 fois sans frais.',
   },
 };
