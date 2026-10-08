@@ -1,5 +1,5 @@
 ---
-/** Dernier appel de la page du séjour : photo plein cadre de nuit, voile sombre, demande et contact. */
+/** Dernier appel de la page du séjour : panorama, voile sombre, demande et contact. */
 import type { Experience, ImageRef } from '@/content/types';
 import Arrow from '../Arrow.astro';
 import Photo from '../Photo.astro';
@@ -9,12 +9,12 @@ interface Props {
 }
 const { experience: exp } = Astro.props;
 
-// Photo décorative : cadrée sur la porte illuminée.
+// Photo décorative : la Grande Muraille traverse le panorama montagneux.
 const photo: ImageRef = {
-  src: 'chine/porte-shaolin.jpg',
+  src: 'chine/decouvrir.jpg',
   alt: '',
-  position: 'center 25%',
-  mobilePosition: 'center 30%',
+  position: 'center 45%',
+  mobilePosition: '62% center',
 };
 ---
 
@@ -64,15 +64,15 @@ const photo: ImageRef = {
     background: var(--c-encre);
   }
 
-  /* Mobile et tablette : le texte passe sur les colonnes orange de la porte, le voile reste dense jusqu'aux deux tiers. */
+  /* Le voile protège le texte en bas et laisse le paysage visible en haut. */
   .xfinal__veil {
     background: linear-gradient(
       to top,
-      rgb(34 33 31 / 0.95) 0%,
-      rgb(34 33 31 / 0.85) 40%,
-      rgb(34 33 31 / 0.6) 65%,
-      rgb(34 33 31 / 0.3) 85%,
-      rgb(34 33 31 / 0.15) 100%
+      rgb(27 48 41 / 0.97) 0%,
+      rgb(27 48 41 / 0.88) 40%,
+      rgb(27 48 41 / 0.65) 65%,
+      rgb(27 48 41 / 0.25) 85%,
+      rgb(27 48 41 / 0.12) 100%
     );
   }
 
