@@ -192,7 +192,7 @@ export const chine: Experience = {
     },
     {
       question: 'Peut-on venir seul ?',
-      answer: 'Oui. Tu fais connaissance avec les autres voyageurs dans le groupe WhatsApp avant le départ, puis tout se vit ensemble sur place.',
+      answer: "Bien sûr ! Tu fais connaissance avec les autres voyageurs dans le groupe WhatsApp avant le départ, puis on partage l'aventure ensemble !",
     },
     {
       question: 'À quoi ressemble une journée à l’école ?',
@@ -200,7 +200,7 @@ export const chine: Experience = {
     },
     {
       question: 'Quand commence le voyage, et les vols sont-ils inclus ?',
-      answer: 'Le voyage a lieu du 8 au 18 janvier 2027 : départ le vendredi 8 janvier pour arriver à Pékin le samedi 9 au matin, puis fin du séjour à Shanghai le lundi 18 janvier. Les vols internationaux ne sont pas inclus. Attends la validation de ta demande avant de réserver ton billet. Un groupe est créé pour coordonner les billets selon les villes et les dates de départ de chacun, et le transfert collectif vers l’aéroport de Shanghai est inclus.',
+      answer: 'Le voyage a lieu du 8 au 18 janvier 2027 : départ le vendredi 8 janvier pour arriver à Pékin le samedi 9 au matin, puis fin du séjour à Shanghai le lundi 18 janvier. Les vols internationaux ne sont pas inclus. Attends la validation de ta demande avant de réserver ton billet. Un groupe WhatsApp sera créé pour coordonner les billets d’avion selon les villes et les dates de départ de chacun.',
     },
     {
       question: 'Où dort-on, et comment se passent les repas ?',
@@ -208,11 +208,11 @@ export const chine: Experience = {
     },
     {
       question: 'Faut-il un visa et une assurance ?',
-      answer: 'Selon ta nationalité et les règles d’entrée en vigueur en janvier 2027, un visa peut être nécessaire, et ton passeport doit être valide au moins 6 mois après le retour. Une assurance voyage couvrant le séjour et la pratique du kung‑fu est obligatoire.',
+      answer: 'Selon ta nationalité et les règles d’entrée en vigueur en janvier 2027, un visa peut être nécessaire, et ton passeport doit être valide au moins 6 mois après le retour. Une assurance voyage couvrant le séjour est obligatoire.',
     },
     {
       question: 'Que mettre dans son sac ?',
-      answer: 'Le voyage a lieu en hiver : prévois des vêtements chauds pour Pékin et la Grande Muraille, une tenue souple, des chaussures confortables et une gourde. L’uniforme de kung‑fu est fourni.',
+      answer: 'Le voyage a lieu en hiver : prévois des vêtements chauds pour Pékin et la Grande Muraille, une tenue souple et des chaussures confortables. L’uniforme de kung‑fu est fourni.',
     },
     {
       question: 'Comment se déroule l’inscription ?',
