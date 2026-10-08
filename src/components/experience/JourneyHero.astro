@@ -66,7 +66,12 @@ const lead = exp.country === 'Chine' ? 'La Chine,' : `${exp.country},`;
                   ↓
                 </span>
               )}
-              {stop}
+              {stop === 'Kung‑fu à Tengzhou' ? (
+                <>
+                  <span>Tengzhou</span>
+                  <span class="jcard__practice">Immersion kung-fu</span>
+                </>
+              ) : stop}
             </li>
           ))
         }
@@ -223,11 +228,23 @@ const lead = exp.country === 'Chine' ? 'La Chine,' : `${exp.country},`;
 
   .jcard__route {
     list-style: none;
+    padding: 0;
+    text-align: center;
     font-family: var(--font-serif);
     font-weight: 500;
     font-size: clamp(1.85rem, 1.2rem + 1.6vw, 2.4rem);
     line-height: 1.05;
     text-wrap: balance;
+  }
+
+  .jcard__practice {
+    display: block;
+    margin-top: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--c-or-clair);
   }
 
   .jcard__arrow {
@@ -242,6 +259,8 @@ const lead = exp.country === 'Chine' ? 'La Chine,' : `${exp.country},`;
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
+    justify-content: center;
+    text-align: center;
     gap: 0.25rem 1rem;
     padding-top: 1rem;
     border-top: 1px solid rgb(247 243 235 / 0.2);
@@ -260,13 +279,14 @@ const lead = exp.country === 'Chine' ? 'La Chine,' : `${exp.country},`;
   }
 
   .jcard__pay {
+    text-align: center;
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--c-or-clair);
   }
 
   .jcard__link {
-    justify-self: start;
+    justify-self: center;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
