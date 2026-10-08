@@ -9,17 +9,23 @@ import { site } from '@/content/site';
 interface Props {
   /** Libellé du bouton. */
   button?: string;
+  /** `dark` : formulaire posé sur un fond sombre. */
+  tone?: 'light' | 'dark';
 }
-const { button = 'Rejoindre la liste' } = Astro.props;
+const { button = 'Rejoindre la liste', tone = 'light' } = Astro.props;
 const inbox = site.forms.email;
+// Sans JavaScript, FormSubmit renvoie vers le site après l'envoi, seulement si le vrai domaine est configuré (PUBLIC_SITE_URL).
+const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+const nextUrl = siteUrl ? new URL('/experiences?waitlist=ok#next-titre', siteUrl).href : undefined;
 const errorMessage = `L’inscription n’a pas abouti. Réessaie dans quelques minutes ou écris-nous à ${inbox}.`;
 ---
 
-<div class="waitlist" data-form-root="waitlist">
-  <form class="waitlist__form" method="post" action={`https://formsubmit.co/${inbox}`} data-endpoint={`https://formsubmit.co/ajax/${inbox}`} data-error-message={errorMessage} novalidate>
+<div class:list={['waitlist', { 'waitlist--dark': tone === 'dark' }]} data-form-root="waitlist">
+  <form class="waitlist__form" method="post" action={`https://formsubmit.co/${inbox}`} data-endpoint={`https://formsubmit.co/ajax/${inbox}`} data-error-message={errorMessage}>
     <input type="hidden" name="_subject" value="Liste d’attente RAHAL : prochaines destinations" />
     <input type="hidden" name="_template" value="table" />
     <input type="hidden" name="liste" value="Prochaines destinations" />
+    {nextUrl && <input type="hidden" name="_next" value={nextUrl} />}
     <div class="honeypot" aria-hidden="true">
       <label>Ne pas remplir <input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
     </div>
@@ -27,7 +33,7 @@ const errorMessage = `L’inscription n’a pas abouti. Réessaie dans quelques 
       <label class="field__label" for="waitlist-email">Ton email</label>
       <div class="waitlist__row">
         <input class="input" id="waitlist-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="waitlist-email-erreur" placeholder="ton@email.com" />
-        <button class="btn" type="submit" data-submit>
+        <button class:list={['btn', { 'btn--light': tone === 'dark' }]} type="submit" data-submit>
           <span data-submit-label>{button}</span>
           <Arrow />
         </button>
@@ -82,5 +88,31 @@ const errorMessage = `L’inscription n’a pas abouti. Réessaie dans quelques 
 
   .waitlist__success-title:focus {
     outline: none;
+  }
+
+  /* Sur fond sombre : libellés clairs, champ ivoire, erreurs lisibles. */
+  .waitlist--dark .field__label {
+    color: var(--c-ivoire);
+  }
+
+  .waitlist--dark .input {
+    border-color: rgb(247 243 235 / 0.35);
+  }
+
+  .waitlist--dark .input:focus {
+    border-color: var(--c-or-clair);
+    box-shadow: 0 0 0 3px var(--c-or-clair);
+  }
+
+  .waitlist--dark .input[aria-invalid='true'] {
+    border-color: #a5432d;
+  }
+
+  .waitlist--dark .field__error {
+    color: #ffc9b8;
+  }
+
+  .waitlist--dark .waitlist__success p {
+    color: #d7e0d9;
   }
 </style>

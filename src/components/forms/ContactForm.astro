@@ -5,6 +5,9 @@ import Arrow from '../Arrow.astro';
 import { site } from '@/content/site';
 
 const inbox = site.forms.email;
+// Sans JavaScript, FormSubmit renvoie vers le site après l'envoi, seulement si le vrai domaine est configuré (PUBLIC_SITE_URL).
+const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+const nextUrl = siteUrl ? new URL('/faq-contact?contact=ok#contact', siteUrl).href : undefined;
 const errorMessage = `L’envoi n’a pas abouti. Réessaie dans quelques minutes ou écris-nous directement à ${inbox}.`;
 
 interface Props {
@@ -14,9 +17,10 @@ const { subjects } = Astro.props;
 ---
 
 <div class="contact-form" data-form-root="contact">
-  <form class="form" method="post" action={`https://formsubmit.co/${inbox}`} data-endpoint={`https://formsubmit.co/ajax/${inbox}`} data-error-message={errorMessage} novalidate>
+  <form class="form" method="post" action={`https://formsubmit.co/${inbox}`} data-endpoint={`https://formsubmit.co/ajax/${inbox}`} data-error-message={errorMessage}>
     <input type="hidden" name="_subject" value="Nouveau message depuis le site RAHAL" />
     <input type="hidden" name="_template" value="table" />
+    {nextUrl && <input type="hidden" name="_next" value={nextUrl} />}
     <div class="honeypot" aria-hidden="true">
       <label>Ne pas remplir <input type="text" name="_honey" tabindex="-1" autocomplete="off" /></label>
     </div>
@@ -59,7 +63,7 @@ const { subjects } = Astro.props;
 
   <div class="success" hidden data-success>
     <BrandMark height={40} />
-    <h3 class="h3" tabindex="-1">Message envoyé !</h3>
+    <h3 class="h3" tabindex="-1">Message envoyé&nbsp;!</h3>
     <p><span data-success-name>Merci. </span>On te répond dès que possible, à l’adresse que tu as indiquée.</p>
     <a hidden data-success-link href="#">Lien</a>
   </div>

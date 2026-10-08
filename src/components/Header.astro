@@ -6,13 +6,14 @@ import Arrow from './Arrow.astro';
 
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => (href === '/' ? path === '/' : path === href || path.startsWith(`${href}/`));
-const ctaActive = isActive(site.navCta.href);
+const current = (href: string) => (path === href ? 'page' : isActive(href) ? 'true' : undefined);
+const ctaCurrent = path === site.navCta.href ? 'page' : undefined;
 ---
 
-<header class="header" data-header>
+<header class="header on-dark" data-header>
   <div class="container header__inner">
     <a href="/" class="header__logo" aria-label="RAHAL, retour à l’accueil">
-      <Logo height={56} />
+      <Logo variant="light" height={56} />
     </a>
 
     <nav class="header__nav" aria-label="Navigation principale">
@@ -20,14 +21,14 @@ const ctaActive = isActive(site.navCta.href);
         {
           site.nav.map((item) => (
             <li>
-              <a href={item.href} class="header__link" aria-current={isActive(item.href) ? 'page' : undefined}>
+              <a href={item.href} class="header__link" aria-current={current(item.href)}>
                 {item.label}
               </a>
             </li>
           ))
         }
       </ul>
-      <a class="btn header__cta" href={site.navCta.href} aria-current={ctaActive ? 'page' : undefined}>
+      <a class="btn header__cta" href={site.navCta.href} aria-current={ctaCurrent}>
         {site.navCta.label}
         <Arrow />
       </a>
@@ -48,13 +49,13 @@ const ctaActive = isActive(site.navCta.href);
 </header>
 
 <!-- Panneau de navigation mobile : hors de l'en-tête pour rester en position fixe plein écran. -->
-  <div class="menu" id="menu-mobile" hidden data-menu>
+  <div class="menu on-dark" id="menu-mobile" hidden data-menu>
     <nav class="container menu__inner" aria-label="Navigation mobile">
       <ul class="menu__links" role="list">
         {
           site.nav.map((item) => (
             <li>
-              <a href={item.href} class="menu__link" aria-current={isActive(item.href) ? 'page' : undefined}>
+              <a href={item.href} class="menu__link" aria-current={current(item.href)}>
                 {item.label}
               </a>
             </li>
@@ -138,10 +139,12 @@ const ctaActive = isActive(site.navCta.href);
     position: sticky;
     top: 0;
     z-index: 100;
-    background: rgb(247 243 235 / 0.86);
+    /* Fond encre, comme le pied de page : la navigation se détache du contenu clair. */
+    background: rgb(34 33 31 / 0.97);
     backdrop-filter: saturate(1.2) blur(14px);
     -webkit-backdrop-filter: saturate(1.2) blur(14px);
-    border-bottom: 1px solid rgb(217 203 179 / 0.6);
+    border-bottom: 1px solid rgb(247 243 235 / 0.08);
+    color: var(--c-ivoire);
   }
 
   .header__inner {
@@ -189,7 +192,13 @@ const ctaActive = isActive(site.navCta.href);
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
-    color: var(--c-encre);
+    color: var(--c-ivoire);
+    transition: color var(--t-fast) var(--ease-out);
+  }
+
+  .header__link:hover,
+  .header__link[aria-current] {
+    color: #fff;
   }
 
   .header__link::after {
@@ -207,8 +216,22 @@ const ctaActive = isActive(site.navCta.href);
   }
 
   .header__link:hover::after,
-  .header__link[aria-current='page']::after {
+  .header__link[aria-current]::after {
     transform: scaleX(1);
+  }
+
+  /* Bouton vert, de la couleur de l'affiche « Chine à vivre ». */
+  .header__cta,
+  .menu__cta {
+    --btn-bg: var(--c-foret);
+    --btn-fg: var(--c-ivoire);
+    --btn-border: #3d6356;
+  }
+
+  .header__cta:hover,
+  .menu__cta:hover {
+    --btn-bg: #2f5247;
+    --btn-border: #5b8173;
   }
 
   .header__cta {
@@ -228,7 +251,7 @@ const ctaActive = isActive(site.navCta.href);
     background: transparent;
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--c-encre);
+    color: var(--c-ivoire);
   }
 
   .burger {
@@ -276,7 +299,8 @@ const ctaActive = isActive(site.navCta.href);
     right: 0;
     bottom: 0;
     z-index: 99;
-    background: var(--c-ivoire);
+    background: var(--c-encre);
+    color: var(--c-ivoire);
     overflow-y: auto;
     padding-block: 1.5rem 2rem;
     animation: menu-in var(--t-base) var(--ease-out);
@@ -314,15 +338,15 @@ const ctaActive = isActive(site.navCta.href);
     align-items: center;
     justify-content: space-between;
     padding: 1.1rem 0;
-    border-bottom: 1px solid var(--c-sable-3);
+    border-bottom: 1px solid rgb(247 243 235 / 0.12);
     font-weight: 700;
     font-size: 1.5rem;
     letter-spacing: -0.02em;
     text-decoration: none;
-    color: var(--c-encre);
+    color: var(--c-ivoire);
   }
 
-  .menu__link[aria-current='page']::after {
+  .menu__link[aria-current]::after {
     content: '';
     width: 0.6rem;
     height: 0.6rem;
@@ -335,7 +359,7 @@ const ctaActive = isActive(site.navCta.href);
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 1.35rem;
-    color: var(--c-gris);
+    color: var(--c-or-clair);
   }
 
   :global(html.menu-open) {

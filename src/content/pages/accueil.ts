@@ -40,11 +40,11 @@ export const accueil = {
   founder: {
     kicker: 'Le fondateur',
     title: 'Le voyage comme un moyen, pas une finalité.',
-    text: 'On part souvent en voyage pour fuir la routine. On revient reposé, avec des photos plein le téléphone, et le quotidien reprend vite le dessus. J’ai créé RAHAL pour voyager autrement : partir pour apprendre une pratique, un savoir-faire, une façon de vivre, et rentrer avec quelque chose qui reste. C’est l’idée qui guide chaque expérience RAHAL, en Chine comme ailleurs.',
+    text: 'On part souvent en voyage pour fuir la routine. On revient reposé, avec des photos plein le téléphone, et le quotidien reprend vite le dessus. J’ai créé RAHAL pour voyager autrement : partir pour apprendre une pratique, un savoir-faire, une façon de vivre, et rentrer avec quelque chose qui reste. C’est l’idée qui guide chaque expérience RAHAL.',
     cta: 'Découvrir l’histoire de RAHAL',
     portrait: {
       src: 'yassine/portrait.jpg',
-      alt: 'Yassine, en t-shirt noir, adossé à l’encadrement d’une ouverture voûtée en pierre ; derrière lui, la Muraille grimpe une colline boisée.',
+      alt: 'Yassine, en t-shirt noir, adossé à l’encadrement d’une ouverture voûtée en pierre ; derrière lui, la Muraille grimpe une colline boisée.',
       position: 'center 50%',
       mobilePosition: 'center 55%',
     },
@@ -55,6 +55,6 @@ export const accueil = {
     title: 'Prêt à découvrir le programme ?',
     text: 'DISCIPLINE, en Chine, est la première expérience RAHAL. Le détail du séjour et le formulaire pour recevoir le programme t’attendent sur sa page.',
     primary: { label: 'Voir le séjour en Chine', href: '/experiences/chine' },
-    secondary: { label: 'Recevoir le programme', href: '/experiences/chine#programme' },
+    secondary: { label: 'Faire ma demande', href: '/experiences/chine/inscription' },
   },
 } as const;

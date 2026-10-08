@@ -15,10 +15,10 @@ export const chine: Experience = {
   published: true,
 
   hero: {
-    src: 'chine/muraille.jpg',
-    alt: 'La Grande Muraille serpente à travers les collines boisées de Mutianyu, près de Pékin.',
-    position: 'center',
-    mobilePosition: 'center',
+    src: 'chine/terrasse-kungfu.jpg',
+    alt: 'Trois pratiquants en tenue grise enchaînent des mouvements de kung‑fu sur une terrasse, devant des toits dorés et les montagnes de Lianqing.',
+    position: 'center 45%',
+    mobilePosition: '38% center',
   },
   card: {
     src: 'chine/entrainement.jpg',
@@ -27,7 +27,8 @@ export const chine: Experience = {
     mobilePosition: '50% 48%',
   },
 
-  dates: 'Du 8 au 18 janvier 2027',
+  dates: 'Du 9 au 18 janvier 2027',
+  datesNote: 'Arrivée à Pékin le 9 au matin',
   duration: '10 jours',
   groupSize: '9 personnes',
   price: '1 890 €',
@@ -36,7 +37,7 @@ export const chine: Experience = {
   dimensions: [
     {
       title: 'Découvrir autrement',
-      text: 'Commencer à Pékin, changer de rythme à Tengzhou et terminer à Shanghai. Trois temps pour voir plusieurs visages de la Chine.',
+      text: 'Commencer à Pékin, s’initier au kung‑fu à Tengzhou et terminer à Shanghai. Trois temps pour voir plusieurs visages de la Chine.',
       image: {
         src: 'chine/decouvrir.jpg',
         alt: 'La Grande Muraille serpente sur les crêtes boisées de Mutianyu, près de Pékin.',
@@ -44,7 +45,7 @@ export const chine: Experience = {
     },
     {
       title: 'Sortir de sa zone de confort',
-      text: "Cinq journées d’immersion dans une école de kung‑fu, environ 6 heures d’entraînement par jour. Se lever tôt, essayer, recommencer : le maître adapte le rythme au niveau du groupe.",
+      text: 'Cinq journées d’immersion dans une école de kung‑fu, environ 6 heures d’entraînement par jour. Se lever tôt, essayer, recommencer : le maître adapte le rythme au niveau du groupe.',
       image: {
         src: 'chine/zone-de-confort.jpg',
         alt: 'Deux pratiquants, l’un en tenue grise, l’autre en robe safran, sur un chemin rocheux en forêt, près de Tengzhou.',
@@ -52,10 +53,12 @@ export const chine: Experience = {
     },
     {
       title: 'Vivre l’expérience ensemble',
-      text: "Tu arrives seul, tu repars avec une famille. On se motive, on se soutient dans l’effort, dans une ambiance bienveillante, et chacun rentre la tête remplie de souvenirs en commun. 9 voyageurs maximum.",
+      text: 'Tu arrives seul, tu repars avec une famille. On se motive, on se soutient dans l’effort, dans une ambiance bienveillante, et chacun rentre la tête remplie de souvenirs en commun.',
       image: {
-        src: 'chine/ensemble.jpg',
-        alt: 'Des marcheurs avancent ensemble sur la Grande Muraille, vers une tour de guet.',
+        src: 'chine/shanghai-rue.jpg',
+        alt: 'Une rue de Shanghai bordée de vélos en libre-service, avec la tour de la Perle de l’Orient au loin.',
+        position: 'center 62%',
+        mobilePosition: 'center 62%',
       },
     },
   ],
@@ -65,7 +68,7 @@ export const chine: Experience = {
       'Le voyage commence à Pékin et se termine à Shanghai. Trois étapes, dix jours, une seule aventure.',
     steps: [
       {
-        kicker: '8–10 janvier · Pékin',
+        kicker: '9–10 janvier · Pékin',
         title: 'Commencer par la Chine impériale',
         text: 'Rejoindre le groupe à Pékin, découvrir la capitale et la Grande Muraille, puis prendre le train rapide vers Tengzhou.',
         image: {
@@ -74,12 +77,12 @@ export const chine: Experience = {
         },
         days: [
           {
-            title: 'Vendredi 8 janvier · Départ direction la Chine',
-            text: 'Chacun rejoint Pékin pour le samedi 9 janvier au matin. Les billets d’avion pourront être coordonnés selon les villes et les dates de départ de chacun : un groupe sera créé pour s’organiser ensemble.',
+            title: 'La veille · vendredi 8 janvier',
+            text: 'Vol vers Pékin : chacun rejoint la capitale pour le samedi 9 janvier au matin. Les billets d’avion pourront être coordonnés selon les villes et les dates de départ de chacun : un groupe sera créé pour s’organiser ensemble. Ne réserve pas ton billet avant la validation de ta demande.',
           },
           {
             title: 'Samedi 9 janvier · Pékin impérial',
-            text: 'Arrivée le matin, transfert collectif vers l’hôtel et rendez-vous du groupe à 12 h. Découverte de la Cité interdite et de la capitale impériale.',
+            text: 'Arrivée le matin, transfert collectif vers l’hôtel et rendez-vous du groupe à 12 h. Découverte de la Cité interdite et de la capitale impériale.',
           },
           {
             title: 'Dimanche 10 janvier · Grande Muraille et Tengzhou',
@@ -88,12 +91,14 @@ export const chine: Experience = {
         ],
       },
       {
-        kicker: '11–15 janvier · Tengzhou',
+        kicker: '11–15 janvier · Kung‑fu à Tengzhou',
         title: 'Entrer dans l’immersion kung‑fu',
+        daysLabel: 'Voir le détail de l’immersion',
         text: 'Cinq journées au cœur des montagnes de Lianqing, avec environ 6 heures d’entraînement par jour. Le maître adapte les séances au niveau du groupe, à sa progression et à la météo.',
         image: {
-          src: 'chine/etape-tengzhou.jpg',
-          alt: 'Le soleil se couche derrière les collines boisées autour de l’école de kung‑fu, près de Tengzhou.',
+          src: 'chine/maitre-escaliers.jpg',
+          alt: 'Le maître, en robe safran, descend les escaliers de marbre d’un temple aux toits dorés, dans les montagnes près de Tengzhou.',
+          position: 'center 50%',
         },
         days: [
           {
@@ -102,11 +107,11 @@ export const chine: Experience = {
           },
           {
             title: 'Un rythme progressif',
-            text: 'Tu viens pour apprendre et essayer. Aucune expérience préalable du kung‑fu n’est nécessaire ; l’entraînement est ajusté au groupe.',
+            text: 'Tu viens pour apprendre et essayer. Aucune expérience préalable du kung‑fu n’est nécessaire ; l’entraînement est ajusté au groupe.',
           },
           {
             title: 'La vie sur place',
-            text: 'Six nuits à l’école, au rythme du groupe : entraînement, repas à la cantine, récupération et soirées partagées.',
+            text: 'Six nuits à l’école, au rythme du groupe : entraînement, repas à la cantine, récupération et soirées partagées.',
           },
         ],
       },
@@ -121,7 +126,7 @@ export const chine: Experience = {
         days: [
           {
             title: 'Samedi 16 janvier · Tengzhou → Shanghai',
-            text: 'Train rapide vers Shanghai Hongqiao, transfert et installation à l’hôtel. En fin de journée : ruelles illuminées de Yuyuan, Bund et croisière nocturne sur le Huangpu.',
+            text: 'Train rapide vers Shanghai Hongqiao, transfert et installation à l’hôtel. En fin de journée : ruelles illuminées de Yuyuan, Bund et croisière nocturne sur le Huangpu.',
           },
           {
             title: 'Dimanche 17 janvier · Shanghai traditionnel et futuriste',
@@ -136,32 +141,13 @@ export const chine: Experience = {
     ],
   },
 
-  practical: [
-    {
-      title: 'Tes vols',
-      text: "Les vols internationaux ne sont pas inclus : arrivée à Pékin le samedi 9 janvier au matin, départ de Shanghai le 18 janvier. Un groupe dédié permet de coordonner les billets selon les villes et les dates de départ de chacun.",
-    },
-    {
-      title: 'Hébergement et repas',
-      text: "9 nuits : 1 à Pékin, 6 à l’école de kung‑fu et 2 à Shanghai, en chambres non mixtes partagées à deux. Les repas sont fournis pendant l’immersion ; à Pékin et à Shanghai, seuls les repas de groupe annoncés sont inclus.",
-    },
-    {
-      title: 'Visa et assurance',
-      text: "Selon ta nationalité, un visa peut être nécessaire pour janvier 2027. Une assurance voyage couvrant le séjour et la pratique du kung‑fu est obligatoire.",
-    },
-    {
-      title: 'À mettre dans ton sac',
-      text: "Le voyage a lieu en hiver : vêtements chauds pour Pékin et la Grande Muraille, une tenue souple, des chaussures confortables et une gourde. L’uniforme de kung‑fu est fourni.",
-    },
-  ],
-
   included: [
-    '9 nuits d’hébergement : 1 à Pékin, 6 pendant l’immersion kung‑fu et 2 à Shanghai',
+    '9 nuits d’hébergement : 1 à Pékin, 6 pendant l’immersion kung‑fu et 2 à Shanghai',
     'Chambres non mixtes partagées à deux durant tout le séjour',
-    '5 journées d’immersion, environ 6 h d’entraînement par jour',
+    '5 journées d’immersion, environ 6 h d’entraînement par jour',
     'Uniforme de kung‑fu',
     '3 repas par jour pendant l’immersion',
-    '2 trains rapides : Pékin → Tengzhou East et Tengzhou East → Shanghai Hongqiao',
+    '2 trains rapides : Pékin → Tengzhou East et Tengzhou East → Shanghai Hongqiao',
     'Transferts collectifs prévus entre les aéroports, les gares et les hébergements',
     'Cité interdite, Grande Muraille, croisière sur le Huangpu et Shanghai Tower',
     'Accompagnement pendant toute l’expérience',
@@ -176,41 +162,123 @@ export const chine: Experience = {
     'Dépenses personnelles',
   ],
 
-  conditions: [
+  pricing: {
+    total: '1 890 €',
+    note: 'par personne, hors vols internationaux',
+    lines: [
+      { label: 'Acompte', value: '630 €', note: 'pour réserver ta place, après validation de ta demande' },
+      { label: 'Solde', value: '1 260 €', note: 'en une fois, ou en deux versements de 630 € sans frais' },
+    ],
+  },
+  applicationSteps: [
     {
-      title: '1 890 € au total',
-      text: 'Le tarif est de 1 890 € par personne, hors vols internationaux. Le paiement est possible en 3 fois sans frais.',
+      title: 'Tu fais ta demande.',
+      text: 'Quelques minutes pour te présenter et répondre à quelques questions sur ton voyage.',
     },
     {
-      title: '630 € pour réserver ta place',
-      text: 'Après validation de ta demande, un acompte obligatoire de 630 € confirme ta place. Le solde de 1 260 € peut ensuite être réglé en une fois ou en deux mensualités de 630 €, sans frais.',
+      title: 'On revient vers toi.',
+      text: 'Si ta demande est retenue, tu reçois un email ou un message de confirmation.',
     },
     {
-      title: 'Une demande, puis une validation',
-      text: 'Le formulaire constitue une demande d’inscription. Si ta demande est retenue, tu reçois un email ou un message de confirmation avec les prochaines étapes.',
-    },
-    {
-      title: '9 places maximum',
-      text: 'Une fois ta place validée, tu es ajouté au groupe WhatsApp pour rencontrer les autres participants et recevoir toutes les informations pratiques.',
+      title: 'Tu confirmes ta place.',
+      text: 'L’acompte de 630 € réserve ta place, puis tu rejoins le groupe WhatsApp pour rencontrer les autres participants.',
     },
   ],
 
   faq: [
     {
-      question: "Faut-il avoir déjà pratiqué le kung‑fu ?",
-      answer: "Non, l’expérience est ouverte aux débutants. Une condition physique correcte et l’envie de t’investir suffisent : le programme mêle Qigong, conditionnement, formes Shaolin, Sanda, force, souplesse et méditation, au rythme du groupe.",
+      question: 'Faut-il avoir déjà pratiqué le kung‑fu ?',
+      answer: 'Non, l’expérience est ouverte aux débutants. Une condition physique correcte et l’envie de t’investir suffisent : le maître adapte les séances au niveau du groupe et à sa progression.',
     },
     {
-      question: "Peut-on venir seul ?",
-      answer: "Oui. Tu fais connaissance avec les autres voyageurs dans le groupe WhatsApp avant le départ, puis tout se vit ensemble sur place.",
+      question: 'Peut-on venir seul ?',
+      answer: 'Oui. Tu fais connaissance avec les autres voyageurs dans le groupe WhatsApp avant le départ, puis tout se vit ensemble sur place.',
+    },
+    {
+      question: 'À quoi ressemble une journée à l’école ?',
+      answer: 'Environ 6 heures d’entraînement, entre Qigong, conditionnement, formes Shaolin, Sanda, travail de la force, souplesse et méditation. Le reste du temps : repas à la cantine, récupération et soirées partagées avec le groupe.',
+    },
+    {
+      question: 'Quand commence le voyage, et les vols sont-ils inclus ?',
+      answer: 'Le voyage commence à Pékin le samedi 9 janvier 2027 au matin et se termine à Shanghai le lundi 18 janvier. Les vols internationaux ne sont pas inclus, ce qui implique généralement un départ la veille, le 8 janvier. Attends la validation de ta demande avant de réserver ton billet. Un groupe est créé pour coordonner les billets selon les villes et les dates de départ de chacun, et le transfert collectif vers l’aéroport de Shanghai est inclus.',
+    },
+    {
+      question: 'Où dort-on, et comment se passent les repas ?',
+      answer: '9 nuits : 1 à Pékin, 6 à l’école de kung‑fu et 2 à Shanghai, en chambres non mixtes partagées à deux. Pendant l’immersion, les 3 repas par jour sont fournis par la cantine de l’école ; à Pékin et à Shanghai, seuls les repas de groupe annoncés sont inclus. Une chambre individuelle est possible avec supplément, sur demande et selon disponibilité.',
+    },
+    {
+      question: 'Faut-il un visa et une assurance ?',
+      answer: 'Selon ta nationalité et les règles d’entrée en vigueur en janvier 2027, un visa peut être nécessaire, et ton passeport doit être valide au moins 6 mois après le retour. Une assurance voyage couvrant le séjour et la pratique du kung‑fu est obligatoire.',
+    },
+    {
+      question: 'Que mettre dans son sac ?',
+      answer: 'Le voyage a lieu en hiver : prévois des vêtements chauds pour Pékin et la Grande Muraille, une tenue souple, des chaussures confortables et une gourde. L’uniforme de kung‑fu est fourni.',
+    },
+    {
+      question: 'Comment se déroule l’inscription ?',
+      answer: 'Tu fais ta demande en ligne, en quelques minutes. Si elle est retenue, tu reçois un email ou un message avec les modalités de l’acompte de 630 €. Une fois ta place validée, tu rejoins le groupe WhatsApp des participants.',
+      link: { label: 'Faire ma demande', href: '/experiences/chine/inscription' },
     },
   ],
 
-  applicationUrl: 'https://tally.so/r/rj7y2L',
+  applicationUrl: '/experiences/chine/inscription',
+  registration: {
+    title: 'Ta demande d’inscription',
+    intro:
+      'Trois courtes étapes pour te présenter. Ce formulaire constitue une demande d’inscription : ta place est réservée après validation de ta demande et versement de l’acompte de 630 €.',
+    subject: 'Demande d’inscription · Chine, janvier 2027',
+    steps: [
+      {
+        id: 'toi',
+        title: 'Faisons connaissance',
+        text: 'Tes coordonnées pour recevoir les prochaines étapes.',
+        fields: [
+          { name: 'Prénom', label: 'Prénom', type: 'text', required: true, autocomplete: 'given-name', placeholder: 'Ton prénom', width: 'half' },
+          { name: 'Nom', label: 'Nom de famille', type: 'text', required: true, autocomplete: 'family-name', placeholder: 'Ton nom', width: 'half' },
+          { name: 'Date de naissance', label: 'Date de naissance', type: 'date', required: true, autocomplete: 'bday', width: 'half' },
+          { name: 'Sexe', label: 'Sexe', type: 'choice', required: true, options: ['Homme', 'Femme'], hint: 'Pour la répartition des chambres non mixtes.', width: 'half' },
+          { name: 'email', label: 'Adresse email', type: 'email', required: true, autocomplete: 'email', placeholder: 'ton@email.com' },
+          { name: 'WhatsApp', label: 'Numéro WhatsApp', type: 'tel', required: true, autocomplete: 'tel', placeholder: '+33 6 12 34 56 78', hint: 'Avec l’indicatif. Il sert à te transmettre les prochaines étapes de l’inscription.', width: 'half' },
+          { name: 'Instagram', label: 'Instagram', type: 'text', placeholder: '@tonpseudo', width: 'half' },
+        ],
+      },
+      {
+        id: 'voyage',
+        title: 'Ton voyage',
+        text: 'Ces quelques réponses nous permettent de vérifier que l’expérience correspond bien à tes disponibilités et à ton projet.',
+        fields: [
+          { name: 'Passeport valide 6 mois après le retour', label: 'As-tu un passeport valide au moins 6 mois après le retour ?', type: 'choice', required: true, options: ['Oui', 'Mon renouvellement est en cours ou prévu', 'Non'] },
+          { name: 'Pays du passeport', label: 'Quel pays a délivré ton passeport ?', type: 'text', required: true, autocomplete: 'country-name', placeholder: 'Ex. France' },
+          { name: 'Assurance voyage', label: 'As-tu souscrit une assurance voyage ?', type: 'choice', required: true, options: ['Oui', 'Pas encore'], hint: 'Elle est obligatoire pour participer.' },
+          { name: 'Rythme soutenu', label: 'Es-tu prêt(e) à suivre un rythme soutenu pendant l’immersion kung‑fu ?', type: 'choice', required: true, hint: 'L’expérience est accessible à tous les niveaux, mais elle implique des réveils matinaux, plusieurs heures d’entraînement et l’envie de se challenger.', options: ['Oui, je suis prêt(e) à vivre l’expérience à fond', 'Oui, mais j’ai quelques réserves ou questions', 'Non, ce rythme ne me correspond pas'] },
+          { name: 'Paiement', label: 'Comment souhaites-tu régler ton voyage ?', type: 'choice', required: true, hint: 'Les instructions de paiement te sont transmises après validation de ta demande.', options: ['En 1 fois : 1 890 €', 'En 2 fois : 630 € d’acompte, puis 1 260 €', 'En 3 fois : 630 € d’acompte, puis deux versements de 630 €'] },
+        ],
+      },
+      {
+        id: 'envoi',
+        title: 'Avant d’envoyer',
+        text: 'Deux dernières questions et une confirmation, puis tu vérifies tes réponses.',
+        fields: [
+          { name: 'Droit à l’image', label: 'Acceptes-tu que les photos et vidéos du voyage où tu es reconnaissable soient publiées sur les réseaux sociaux de RAHAL ?', type: 'choice', required: true, hint: 'Ton choix n’a aucune incidence sur ta participation au voyage.', options: ['Oui, j’autorise cette utilisation de mon image', 'Non, je ne souhaite pas apparaître sur les publications de RAHAL'] },
+          { name: 'Question ou contrainte', label: 'Une question, une contrainte ou un problème de santé à nous signaler ?', type: 'textarea', placeholder: 'Facultatif' },
+          { name: 'Confirmation', label: 'Je confirme avoir pris connaissance du programme, des prestations incluses et non incluses et des modalités d’inscription et de paiement. J’ai compris que les vols internationaux ne sont pas inclus et que je dois être à Pékin le samedi 9 janvier 2027 au matin.', type: 'consent', required: true },
+        ],
+      },
+    ],
+    success: {
+      title: 'Ta demande d’inscription est bien envoyée.',
+      text: [
+        'Tu recevras par email ou WhatsApp les prochaines étapes et les modalités de versement de l’acompte.',
+        'Ta place sera définitivement réservée après validation de ta demande et réception de l’acompte de 630 €.',
+      ],
+    },
+    fallbackUrl: 'https://tally.so/r/rj7y2L',
+  },
+
   brevo: {},
   seo: {
-    title: 'Chapitre 1 : Chine · 10 jours et immersion kung‑fu — RAHAL',
+    title: 'Chapitre 1 : Chine · 10 jours et immersion kung‑fu — RAHAL',
     description:
-      'Du 8 au 18 janvier 2027 : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 3 fois sans frais.',
+      'Du 9 au 18 janvier 2027 en Chine : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 3 fois sans frais.',
   },
 };

@@ -36,9 +36,10 @@ export const aPropos = {
       title: 'Je n’ai jamais voyagé pour cocher des lieux.',
       text: "Ce qui me reste d’un voyage, c’est ce que j’y ai appris : un geste, quelques mots d’une langue, une façon de faire les choses. C’est ce qui tient encore, bien après les photos.",
       image: {
-        src: 'yassine/chine-1.jpg',
-        alt: 'Une meurtrière de la Grande Muraille, taillée dans la pierre, qui cadre un coin de collines boisées.',
-        mobilePosition: 'center 45%',
+        src: 'yassine/apprendre.jpg',
+        alt: 'Yassine, en tenue grise, tient un bâton en position basse, guidé par un maître en robe safran devant un temple aux murs rouges.',
+        position: 'center 62%',
+        mobilePosition: 'center 58%',
       },
     },
     {

@@ -55,7 +55,7 @@ function showSuccess(root: HTMLElement, form: HTMLFormElement, data: { prenom?: 
   const success = root.querySelector<HTMLElement>('[data-success]');
   if (!success) return;
   const name = success.querySelector<HTMLElement>('[data-success-name]');
-  if (name) name.textContent = data.prenom ? `Merci ${data.prenom}. ` : 'Merci. ';
+  if (name) name.textContent = data.prenom ? `Merci, ${data.prenom}. ` : 'Merci. ';
   const link = success.querySelector<HTMLAnchorElement>('[data-success-link]');
   if (link) {
     if (data.programmeUrl) {
@@ -74,6 +74,8 @@ export function enhanceForm(name: string) {
   const root = document.querySelector<HTMLElement>(`[data-form-root="${name}"]`);
   const form = root?.querySelector<HTMLFormElement>('form');
   if (!root || !form) return;
+  // Avec JavaScript, la validation en place remplace celle du navigateur (gardée sans JavaScript).
+  form.noValidate = true;
 
   const status = root.querySelector<HTMLElement>('[data-status]');
   const submit = form.querySelector<HTMLButtonElement>('[data-submit]');
@@ -118,12 +120,16 @@ export function enhanceForm(name: string) {
       payload[key] = typeof value === 'string' ? value : '';
     });
 
+    // Délai maximal de 20 s : le bouton ne reste jamais bloqué sur « Envoi en cours… ».
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 20000);
     try {
       // Point d'envoi : data-endpoint (ex. FormSubmit en AJAX) ou, à défaut, l'action du formulaire.
       const response = await fetch(form.dataset.endpoint || form.action, {
         method: 'POST',
         headers: { 'content-type': 'application/json', accept: 'application/json' },
         body: JSON.stringify(payload),
+        signal: controller.signal,
       });
       const data = (await response.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -146,6 +152,7 @@ export function enhanceForm(name: string) {
     } catch {
       showStatus(status, form.dataset.errorMessage ?? 'Impossible de joindre le serveur. Vérifie ta connexion et réessaie.', 'error');
     } finally {
+      window.clearTimeout(timer);
       setLoading(false);
     }
   });

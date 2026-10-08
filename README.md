@@ -93,23 +93,31 @@ Photos en place (voyage de Yassine en Chine, juillet 2026, converties depuis les
 | Fichier | Photo d'origine | Utilisation |
 |---|---|---|
 | `chine/entrainement.jpg` | IMG_7452 · Yassine de dos, en tenue, devant un temple près de Tengzhou | Carte du voyage et fond flouté de « Nos expériences » |
-| `chine/muraille.jpg` | IMG_2308 · la Muraille à Mutianyu | Fond du « prochain départ » (accueil) et image de partage de la page Chine |
+| `chine/muraille.jpg` | IMG_2308 · la Muraille à Mutianyu | Fond du « prochain départ » (accueil) |
+| `chine/terrasse-kungfu.jpg` | IMG_2774 · entraînement sur une terrasse aux toits dorés | Grande photo d'ouverture de la page Chine et image de partage |
+| `chine/avec-le-maitre.jpg` | IMG_2754 · Yassine et le maître devant le temple | Accueil, pilier « Apprendre sur place » |
+| `chine/shanghai-perle.jpg` | IMG_3315 · la Perle de l'Orient au crépuscule | Accueil, pilier « Explorer pour de vrai » |
+| `chine/compagnons.jpg` | IMG_2707 · deux élèves sur une passerelle | Accueil, pilier « Le vivre ensemble » |
 | `chine/decouvrir.jpg` | IMG_2305 · la Muraille dans la vallée | Page Chine, « Découvrir autrement » |
 | `chine/zone-de-confort.jpg` | IMG_7505 · chemin rocheux vers l'entraînement | Page Chine, « Sortir de sa zone de confort » |
-| `chine/ensemble.jpg` | IMG_2278 · marcheurs sur la Muraille | Page Chine, « Vivre l'expérience ensemble » |
+| `chine/shanghai-rue.jpg` | IMG_7724 · rue de Shanghai et Perle de l'Orient | Page Chine, « Vivre l'expérience ensemble » |
 | `chine/etape-pekin.jpg` | IMG_2275 · la Muraille entre deux créneaux | Programme, étape Pékin |
-| `chine/etape-tengzhou.jpg` | IMG_2963 · coucher de soleil sur les montagnes | Programme, étape Tengzhou |
+| `chine/maitre-escaliers.jpg` | IMG_2780 · le maître descend les escaliers du temple | Programme, étape Kung-fu à Tengzhou |
 | `chine/etape-shanghai.jpg` | IMG_3328 · Lujiazui au crépuscule | Programme, étape Shanghai |
-| `yassine/portrait.jpg` | IMG_7144 · Yassine dans une arche de la Muraille | Portrait de « L'esprit RAHAL » |
-| `yassine/chine-1.jpg` | IMG_1946 · une meurtrière de la Muraille | « Je n'ai jamais voyagé pour cocher des lieux » |
+| `chine/sentier.jpg` | IMG_2697 · pratiquante sur un sentier de pierre | Page Chine, questions « Avant de te lancer » |
+| `chine/porte-shaolin.jpg` | IMG_2465 · porte illuminée de nuit | Page Chine, bandeau final « Prêt(e) à vivre l'expérience ? » |
+| `chine/escaliers-temple.jpg` | IMG_7472 · Yassine monte l'escalier d'un temple | Page d'inscription, carte récapitulative |
+| `chine/glycines.jpg` | IMG_2680 · allée de glycines | « Nos expériences », liste d'attente |
+| `chine/dragon-cascade.jpg` | IMG_2696 · dragon doré et cascade | FAQ / Contact, à côté des questions |
+| `yassine/portrait.jpg` | IMG_7144 · Yassine dans une arche de la Muraille | Portrait de « L'esprit RAHAL » et du mot du fondateur (accueil) |
+| `yassine/apprendre.jpg` | IMG_7552 · Yassine guidé par le maître, bâton en main | « Je n'ai jamais voyagé pour cocher des lieux » |
 | `yassine/chine-2.jpg` | IMG_7500 · sur le chemin de l'école de kung-fu | « Un rêve d'enfant, pris au sérieux » |
 | `yassine/chine-3.jpg` | IMG_2287 · compagnon de route sur la Muraille | « Parce qu'on ose plus à plusieurs » |
 
 Les photos s'affichent sans légende (demande de Yassine) ; leur texte alternatif décrit ce qu'elles montrent.
 
-Pour remplacer une photo : convertir l'original (`sips -s format jpeg photo.HEIC --out photo.jpg` sur Mac), puis `node scripts/prepare-photo.cjs photo.jpg src/assets/images/<fichier>.jpg 4:3 50` (ratio de l'emplacement, position verticale du cadrage en %). Le script supprime les métadonnées : les coordonnées GPS ne sont jamais publiées. Les cadrages se règlent avec `position` et `mobilePosition` dans les fichiers de contenu.
+Pour remplacer une photo : convertir l'original (`sips -s format jpeg photo.HEIC --out photo.jpg` sur Mac), puis `node scripts/prepare-photo.cjs photo.jpg src/assets/images/<fichier>.jpg native 50 1600` (`native` garde le cadrage d'origine ; on peut aussi imposer un ratio, ex. `4:3`, et la position verticale du cadrage en %). Le script supprime les métadonnées : les coordonnées GPS ne sont jamais publiées. Les cadrages se règlent avec `position` et `mobilePosition` dans les fichiers de contenu.
 
-Fichiers prévus mais non utilisés par la mise en page actuelle : `chine/paysage.jpg` et `chine/groupe.jpg` (anciennes illustrations des dimensions du séjour).
 
 Tant qu'un fichier manque, le site affiche un **visuel de substitution** de marque (dégradé sable, lignes topographiques). Dès que le fichier est déposé, il est optimisé automatiquement (formats WebP, plusieurs tailles, chargement différé sous le premier écran).
 
@@ -131,7 +139,7 @@ Le h du logo et son soleil doré, extraits du logo sans être redessinés (`node
 
 ### Image de partage (réseaux sociaux)
 - Par défaut : `public/og/rahal.png`, générée par `npm run og`.
-- Page Chine : `chine/muraille.jpg` est utilisée automatiquement (recadrée en 1200×630). Les autres pages utilisent l’image par défaut.
+- Page Chine : sa grande photo d'ouverture (`chine/terrasse-kungfu.jpg`) est utilisée automatiquement (recadrée en 1200×630). Les autres pages utilisent l’image par défaut.
 
 ---
 
@@ -197,12 +205,17 @@ Dans `.env` (copie de `.env.example`) :
 - Validation des champs côté navigateur **et** côté serveur, champ pot-de-miel anti-robots, aucune confirmation sans réussite réelle de l'envoi.
 - Sans JavaScript, les formulaires fonctionnent quand même (envoi classique puis retour sur la page avec l'état affiché).
 
-### Formulaires de contact et liste d'attente
-Le formulaire de contact (page FAQ / Contact) et la liste d'attente (page « Nos expériences ») envoient leurs réponses par email à **rahal.experience@gmail.com** via [FormSubmit](https://formsubmit.co), un service gratuit qui fonctionne sans serveur (donc aussi sur GitHub Pages). L'adresse se change dans `src/content/site.ts` (`forms.email`).
+### Formulaires : contact, liste d'attente et demande d'inscription
+Les trois formulaires du site envoient leurs réponses par email à **rahal.experience@gmail.com** via [FormSubmit](https://formsubmit.co), un service gratuit qui fonctionne sans serveur (donc aussi sur GitHub Pages) :
+- le formulaire de contact (page FAQ / Contact) ;
+- la liste d'attente des prochaines destinations (page « Nos expériences ») ;
+- la **demande d'inscription** au voyage en Chine, sur la page `/experiences/chine/inscription` (en trois étapes, reprises du formulaire Tally). Les questions se modifient dans `src/content/experiences/chine.ts`, rubrique `registration` : le nom de chaque champ devient une ligne du tableau reçu par email.
 
-**Activation obligatoire, une seule fois** : au tout premier envoi, FormSubmit envoie à rahal.experience@gmail.com un email « Activate Form ». Il faut cliquer sur le lien ; avant cela, aucun message n'est transmis (le visiteur voit un message l'invitant à écrire directement à l'adresse). Après activation, FormSubmit propose un identifiant aléatoire qui peut remplacer l'adresse dans le code pour la masquer.
+L'adresse de réception se change dans `src/content/site.ts` (`forms.email`).
 
-La politique de confidentialité devra mentionner FormSubmit (formulaires) et Tally (demandes d'inscription).
+**Activation obligatoire, une seule fois** : au tout premier envoi, FormSubmit envoie à rahal.experience@gmail.com un email « Activate Form ». Il faut cliquer sur le lien ; avant cela, aucun message n'est transmis et le visiteur voit un message d'erreur (avec, pour l'inscription, un lien vers le formulaire Tally de secours et l'adresse email). Le plus simple : envoyer soi-même un message de test depuis la page FAQ / Contact juste après la mise en ligne, puis cliquer sur le lien d'activation. Après activation, FormSubmit propose un identifiant aléatoire qui peut remplacer l'adresse dans le code pour la masquer.
+
+La confirmation n'est affichée au visiteur qu'après une réponse positive de FormSubmit. Aucune réponse n'est conservée dans le navigateur.
 
 ### Tester en local
 ```bash

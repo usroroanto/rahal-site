@@ -4,6 +4,7 @@ import FaqList from '@/components/FaqList.astro';
 import SectionHead from '@/components/SectionHead.astro';
 import ContactForm from '@/components/forms/ContactForm.astro';
 import Topo from '@/components/Topo.astro';
+import Photo from '@/components/Photo.astro';
 import { faqContact as copy } from '@/content/pages/faq-contact';
 import { site } from '@/content/site';
 
@@ -15,7 +16,10 @@ const hasContact = Boolean(email || instagram || whatsapp);
   <section class="faqp section" id="faq" aria-labelledby="faq-titre">
     <Topo class="faqp__topo" />
     <div class="container faqp__inner">
-      <SectionHead kicker={copy.faq.kicker} title={copy.faq.title} level="h1" serif id="faq-titre" class="faqp__head" />
+      <div class="faqp__aside">
+        <SectionHead kicker={copy.faq.kicker} title={copy.faq.title} level="h1" serif id="faq-titre" class="faqp__head" />
+        <Photo image={copy.faq.image} ratio="4 / 5" mobileRatio="16 / 9" rounded priority class="faqp__photo" sizes="(min-width: 76rem) 26rem, (min-width: 64rem) 36vw, calc(100vw - 2.5rem)" />
+      </div>
       <div data-reveal>
         <FaqList items={copy.faq.items} id="faq" />
       </div>
@@ -66,6 +70,8 @@ const hasContact = Boolean(email || instagram || whatsapp);
   .faqp {
     position: relative;
     overflow: hidden;
+    /* clip rogne le décor sans bloquer la colonne collante (hidden la rendait inopérante). */
+    overflow: clip;
   }
 
   .faqp :global(.faqp__topo) {
@@ -82,7 +88,12 @@ const hasContact = Boolean(email || instagram || whatsapp);
   }
 
   .faqp :global(.faqp__head) {
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .faqp__aside {
+    display: grid;
+    align-content: start;
   }
 
   .contact__inner {
@@ -110,7 +121,12 @@ const hasContact = Boolean(email || instagram || whatsapp);
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--c-brun);
+    color: var(--c-brun-2);
+  }
+
+  /* Sur le fond sable, le brun plus foncé garde un contraste suffisant pour les petits libellés. */
+  .contact :global(.kicker) {
+    color: var(--c-brun-2);
   }
 
   .contact__links a {
@@ -133,6 +149,11 @@ const hasContact = Boolean(email || instagram || whatsapp);
       grid-template-columns: 1fr 1.5fr;
       gap: 4rem;
       align-items: start;
+    }
+
+    .faqp__aside {
+      position: sticky;
+      top: calc(var(--header-h) + 1.5rem);
     }
 
     .contact__inner {

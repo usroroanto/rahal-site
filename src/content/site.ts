@@ -17,8 +17,8 @@ export const site = {
   /** Coordonnées : laisser vide pour masquer. */
   contact: {
     email: 'rahal.experience@gmail.com',
-    instagram: '', // ex. 'https://www.instagram.com/rahal'
-    instagramHandle: '', // ex. '@rahal'
+    instagram: 'https://www.instagram.com/rahal.xp/',
+    instagramHandle: '@rahal.xp',
     whatsapp: '', // ex. 'https://wa.me/33600000000'
   },
 
@@ -37,7 +37,7 @@ export const site = {
   ],
 
   /** Bouton mis en avant dans le menu. */
-  navCta: { label: 'Prochain départ : Chine', href: '/experiences/chine' },
+  navCta: { label: 'Prochain départ : Chine', href: '/experiences/chine' },
 
   /** Liens légaux du pied de page (configurables). */
   legalLinks: [

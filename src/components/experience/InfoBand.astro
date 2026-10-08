@@ -1,5 +1,5 @@
 ---
-/** Bandeau d'informations du séjour : dates, durée, groupe, prix (formulations honnêtes si non confirmés). */
+/** Bandeau d'informations du séjour : dates (et lieu du rendez-vous), durée, groupe, prix (formulations honnêtes si non confirmés). */
 import type { Experience } from '@/content/types';
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
 const { experience: exp } = Astro.props;
 
 const cells = [
-  { label: 'Dates', value: exp.dates ?? 'À venir', confirmed: Boolean(exp.dates) },
+  { label: 'Dates', value: exp.dates ?? 'À venir', confirmed: Boolean(exp.dates), note: exp.dates ? exp.datesNote : undefined },
   { label: 'Durée', value: exp.duration ?? 'Précisée avec le programme', confirmed: Boolean(exp.duration) },
   { label: 'Groupe', value: exp.groupSize ?? 'Petit groupe', confirmed: Boolean(exp.groupSize) },
   { label: 'Prix', value: exp.price ?? 'Communiqué avec le programme', confirmed: Boolean(exp.price), note: exp.priceNote },

@@ -1,9 +1,11 @@
 ---
+/**
+ * Programme par étapes : frise (symbole RAHAL + ligne verticale), texte et détail jour par jour
+ * d'un côté, photo de l'autre à partir de 64rem.
+ */
 import BrandMark from '@/components/BrandMark.astro';
-/** Programme par étapes, avec photos et détail jour par jour dépliable. */
 import type { Experience } from '@/content/types';
 import Photo from '../Photo.astro';
-import SectionHead from '../SectionHead.astro';
 import Arrow from '../Arrow.astro';
 
 interface Props {
@@ -13,9 +15,15 @@ const { experience: exp } = Astro.props;
 const steps = exp.programme?.steps ?? [];
 ---
 
-<section class="prog section section--sand" id="etapes" aria-labelledby="prog-titre">
+<section class="prog section--sand" id="etapes" aria-labelledby="prog-titre">
   <div class="container">
-    <SectionHead kicker="Le programme" title="Le séjour, étape par étape." lede={exp.programme?.intro} level="h2" id="prog-titre" />
+    <div class="prog__head">
+      <div class="prog__heading">
+        <p class="kicker">Le programme</p>
+        <h2 class="h-serif prog__title" id="prog-titre">Le séjour, <em>étape par étape.</em></h2>
+      </div>
+      {exp.programme?.intro && <p class="lede prog__intro">{exp.programme.intro}</p>}
+    </div>
 
     {
       steps.length > 0 ? (
@@ -25,24 +33,31 @@ const steps = exp.programme?.steps ?? [];
               <div class="step__marker" aria-hidden="true">
                 <BrandMark height={20} />
               </div>
-              <div class="step__body">
-                {step.kicker && <p class="step__kicker">{step.kicker}</p>}
-                <h3 class="step__title">
-                  <span class="step__num" aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  {step.title}
-                </h3>
-                <p class="step__text">{step.text}</p>
+              <div class:list={['step__body', { 'step__body--media': Boolean(step.image) }]}>
+                <div class="step__head">
+                  {step.kicker && <p class="step__kicker">{step.kicker}</p>}
+                  <h3 class="step__title">
+                    <span class="step__num" aria-hidden="true">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    {step.title}
+                  </h3>
+                  <p class="step__text">{step.text}</p>
+                </div>
                 {step.image && (
                   <div class="step__media">
-                    <Photo image={step.image} ratio="16 / 9" rounded sizes="(min-width: 64rem) 60vw, 100vw" />
+                    <Photo
+                      image={step.image}
+                      ratio="16 / 9"
+                      rounded
+                      sizes="(min-width: 76rem) 560px, (min-width: 64rem) 48vw, calc(100vw - 5.5rem)"
+                    />
                   </div>
                 )}
                 {step.days && step.days.length > 0 && (
                   <details class="days">
                     <summary class="days__summary">
-                      <span>Voir le détail jour par jour</span>
+                      <span>{step.daysLabel ?? 'Voir le détail jour par jour'}<span class="visually-hidden">&nbsp;: {step.title}</span></span>
                       <span class="days__icon" aria-hidden="true" />
                     </summary>
                     <ol class="days__list" role="list">
@@ -64,11 +79,11 @@ const steps = exp.programme?.steps ?? [];
           <BrandMark height={34} />
           <h3 class="h3">Programme détaillé prochainement disponible</h3>
           <p>
-            Le déroulé jour par jour est en cours de finalisation. Demande le programme : tu le recevras par email dès sa
-            publication, sans engagement.
+            Le déroulé jour par jour est en cours de finalisation. Écris-nous&nbsp;: on te l’envoie dès sa publication,
+            sans engagement.
           </p>
-          <a class="btn" href="#programme">
-            Recevoir le programme
+          <a class="btn" href="/faq-contact#contact">
+            Nous écrire
             <Arrow />
           </a>
         </div>
@@ -78,29 +93,61 @@ const steps = exp.programme?.steps ?? [];
 </section>
 
 <style>
+  .prog {
+    padding-block: clamp(3rem, 6vw, 5rem);
+  }
+
+  .prog__head {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+  }
+
+  .prog__heading {
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .prog__title {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    text-wrap: balance;
+  }
+
+  .prog__title em {
+    color: var(--c-brun-2);
+  }
+
+  .prog__intro {
+    max-width: 34rem;
+    color: var(--c-gris);
+  }
+
+  /* --- Frise ------------------------------------------------------------ */
   .steps {
     list-style: none;
     display: grid;
-    gap: 0;
-    max-width: 52rem;
   }
 
   .step {
     position: relative;
     display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 1.25rem;
-    padding-bottom: clamp(2.5rem, 5vw, 4rem);
+    grid-template-columns: 2.25rem minmax(0, 1fr);
+    gap: 1rem;
+    padding-bottom: clamp(2.25rem, 4vw, 3.25rem);
   }
 
   .step::before {
     content: '';
     position: absolute;
-    left: 0.95rem;
-    top: 1.75rem;
+    left: 1.1rem;
+    top: 2.25rem;
     bottom: 0;
     width: 1px;
     background: rgb(128 96 57 / 0.3);
+  }
+
+  .step:last-child {
+    padding-bottom: 0;
   }
 
   .step:last-child::before {
@@ -110,19 +157,38 @@ const steps = exp.programme?.steps ?? [];
   .step__marker {
     position: relative;
     z-index: 1;
-    width: 2rem;
-    height: 2rem;
+    width: 2.25rem;
+    height: 2.25rem;
     display: grid;
     place-items: center;
     border-radius: 50%;
     background: var(--c-ivoire);
-    border: 1px solid var(--c-sable-3);
+    border: 1px solid var(--c-or);
+    box-shadow: var(--shadow-s);
   }
 
+  /* --- Contenu d'une étape --------------------------------------------- */
   .step__body {
     display: grid;
-    gap: 0.75rem;
-    padding-top: 0.2rem;
+    gap: 1rem;
+    grid-template-areas:
+      'head'
+      'media'
+      'days';
+    align-content: start;
+  }
+
+  .step__head {
+    grid-area: head;
+    display: grid;
+    gap: 0.6rem;
+    padding-top: 0.3rem;
+  }
+
+  /* Sur le sable, le brun clair passe sous 4,5:1 pour ces petits labels : brun italique, plus foncé. */
+  .prog .kicker,
+  .step__kicker {
+    color: var(--c-brun-2);
   }
 
   .step__kicker {
@@ -130,7 +196,6 @@ const steps = exp.programme?.steps ?? [];
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--c-brun);
   }
 
   .step__title {
@@ -139,27 +204,35 @@ const steps = exp.programme?.steps ?? [];
     align-items: baseline;
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+    font-size: clamp(1.7rem, 2.8vw, 2.3rem);
     line-height: 1.1;
+    text-wrap: balance;
   }
 
   .step__num {
     font-style: italic;
-    color: var(--c-or);
+    color: var(--c-brun-2);
     font-size: 0.8em;
   }
 
   .step__text {
     color: var(--c-gris);
-    max-width: 40rem;
+    max-width: 38rem;
+    text-wrap: pretty;
   }
 
   .step__media {
-    margin-top: 0.5rem;
+    grid-area: media;
   }
 
+  .step__media :global(.photo__frame) {
+    box-shadow: var(--shadow-m);
+  }
+
+  /* --- Détail jour par jour -------------------------------------------- */
   .days {
-    margin-top: 0.5rem;
+    grid-area: days;
+    align-self: start;
     border-radius: var(--r-m);
     background: var(--c-ivoire);
     border: 1px solid var(--c-sable-3);
@@ -182,6 +255,10 @@ const steps = exp.programme?.steps ?? [];
     display: none;
   }
 
+  .days__summary:hover {
+    color: var(--c-brun);
+  }
+
   .days__icon {
     position: relative;
     width: 1.5rem;
@@ -189,6 +266,7 @@ const steps = exp.programme?.steps ?? [];
     border-radius: 50%;
     border: 1px solid var(--c-sable-3);
     flex: none;
+    transition: background-color var(--t-fast) var(--ease-out);
   }
 
   .days__icon::before,
@@ -206,6 +284,16 @@ const steps = exp.programme?.steps ?? [];
 
   .days__icon::after {
     transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  .days[open] .days__icon {
+    background: var(--c-encre);
+    border-color: var(--c-encre);
+  }
+
+  .days[open] .days__icon::before,
+  .days[open] .days__icon::after {
+    background: var(--c-ivoire);
   }
 
   .days[open] .days__icon::after {
@@ -248,5 +336,37 @@ const steps = exp.programme?.steps ?? [];
 
   .prog__pending p {
     color: var(--c-gris);
+  }
+
+  @media (min-width: 64rem) {
+    .prog__head {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: end;
+      gap: 3rem;
+    }
+
+    .prog__intro {
+      justify-self: end;
+    }
+
+    .step {
+      grid-template-columns: 2.25rem minmax(0, 1fr);
+      gap: 1.75rem;
+    }
+
+    /* Texte et détail à gauche, photo à droite */
+    .step__body--media {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+      grid-template-rows: auto 1fr;
+      grid-template-areas:
+        'head media'
+        'days media';
+      column-gap: clamp(2rem, 4vw, 3.5rem);
+      row-gap: 1.25rem;
+    }
+
+    .step__body--media .step__media {
+      align-self: start;
+    }
   }
 </style>

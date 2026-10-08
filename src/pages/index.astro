@@ -1,23 +1,68 @@
 ---
 import Base from '@/layouts/Base.astro';
 import Arrow from '@/components/Arrow.astro';
-import BrandMark from '@/components/BrandMark.astro';
+import Photo from '@/components/Photo.astro';
 import { Image } from 'astro:assets';
 import nextTripBg from '@/assets/images/chine/muraille.jpg';
 import { accueil } from '@/content/pages/accueil';
 import { featuredExperience } from '@/content/experiences';
+import type { ImageRef } from '@/content/types';
 const next = featuredExperience;
+
+// Les trois piliers de la philosophie RAHAL, chacun illustré par une photo du voyage en Chine.
+const pillars: { title: string; text: string; image: ImageRef }[] = [
+  {
+    title: 'Apprendre sur place.',
+    text: 'Découvrir une pratique avec celles et ceux qui la vivent. S’initier et repartir avec un héritage.',
+    image: {
+      src: 'chine/avec-le-maitre.jpg',
+      alt: 'Yassine, en tenue de kung‑fu grise, pose aux côtés du maître en robe safran, au pied des escaliers d’un temple.',
+      position: 'center 40%',
+    },
+  },
+  {
+    title: 'Explorer pour de vrai.',
+    text: 'Marcher dans une ville inconnue, goûter, échanger, se laisser surprendre. Garder de la place pour ce qu’on n’avait pas prévu.',
+    image: {
+      src: 'chine/shanghai-perle.jpg',
+      alt: 'La tour de la Perle de l’Orient et les gratte-ciel de Lujiazui au crépuscule, à Shanghai.',
+      position: 'center 60%',
+    },
+  },
+  {
+    title: 'Le vivre ensemble.',
+    text: 'Des compagnons de route pour partager les découvertes et les efforts. On s’encourage, on se dépasse, et on rentre avec des souvenirs en commun.',
+    image: {
+      src: 'chine/compagnons.jpg',
+      alt: 'Deux élèves en tenue grise traversent une passerelle en bois au pied d’une cascade, près de l’école de kung‑fu.',
+      position: 'center 74%',
+    },
+  },
+];
 ---
 
-<Base title="RAHAL — Partir ailleurs. Revenir différent." description="Des voyages à taille humaine pour apprendre une pratique, explorer un pays et partager l’aventure. Prochain départ : la Chine, en janvier 2027.">
+<Base title="RAHAL — Partir ailleurs. Revenir différent." description="Des voyages à taille humaine pour apprendre une pratique, explorer un pays et partager l’aventure. Prochain départ : la Chine, en janvier 2027.">
   <section class="brand-hero container" aria-labelledby="brand-title">
     <div class="brand-copy">
       <p class="kicker">RAHAL · Voyages à taille humaine</p>
       <h1 id="brand-title">Partir ailleurs.<br /><em>Revenir<br class="desktop-break" /> différent.</em></h1>
       <p class="brand-lede">Une pratique à apprendre. Un pays à explorer.<br />Des gens avec qui vivre tout ça.</p>
-      <p class="brand-intro">RAHAL, c’est le goût de découvrir en faisant. Des voyages où l’on essaie, où l’on rencontre, où l’on sort de ses habitudes ensemble.</p>
+      <p class="brand-intro">RAHAL, c’est le goût de découvrir en expérimentant. Des voyages où l’on essaie, où l’on rencontre, où l’on sort de ses habitudes ensemble.</p>
       <div class="brand-actions"><a class="btn" href="#prochain-depart">Découvrir le prochain voyage <Arrow /></a><a class="brand-link" href="/a-propos">L’esprit RAHAL</a></div>
-      <p class="brand-signature"><BrandMark height={30} /> Apprendre. Essayer. Se dépasser.</p>
+      <ul class="brand-trio" role="list" aria-label="La devise RAHAL">
+        <li>
+          <svg class="trio-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="24" cy="9" r="4" fill="#d3ab60" /><path d="M6 36c6-3 12-3 18 0 6-3 12-3 18 0V17c-6-3-12-3-18 0-6-3-12-3-18 0z" fill="none" stroke="#806039" stroke-width="1.8" stroke-linejoin="round" /><path d="M24 17v19M11 22c3-1 6-1 9 0M11 27c3-1 6-1 9 0M28 22c3-1 6-1 9 0M28 27c3-1 6-1 9 0" fill="none" stroke="#806039" stroke-width="1.4" stroke-linecap="round" /></svg>
+          <span class="trio-word">Apprendre.</span>
+        </li>
+        <li>
+          <svg class="trio-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path d="M8 40c10 0 6-14 16-14s6-14 16-16" fill="none" stroke="#806039" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="3 5" /><circle cx="8" cy="40" r="3" fill="#806039" /><path d="M40 4v12" stroke="#806039" stroke-width="1.8" stroke-linecap="round" /><path d="M40 5l7 3-7 3z" fill="#d3ab60" /></svg>
+          <span class="trio-word">Essayer.</span>
+        </li>
+        <li>
+          <svg class="trio-icon" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><circle cx="36" cy="12" r="5" fill="#d3ab60" /><path d="M3 41l14-22 8 12 6-8 14 18z" fill="none" stroke="#806039" stroke-width="1.8" stroke-linejoin="round" /><path d="M17 19v-9l6 2.5-6 2.5" fill="none" stroke="#806039" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          <span class="trio-word">Se dépasser.</span>
+        </li>
+      </ul>
     </div>
     {next && <a class="travel-poster" href={`/experiences/${next.slug}`} aria-label={`Découvrir notre prochain voyage en ${next.country}`}>
       <div class="poster-top"><span>Le prochain chapitre</span><span>01 / RAHAL</span></div>
@@ -29,43 +74,62 @@ const next = featuredExperience;
         </g>
         <path d="M85 156 C310 100 70 360 380 320" fill="none" stroke="#e9bd72" stroke-width="2" stroke-dasharray="4 8" />
         <g fill="#f7f3eb" stroke="#254139" stroke-width="5"><circle cx="85" cy="156" r="8"/><circle cx="204" cy="256" r="8"/><circle cx="380" cy="320" r="8"/></g>
-        <g fill="#f7f3eb" font-family="sans-serif" font-size="15" letter-spacing="2"><text x="55" y="135">PÉKIN</text><text x="220" y="248">TENGZHOU</text><text x="372" y="300" text-anchor="middle">SHANGHAI</text></g>
+        <g fill="#f7f3eb" font-family="sans-serif" font-size="15" letter-spacing="2"><text x="55" y="135">PÉKIN</text><text x="220" y="248">KUNG-FU À TENGZHOU</text><text x="372" y="300" text-anchor="middle">SHANGHAI</text></g>
       </svg>
       <div class="poster-bottom"><span>Janvier 2027</span><span>{next.duration} <span aria-hidden="true">↗</span></span></div>
     </a>}
   </section>
-  <section class="manifesto container section" aria-labelledby="manifesto-title">
-    <div class="section-intro"><p class="kicker">La philosophie de nos voyages</p><h2 id="manifesto-title">Un voyage se regarde.<br /><em>Une aventure se vit.</em></h2></div>
-    <div class="brand-pillars">
-      <article><span class="chapter-number">01</span><h3>Apprendre sur place.</h3><p>Découvrir une pratique avec celles et ceux qui la vivent. S’initier et repartir avec un héritage.</p></article>
-      <article><span class="chapter-number">02</span><h3>Explorer pour de vrai.</h3><p>Marcher dans une ville inconnue, goûter, échanger, se laisser surprendre. Garder de la place pour ce qu’on n’avait pas prévu.</p></article>
-      <article><span class="chapter-number">03</span><h3>Le vivre ensemble.</h3><p>Des compagnons de route pour partager les découvertes et les efforts. On s’encourage, on se dépasse, et on rentre avec des souvenirs en commun.</p></article>
+
+  <section class="manifesto section" aria-labelledby="manifesto-title">
+    <div class="container">
+      <div class="section-intro"><p class="kicker">La philosophie de nos voyages</p><h2 id="manifesto-title">Un voyage se regarde.<br /><em>Une aventure se vit.</em></h2></div>
+      <div class="brand-pillars">
+        {pillars.map((pillar, i) => (
+          <article data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            <Photo image={pillar.image} ratio="4 / 3" rounded sizes="(min-width: 76rem) 22rem, (min-width: 64rem) 30vw, calc(100vw - 2.5rem)" />
+            <div class="pillar-body"><span class="chapter-number">{String(i + 1).padStart(2, '0')}</span><h3>{pillar.title}</h3><p>{pillar.text}</p></div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
-  {next && <section class="next-trip section" id="prochain-depart" aria-labelledby="next-title"><Image class="next-bg" src={nextTripBg} alt="" widths={[768, 1280, 1920]} sizes="100vw" loading="lazy" /><div class="next-veil" aria-hidden="true"></div><div class="container next-grid">
-    <div class="next-heading"><p class="kicker">Notre prochain départ</p><h2 id="next-title">La Chine.<br /><em>Trois étapes,<br />une aventure.</em></h2><p>10 jours pour sortir de ta routine, découvrir la Chine autrement et t’initier au kung‑fu.</p><div class="route-tags"><span>Pékin</span><span aria-hidden="true">→</span><span>Tengzhou</span><span aria-hidden="true">→</span><span>Shanghai</span></div></div>
+
+  {next && <section class="next-trip section on-dark" id="prochain-depart" aria-labelledby="next-title"><Image class="next-bg" src={nextTripBg} alt="" widths={[768, 1280, 1920]} sizes="100vw" loading="lazy" /><div class="next-veil" aria-hidden="true"></div><div class="container next-grid">
+    <div class="next-heading"><p class="kicker">Notre prochain départ</p><h2 id="next-title">La Chine.<br /><em>Trois étapes,<br />une aventure.</em></h2><p>{next.tagline}</p><div class="route-tags"><span>Pékin</span><span aria-hidden="true">→</span><span>Kung&#8209;fu à Tengzhou</span><span aria-hidden="true">→</span><span>Shanghai</span></div></div>
     <div class="trip-ticket"><div class="ticket-top"><p>CHINE / {next.name}</p></div>
-      <dl><div><dt>Départ</dt><dd>{next.dates}</dd></div><div><dt>Sur place</dt><dd>{next.duration} · du 9 au 18 janvier</dd></div><div><dt>Le groupe</dt><dd>{next.groupSize}</dd></div></dl>
+      <dl><div><dt>Sur place</dt><dd>{next.dates}</dd></div><div><dt>Durée</dt><dd>{next.duration}, de Pékin à Shanghai</dd></div><div><dt>Le groupe</dt><dd>{next.groupSize}</dd></div></dl>
       <div class="ticket-price"><strong>{next.price}</strong><span>Hors vols internationaux</span></div>
-      <p class="ticket-payment">En 3 fois sans frais <span>· 3 × 630 €</span></p>
+      <p class="ticket-payment">En 3 fois sans frais <span>· 3 × 630&nbsp;€</span></p>
       <a class="btn btn--block" href={`/experiences/${next.slug}`}>Explorer le voyage <Arrow /></a><a class="ticket-programme" href={`/experiences/${next.slug}#etapes`}>Lire le programme jour par jour</a>
     </div>
   </div></section>}
+
   <section class="founder-note container section" aria-labelledby="founder-title">
-    <div class="founder-seal" aria-hidden="true"><span>RAHAL</span><BrandMark class="seal-sun" height={84} /><small>L’envie de transmettre.</small></div>
-    <div><p class="kicker">Yassine · Fondateur de RAHAL</p><h2 id="founder-title">{accueil.founder.title}</h2><p>{accueil.founder.text}</p><a class="link-arrow" href="/a-propos">Découvrir l’histoire de RAHAL <Arrow /></a></div>
+    <div class="founder-portrait">
+      <Photo image={accueil.founder.portrait} ratio="4 / 5" sizes="(min-width: 64rem) 22rem, (min-width: 31rem) 24rem, calc(100vw - 4.5rem)" />
+    </div>
+    <div class="founder-text"><p class="kicker">Yassine · Fondateur de RAHAL</p><h2 id="founder-title">{accueil.founder.title}</h2><p>{accueil.founder.text}</p><p class="founder-sign" aria-hidden="true">Yassine</p><a class="link-arrow" href="/a-propos">Découvrir l’histoire de RAHAL <Arrow /></a></div>
   </section>
+
   <section class="brand-closing section"><div class="container"><p class="kicker">Le début de l’aventure</p><h2>La prochaine histoire<br /><em>se vit peut-être avec toi.</em></h2><a class="btn btn--light" href="/experiences/chine#etapes">Voir le programme de la Chine <Arrow /></a></div></section>
 </Base>
 
 <style>
-  .brand-hero{display:grid;gap:3.5rem;padding-block:clamp(3rem,7vw,6rem);align-items:center}
-  .brand-copy{display:grid;gap:1.5rem;min-width:0}.brand-copy h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(3.5rem,6.6vw,6.1rem);line-height:.99;letter-spacing:-.04em}.brand-copy h1 em{color:#875430;font-weight:400}.brand-lede{font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.55}.brand-intro{max-width:31rem;color:var(--c-gris);font-size:.98rem}.brand-actions{display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem;margin-top:.4rem}.brand-link{font-size:.9rem;text-underline-offset:.35rem}.brand-signature{display:flex;align-items:center;gap:.7rem;font-size:.78rem;color:var(--c-gris);margin-top:.75rem}.desktop-break{display:none}
+  .brand-hero{display:grid;gap:3.5rem;padding-block:clamp(2.5rem,6vw,5rem);align-items:center}
+  .brand-copy{display:grid;gap:1.5rem;min-width:0}.brand-copy h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(3.5rem,6.6vw,6.1rem);line-height:.99;letter-spacing:-.04em}.brand-copy h1 em{color:#875430;font-weight:400}.brand-lede{font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.55}.brand-intro{max-width:31rem;color:var(--c-gris);font-size:.98rem}.brand-actions{display:flex;align-items:center;flex-wrap:wrap;gap:1.25rem;margin-top:.4rem}.brand-link{font-size:.9rem;text-underline-offset:.35rem}.desktop-break{display:none}
+  /* La devise illustrée : trois tuiles qui habillent le bas de l'ouverture. */
+  .brand-trio{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem;margin-top:1rem;max-width:34rem}.brand-trio li{position:relative;display:grid;justify-items:start;gap:.7rem;padding:1rem 1rem .95rem;border-radius:1.1rem;background:linear-gradient(160deg,#fffdf9 0%,#f0e9dc 100%);border:1px solid var(--c-sable-3);box-shadow:0 10px 24px rgb(68 55 35 / .06)}.brand-trio li:nth-child(2){background:linear-gradient(160deg,#f6efe2 0%,#eadfcb 100%)}.trio-icon{width:2.75rem;height:2.75rem}.trio-word{font-family:var(--font-serif);font-size:1.4rem;font-style:italic;line-height:1.05;color:var(--c-encre)}
   .travel-poster{position:relative;display:flex;flex-direction:column;min-height:34rem;background:#254139;color:#f7f3eb;border-radius:45% 45% 1rem 1rem / 29% 29% 1rem 1rem;text-decoration:none;padding:4.5rem 2rem 1.5rem;overflow:hidden;box-shadow:15px 20px 0 #e8ddcc}.poster-top{display:flex;justify-content:space-between;gap:1rem;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;padding-inline:1rem}.poster-title{font-family:var(--font-serif);font-size:5.5rem;line-height:.95;margin-top:2rem;position:relative;z-index:1}.poster-title em{display:block;font-size:3.5rem;font-weight:400;color:#e9bd72}.poster-art{width:100%;flex:1;margin-top:-4rem;min-height:18rem}.poster-bottom{display:flex;justify-content:space-between;border-top:1px solid #9cab9b;padding-top:1rem;font-size:.8rem;letter-spacing:.03em}.poster-bottom span span{margin-left:.7rem;font-size:1.3rem}.travel-poster:focus-visible{outline-color:#a1672c;outline-offset:7px}
-  .section-intro{display:grid;gap:1rem}.manifesto h2,.next-heading h2,.founder-note h2,.brand-closing h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.5rem,4.7vw,4.3rem);line-height:1.06;letter-spacing:-.025em}.manifesto h2 em,.next-heading h2 em{color:#875430;font-weight:400}.brand-pillars{display:grid;gap:2rem;margin-top:3rem}.brand-pillars article{border-top:1px solid var(--c-sable-3);padding-top:1.5rem}.chapter-number{font-family:var(--font-serif);font-size:2rem;font-style:italic;color:#875430}.brand-pillars h3{font-size:1.1rem;margin-block:1rem .6rem}.brand-pillars p{color:var(--c-gris);font-size:.98rem;max-width:32rem}
-  .next-trip{position:relative;overflow:hidden;background:#eae1d1;isolation:isolate}.next-trip :global(.next-bg){position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:saturate(.85) sepia(.12)}.next-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(234 225 209 / .96) 0%,rgb(234 225 209 / .9) 45%,rgb(234 225 209 / .55) 100%)}.next-grid{display:grid;gap:2.5rem;align-items:center}.next-heading{display:grid;gap:1.5rem}.next-heading>p:not(.kicker){max-width:30rem;color:var(--c-gris)}.route-tags{display:flex;gap:.6rem;flex-wrap:wrap;font-size:.76rem;align-items:center}.route-tags span:nth-child(odd){border:1px solid #b5a58c;padding:.4rem .8rem;border-radius:20rem}
-  .trip-ticket{background:#fffdf8;border:1px solid var(--c-sable-3);border-radius:1rem;padding:clamp(1.3rem,3vw,2.5rem);box-shadow:0 15px 40px #4437230a}.ticket-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;font-size:.68rem;letter-spacing:.1em;font-weight:700;border-bottom:1px dashed #cfc2aa;padding-bottom:1.25rem}.ticket-top span{color:#875430}.trip-ticket dl{display:grid;gap:1rem;margin-block:1.5rem}.trip-ticket dl>div{display:flex;gap:1.5rem;justify-content:space-between}.trip-ticket dt{font-size:.8rem;color:var(--c-gris)}.trip-ticket dd{margin:0;text-align:right;font-size:.85rem;font-weight:650}.ticket-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:.6rem 1rem;border-top:1px dashed #cfc2aa;padding-top:1.25rem}.ticket-price strong{font-size:2.7rem;letter-spacing:-.055em}.ticket-price>span{font-size:.74rem;color:var(--c-gris)}.ticket-payment{font-size:.8rem;color:#365549;margin-block:.15rem 1.5rem;font-weight:650}.ticket-payment span{white-space:nowrap}.ticket-programme{display:block;text-align:center;font-size:.78rem;margin-top:1rem;text-underline-offset:.3rem}
-  .founder-note{display:grid;gap:2.5rem;align-items:center}.founder-note>div:last-child{display:grid;gap:1.3rem}.founder-note p:not(.kicker){color:var(--c-gris);max-width:43rem}.founder-note .link-arrow{justify-self:start;font-size:.9rem}.founder-seal{min-height:16rem;aspect-ratio:1;display:flex;flex-direction:column;justify-content:center;align-items:center;border:1px solid #caba9f;border-radius:50%;color:#875430;max-width:20rem;margin:auto;width:100%;background:radial-gradient(circle,#e8ddcc 0,transparent 70%)}.founder-seal>span:first-child{letter-spacing:.35em;font-size:1.5rem;font-weight:800}.founder-seal :global(.seal-sun){margin-block:.9rem}.founder-seal small{font-size:.73rem}.brand-closing{background:#254139;color:#f7f3eb;text-align:center}.brand-closing .container{display:grid;justify-items:center;gap:1.8rem}.brand-closing .kicker{color:#e9bd72}.brand-closing h2 em{font-weight:400;color:#e9bd72}.brand-closing :focus-visible{outline-color:#e9bd72}
-  @media(min-width:64rem){.next-veil{background:linear-gradient(100deg,rgb(234 225 209 / .97) 0%,rgb(234 225 209 / .9) 38%,rgb(234 225 209 / .45) 68%,rgb(234 225 209 / .15) 100%)}.brand-hero{grid-template-columns:1.25fr 1fr;gap:4rem}.desktop-break{display:block}.travel-poster{min-height:39rem}.poster-title{font-size:6.2rem}.poster-art{margin-top:-4rem}.brand-pillars{grid-template-columns:repeat(3,1fr);gap:3rem}.next-grid{grid-template-columns:1fr 1fr;gap:6rem}.founder-note{grid-template-columns:.65fr 1.35fr;gap:5rem}}
-  @media(max-width:30rem){.brand-actions .btn{width:100%;font-size:.82rem;padding-inline:1rem}.travel-poster{min-height:31rem;box-shadow:8px 12px 0 #e8ddcc}.poster-top{font-size:.56rem;padding:0}.poster-title{font-size:4.8rem}.trip-ticket dl>div{gap:.7rem}}
+  .section-intro{display:grid;gap:1rem}.manifesto h2,.next-heading h2,.founder-note h2,.brand-closing h2{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.5rem,4.7vw,4.3rem);line-height:1.06;letter-spacing:-.025em}.manifesto h2 em{color:#875430;font-weight:400}
+  /* Piliers : photo, puis numéro, titre et texte. Fond sable léger pour éviter le grand aplat clair. */
+  .manifesto{background:linear-gradient(180deg,var(--c-ivoire) 0%,var(--c-sable-2) 100%)}.brand-pillars{display:grid;gap:2.5rem;margin-top:2.5rem}.brand-pillars article{display:grid;gap:1.1rem;align-content:start}.pillar-body{border-top:1px solid var(--c-sable-3);padding-top:1rem}.chapter-number{font-family:var(--font-serif);font-size:2rem;font-style:italic;color:#875430}.brand-pillars h3{font-size:1.1rem;margin-block:.5rem .5rem}.brand-pillars p{color:var(--c-gris);font-size:.98rem;max-width:32rem}
+  /* Prochain départ : la photo de la Muraille bien visible sous un voile vert profond, texte clair. */
+  .next-trip{position:relative;overflow:hidden;background:var(--c-foret-2);color:var(--c-ivoire);isolation:isolate}.next-trip :global(.next-bg){position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;object-position:center 40%}.next-veil{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgb(21 37 32 / .88) 0%,rgb(21 37 32 / .74) 48%,rgb(21 37 32 / .5) 100%)}.next-grid{display:grid;gap:2.5rem;align-items:center}.next-heading{display:grid;gap:1.5rem}.next-heading h2 em{color:var(--c-or-clair);font-weight:400}.next-heading>p:not(.kicker){max-width:30rem;color:#e6ddcd}.next-trip .kicker{color:var(--c-or-clair)}.route-tags{display:flex;gap:.6rem;flex-wrap:wrap;font-size:.76rem;align-items:center;color:var(--c-ivoire)}.route-tags span:nth-child(odd){border:1px solid rgb(247 243 235 / .5);background:rgb(247 243 235 / .08);padding:.4rem .8rem;border-radius:20rem;backdrop-filter:blur(4px)}
+  .trip-ticket{background:#fffdf8;color:var(--c-encre);border:1px solid var(--c-sable-3);border-radius:1rem;padding:clamp(1.3rem,3vw,2.5rem);box-shadow:0 24px 60px rgb(0 0 0 / .28)}.trip-ticket :focus-visible{outline-color:var(--c-encre)}.ticket-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.5rem;font-size:.68rem;letter-spacing:.1em;font-weight:700;border-bottom:1px dashed #cfc2aa;padding-bottom:1.25rem}.trip-ticket dl{display:grid;gap:1rem;margin-block:1.5rem}.trip-ticket dl>div{display:flex;gap:1.5rem;justify-content:space-between}.trip-ticket dt{font-size:.8rem;color:var(--c-gris)}.trip-ticket dd{margin:0;text-align:right;font-size:.85rem;font-weight:650}.ticket-price{display:flex;align-items:baseline;flex-wrap:wrap;gap:.6rem 1rem;border-top:1px dashed #cfc2aa;padding-top:1.25rem}.ticket-price strong{font-size:2.7rem;letter-spacing:-.055em}.ticket-price>span{font-size:.74rem;color:var(--c-gris)}.ticket-payment{font-size:.8rem;color:#365549;margin-block:.15rem 1.5rem;font-weight:650}.ticket-payment span{white-space:nowrap}.ticket-programme{display:block;text-align:center;font-size:.78rem;margin-top:1rem;text-underline-offset:.3rem}
+  /* Mot du fondateur : portrait en arche, comme l'affiche, avec l'ombre sable décalée. */
+  .founder-note{display:grid;gap:2.5rem;align-items:center}.founder-portrait{width:100%;max-width:22rem;margin-inline:auto;padding:0 1rem 1.25rem 0}.founder-portrait :global(.photo__frame){border-radius:50% 50% 1rem 1rem / 34% 34% 1rem 1rem;box-shadow:14px 18px 0 var(--c-sable)}.founder-text{display:grid;gap:1.3rem}.founder-note p:not(.kicker){color:var(--c-gris);max-width:43rem}.founder-note .founder-sign{font-family:var(--font-serif);font-style:italic;font-size:2rem;line-height:1;color:#875430;margin-top:-.25rem}.founder-note .link-arrow{justify-self:start;font-size:.9rem}
+  .brand-closing{background:#254139;color:#f7f3eb;text-align:center}.brand-closing .container{display:grid;justify-items:center;gap:1.8rem}.brand-closing .kicker{color:#e9bd72}.brand-closing h2 em{font-weight:400;color:#e9bd72}.brand-closing :focus-visible{outline-color:#e9bd72}
+  @media(min-width:64rem){.next-veil{background:linear-gradient(100deg,rgb(21 37 32 / .9) 0%,rgb(21 37 32 / .72) 38%,rgb(21 37 32 / .35) 66%,rgb(21 37 32 / .2) 100%)}.brand-hero{grid-template-columns:1.25fr 1fr;gap:4rem}.desktop-break{display:block}.travel-poster{min-height:39rem}.poster-title{font-size:6.2rem}.poster-art{margin-top:-4rem}.brand-pillars{grid-template-columns:repeat(3,1fr);gap:2.5rem}.next-grid{grid-template-columns:1fr 1fr;gap:6rem}.founder-note{grid-template-columns:.75fr 1.25fr;gap:5rem}.founder-portrait{margin-inline:0}}
+  @media(min-width:40rem) and (max-width:63.99rem){.brand-pillars{grid-template-columns:repeat(3,1fr);gap:1.25rem}.brand-pillars p{font-size:.92rem}}
+  @media(max-width:30rem){.brand-actions .btn{width:100%;font-size:.82rem;padding-inline:1rem}.brand-trio{gap:.5rem}.brand-trio li{padding:.8rem .7rem;gap:.5rem}.trio-icon{width:2.2rem;height:2.2rem}.trio-word{font-size:1.12rem}.travel-poster{min-height:31rem;box-shadow:8px 12px 0 #e8ddcc}.poster-top{font-size:.56rem;padding:0}.poster-title{font-size:4.8rem}.trip-ticket dl>div{gap:.7rem}}
 </style>

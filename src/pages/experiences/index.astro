@@ -2,7 +2,7 @@
 import Base from '@/layouts/Base.astro';
 import ExperienceCard from '@/components/ExperienceCard.astro';
 import SectionHead from '@/components/SectionHead.astro';
-import BrandMark from '@/components/BrandMark.astro';
+import Photo from '@/components/Photo.astro';
 import Topo from '@/components/Topo.astro';
 import WaitlistForm from '@/components/forms/WaitlistForm.astro';
 import { experiences } from '@/content/experiences';
@@ -21,6 +21,14 @@ const bg = bgMeta ? await getImage({ src: bgMeta, width: 480, format: 'webp', qu
     <Topo class="intro__topo" />
     <div class="container intro__inner">
       <SectionHead kicker={copy.kicker} title={copy.title} lede={copy.text} level="h1" serif />
+      <ul class="intro__mosaic" role="list">
+        {copy.mosaic.map((tile, i) => (
+          <li class="intro__tile">
+            <Photo image={tile.image} ratio="3 / 4" rounded priority={i === 0} sizes="(min-width: 64rem) 12rem, 30vw" />
+            <span class="intro__tile-label" aria-hidden="true">{tile.label}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   </section>
 
@@ -32,13 +40,18 @@ const bg = bgMeta ? await getImage({ src: bgMeta, width: 480, format: 'webp', qu
         {experiences.map((exp, i) => <ExperienceCard experience={exp} variant={single ? 'feature' : 'grid'} headingLevel="h2" priority={i === 0} />)}
       </div>
 
-      <aside class="next" aria-labelledby="next-titre" data-reveal>
-        <div class="next__text">
-          <BrandMark height={36} />
-          <h2 class="h3" id="next-titre">{copy.next.title}</h2>
-          <p>{copy.next.text}</p>
+      <aside class="next on-dark" aria-labelledby="next-titre" data-reveal>
+        <div class="next__media">
+          <Photo image={copy.next.image} fill sizes="(min-width: 64rem) 30rem, calc(100vw - 2.5rem)" />
         </div>
-        <WaitlistForm />
+        <div class="next__body">
+          <div class="next__text">
+            <p class="kicker">{copy.next.kicker}</p>
+            <h2 class="next__title" id="next-titre">{copy.next.title}</h2>
+            <p>{copy.next.text}</p>
+          </div>
+          <WaitlistForm tone="dark" />
+        </div>
       </aside>
     </div>
   </section>
@@ -60,6 +73,39 @@ const bg = bgMeta ? await getImage({ src: bgMeta, width: 480, format: 'webp', qu
 
   .intro__inner {
     position: relative;
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  /* Trois photos qui illustrent le titre : un pays, une pratique, un petit groupe. */
+  .intro__mosaic {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .intro__tile {
+    position: relative;
+  }
+
+  .intro__tile:nth-child(2) {
+    translate: 0 1.25rem;
+  }
+
+  .intro__tile-label {
+    position: absolute;
+    left: 0.6rem;
+    bottom: 0.6rem;
+    padding: 0.3rem 0.65rem;
+    border-radius: var(--r-pill);
+    background: rgb(34 33 31 / 0.72);
+    color: var(--c-ivoire);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(6px);
   }
 
   .intro :global(.section-head) {
@@ -106,38 +152,81 @@ const bg = bgMeta ? await getImage({ src: bgMeta, width: 480, format: 'webp', qu
     gap: 1.5rem;
   }
 
+  /* Liste d'attente : photo d'un chemin sous les glycines, panneau vert forêt. */
   .next {
     display: grid;
-    gap: 1.5rem;
-    margin-top: clamp(2.5rem, 6vw, 4rem);
-    padding: clamp(1.5rem, 3vw, 2.25rem);
+    margin-top: clamp(2rem, 5vw, 3.5rem);
+    overflow: hidden;
     border-radius: var(--r-l);
-    background: rgb(255 253 249 / 0.92);
-    border: 1px solid var(--c-sable-3);
-    box-shadow: var(--shadow-s);
+    background: var(--c-foret);
+    color: var(--c-ivoire);
+    box-shadow: var(--shadow-m);
+  }
+
+  .next__media {
+    position: relative;
+    min-height: 13rem;
+  }
+
+  .next__body {
+    display: grid;
+    gap: 1.5rem;
+    align-content: center;
+    padding: clamp(1.5rem, 4vw, 3rem);
   }
 
   .next__text {
     display: grid;
-    gap: 0.6rem;
+    gap: 0.7rem;
     justify-items: start;
-    align-content: start;
   }
 
-  .next__text p {
-    color: var(--c-gris);
+  .next__title {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-size: clamp(2rem, 3.4vw, 2.75rem);
+    line-height: 1.05;
+  }
+
+  .next__text p:not(.kicker) {
+    color: #d7e0d9;
     max-width: 30rem;
   }
 
+  /* Petits écrans : étiquettes compactes, sur une ligne. */
+  @media (max-width: 29.99rem) {
+    .intro__tile-label {
+      left: 0.4rem;
+      right: 0.4rem;
+      bottom: 0.4rem;
+      padding: 0.25rem 0.4rem;
+      border-radius: var(--r-s);
+      font-size: 0.66rem;
+      line-height: 1.25;
+      text-align: center;
+    }
+  }
+
   @media (min-width: 64rem) {
+    .intro__inner {
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+    }
+
+    .intro__mosaic {
+      gap: 1rem;
+    }
+
     .list__grid:not(.list__grid--single) {
       grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     }
 
     .next {
-      grid-template-columns: 1fr 1.1fr;
-      align-items: end;
-      gap: 3rem;
+      grid-template-columns: 0.85fr 1.15fr;
+    }
+
+    .next__media {
+      min-height: 100%;
     }
   }
 </style>

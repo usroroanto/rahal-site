@@ -14,6 +14,10 @@
   --c-or: #d3ab60;
   --c-brun: #806039;
   --c-gris: #686159;
+  --c-foret: #254139; /* vert des grandes cartes (affiche « Chine à vivre ») */
+  --c-foret-2: #1b3029; /* vert profond pour les dégradés */
+  --c-or-clair: #e9bd72; /* or lisible sur fond sombre */
+  --c-brun-2: #875430; /* italiques des titres sur fond clair */
 
   /* Typographies */
   --font-sans: 'Manrope Variable', 'Manrope', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -23,7 +27,7 @@
   --w-max: 76rem;
   --w-text: 42rem;
   --gutter: clamp(1.25rem, 4vw, 3rem);
-  --s-section: clamp(4.5rem, 10vw, 8.5rem);
+  --s-section: clamp(3.5rem, 7vw, 6rem);
   --s-block: clamp(2.25rem, 5vw, 4rem);
   --header-h: 4.5rem;
 
@@ -486,7 +490,8 @@ button {
   width: 100%;
   min-height: 3.125rem;
   padding: 0.8rem 1rem;
-  border: 1px solid var(--c-sable-3);
+  /* Bordure contrastée (3:1 minimum) pour qu'on repère bien le champ. */
+  border: 1px solid #958468;
   border-radius: var(--r-s);
   background: #fffdf9;
   color: var(--c-encre);
@@ -496,11 +501,11 @@ button {
 }
 
 .input::placeholder {
-  color: #9a9186;
+  color: #767066;
 }
 
 .input:hover {
-  border-color: #c4b394;
+  border-color: #7a6a52;
 }
 
 .input:focus {

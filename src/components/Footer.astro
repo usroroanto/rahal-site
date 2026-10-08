@@ -1,12 +1,12 @@
 ---
 import BrandMark from '@/components/BrandMark.astro';
-/** Pied de page commun : logo, navigation, Instagram, contact et liens légaux (tous configurables). */
+/** Pied de page commun : logo, navigation, réseaux, contact (email) et liens légaux (tous configurables). */
 import { site } from '@/content/site';
 import Logo from './Logo.astro';
 
 const year = new Date().getFullYear();
 const { email, instagram, instagramHandle, whatsapp } = site.contact;
-const hasContact = Boolean(email || instagram || whatsapp);
+const hasSocial = Boolean(instagram || whatsapp);
 ---
 
 <footer class="footer on-dark">
@@ -30,7 +30,7 @@ const hasContact = Boolean(email || instagram || whatsapp);
     </nav>
 
     {
-      hasContact && (
+      hasSocial && (
         <div class="footer__col">
           <p class="footer__title">Nous suivre</p>
           <ul role="list" class="footer__links">
@@ -39,11 +39,6 @@ const hasContact = Boolean(email || instagram || whatsapp);
                 <a href={instagram} rel="noopener" target="_blank">
                   Instagram{instagramHandle ? ` · ${instagramHandle}` : ''}
                 </a>
-              </li>
-            )}
-            {email && (
-              <li>
-                <a href={`mailto:${email}`}>{email}</a>
               </li>
             )}
             {whatsapp && (
@@ -59,8 +54,13 @@ const hasContact = Boolean(email || instagram || whatsapp);
     }
 
     <div class="footer__col">
-      <p class="footer__title">Nous écrire</p>
+      <p class="footer__title">Contact</p>
       <ul role="list" class="footer__links">
+        {email && (
+          <li>
+            <a href={`mailto:${email}`}>{email}</a>
+          </li>
+        )}
         <li><a href="/faq-contact#contact">Formulaire de contact</a></li>
         <li><a href="/faq-contact">Questions fréquentes</a></li>
       </ul>
@@ -158,6 +158,10 @@ const hasContact = Boolean(email || instagram || whatsapp);
     font-size: 0.98rem;
     border-bottom: 1px solid transparent;
     transition: border-color var(--t-fast) var(--ease-out);
+  }
+
+  .footer__links a[href^='mailto:'] {
+    overflow-wrap: anywhere;
   }
 
   .footer__links a:hover {

@@ -39,11 +39,43 @@ export interface ProgrammeStep {
   image?: ImageRef;
   /** Détail jour par jour, affiché dans un accordéon. */
   days?: ProgrammeDay[];
+  /** Libellé de l'accordéon si le détail n'est pas découpé par jour. */
+  daysLabel?: string;
 }
 
-export interface PracticalItem {
+/** Une question du formulaire d'inscription. `name` sert aussi de libellé dans l'email reçu. */
+export interface RegistrationField {
+  name: string;
+  label: string;
+  type: 'text' | 'email' | 'tel' | 'date' | 'choice' | 'textarea' | 'consent';
+  required?: boolean;
+  placeholder?: string;
+  hint?: string;
+  /** Valeur HTML `autocomplete` (ex. `given-name`). */
+  autocomplete?: string;
+  /** Réponses proposées (type `choice`). */
+  options?: string[];
+  /** Largeur sur ordinateur : moitié de ligne ou ligne entière (par défaut). */
+  width?: 'half' | 'full';
+}
+
+export interface RegistrationStep {
+  id: string;
   title: string;
-  text: string;
+  text?: string;
+  fields: RegistrationField[];
+}
+
+/** Page d'inscription intégrée au site (`/experiences/<slug>/inscription`). */
+export interface Registration {
+  title: string;
+  intro: string;
+  /** Objet de l'email reçu pour chaque demande. */
+  subject: string;
+  steps: RegistrationStep[];
+  success: { title: string; text: string[] };
+  /** Formulaire de secours proposé seulement si l'envoi échoue (ex. Tally). */
+  fallbackUrl?: string;
 }
 
 export interface Dimension {
@@ -76,6 +108,8 @@ export interface Experience {
 
   // --- Informations pratiques du bandeau (texte libre, affiché seulement si confirmé)
   dates?: string;
+  /** Précision affichée sous les dates (ex. lieu et heure du rendez-vous). */
+  datesNote?: string;
   duration?: string;
   groupSize?: string;
   price?: string;
@@ -90,22 +124,27 @@ export interface Experience {
     steps: ProgrammeStep[];
   };
 
-  /** Informations pratiques (niveau, école, hébergement, repas, transports, rôle de Yassine…). */
-  practical?: PracticalItem[];
-
   included?: string[];
   notIncluded?: string[];
 
-  /** Modalités d'inscription, paiement, annulation — uniquement lorsqu'elles sont confirmées. */
-  conditions?: { title: string; text: string }[];
+  /** Tarif détaillé et étapes de l'inscription — uniquement lorsqu'ils sont confirmés. */
+  pricing?: {
+    total: string;
+    note: string;
+    lines: { label: string; value: string; note?: string }[];
+  };
+  applicationSteps?: { title: string; text: string }[];
 
   faq?: Faq[];
 
   /** Lien vers le programme (ex. `/programmes/chine.pdf` placé dans `public/programmes/`). */
   programmeUrl?: string;
 
-  /** Lien externe vers le formulaire de demande d'inscription. */
+  /** Lien vers la demande d'inscription (page du site ou formulaire externe). */
   applicationUrl?: string;
+
+  /** Formulaire d'inscription intégré au site. */
+  registration?: Registration;
 
   /** Paramètres Brevo propres à l'expérience (identifiants non secrets). */
   brevo?: {

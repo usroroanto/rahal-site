@@ -1,28 +1,36 @@
 ---
-/** Les trois dimensions de l'expérience, en alternance photo / texte. */
+/** Les trois dimensions de l'expérience : trois colonnes, photo au-dessus du texte. */
 import type { Dimension } from '@/content/types';
 import Photo from '../Photo.astro';
-import SectionHead from '../SectionHead.astro';
 
 interface Props {
   items: Dimension[];
   kicker?: string;
+  /** Début du titre, en romain. */
   title?: string;
+  /** Fin du titre, en italique. */
+  emphasis?: string;
 }
-const { items, kicker = 'L’expérience', title = 'Trois dimensions, un même séjour.' } = Astro.props;
+const { items, kicker = 'L’expérience', title = 'Trois dimensions,', emphasis = 'un même séjour.' } = Astro.props;
 ---
 
-<section class="dims section" id="dimensions" aria-labelledby="dims-titre">
+<section class="dims" id="dimensions" aria-labelledby="dims-titre">
   <div class="container">
-    <SectionHead kicker={kicker} title={title} level="h2" id="dims-titre" />
-    <div class="dims__list">
+    <div class="dims__head">
+      <p class="kicker">{kicker}</p>
+      <h2 class="h-serif dims__title" id="dims-titre">{title} <em>{emphasis}</em></h2>
+    </div>
+    <ol class="dims__list" role="list">
       {
         items.map((item, i) => (
-          <article class:list={['dim', { 'dim--reverse': i % 2 === 1 }]} data-reveal>
+          <li class="dim" data-reveal style={`--reveal-delay:${i * 90}ms`}>
             {item.image && (
-              <div class="dim__media">
-                <Photo image={item.image} ratio="4 / 3" rounded sizes="(min-width: 76rem) 360px, (min-width: 64rem) 30vw, calc(100vw - 2.5rem)" />
-              </div>
+              <Photo
+                image={item.image}
+                ratio="4 / 3"
+                rounded
+                sizes="(min-width: 76rem) 360px, (min-width: 64rem) 30vw, (min-width: 40rem) 42vw, calc(100vw - 2.5rem)"
+              />
             )}
             <div class="dim__body">
               <p class="dim__num" aria-hidden="true">
@@ -31,64 +39,106 @@ const { items, kicker = 'L’expérience', title = 'Trois dimensions, un même s
               <h3 class="dim__title">{item.title}</h3>
               <p class="dim__text">{item.text}</p>
             </div>
-          </article>
+          </li>
         ))
       }
-    </div>
+    </ol>
   </div>
 </section>
 
 <style>
-  .dims__list {
+  .dims {
+    padding-block: clamp(2.5rem, 5vw, 3.5rem) clamp(3rem, 6vw, 5rem);
+  }
+
+  .dims__head {
     display: grid;
-    gap: clamp(3rem, 7vw, 5.5rem);
+    gap: 0.9rem;
+    margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  .dims__title {
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    text-wrap: balance;
+  }
+
+  .dims__title em {
+    color: var(--c-brun-2);
+  }
+
+  .dims__list {
+    list-style: none;
+    display: grid;
+    gap: 2.5rem;
   }
 
   .dim {
     display: grid;
-    gap: 1.5rem;
-    align-items: center;
+    align-content: start;
   }
 
   .dim__body {
     display: grid;
-    gap: 0.75rem;
+    gap: 0.6rem;
     max-width: 30rem;
   }
 
+  /* Numéro posé à cheval sur la photo */
   .dim__num {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    margin: -1.75rem 0 0 1.25rem;
+    border-radius: 50%;
+    background: var(--c-ivoire);
+    border: 1px solid var(--c-or);
+    box-shadow: var(--shadow-s);
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 2.5rem;
+    font-size: 1.35rem;
     line-height: 1;
-    color: var(--c-or);
+    color: var(--c-brun);
   }
 
   .dim__title {
     font-family: var(--font-serif);
     font-weight: 500;
-    font-size: clamp(1.9rem, 3.2vw, 2.6rem);
-    line-height: 1.08;
+    font-size: clamp(1.7rem, 2.4vw, 2.1rem);
+    line-height: 1.1;
     letter-spacing: -0.01em;
+    text-wrap: balance;
   }
 
   .dim__text {
     color: var(--c-gris);
+    font-size: 0.98rem;
     text-wrap: pretty;
   }
 
-  @media (min-width: 64rem) {
+  /* Tablette : photo et texte côte à côte */
+  @media (min-width: 40rem) and (max-width: 63.99rem) {
     .dim {
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(2.5rem, 6vw, 6rem);
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: 1.75rem;
+      align-items: center;
     }
 
-    .dim--reverse .dim__media {
-      order: 2;
+    .dim__num {
+      margin: 0;
+      width: 2.75rem;
+      height: 2.75rem;
+      font-size: 1.2rem;
     }
+  }
 
-    .dim__body {
-      padding-inline: 1rem;
+  /* Ordinateur : trois colonnes */
+  @media (min-width: 64rem) {
+    .dims__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.5rem, 3vw, 2.5rem);
     }
   }
 </style>

@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request, redirect, site }) => {
   const html = wantsHtml(request);
   const experience = getExperience((values.experience ?? '').trim());
   const back = (state: 'ok' | 'erreur' | 'indisponible') =>
-    redirect(`/experiences/${experience?.slug ?? ''}?programme=${state}#programme`, 303);
+    redirect(`/experiences/${experience?.slug ?? ''}?programme=${state}#demande`, 303);
 
   // Pot de miel : un robot a rempli le champ caché. On ne fait rien, sans le signaler.
   if (values.website) return html ? back('ok') : json(200, { ok: true });

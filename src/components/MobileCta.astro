@@ -1,19 +1,24 @@
 ---
 /**
- * Bouton fixe « Recevoir le programme » sur mobile.
- * Se masque quand le formulaire est visible ; le contenu garde une marge basse pour ne jamais être caché.
+ * Bouton fixe en bas d'écran sur mobile.
+ * Se masque quand l'une des sections observées (`target`, sélecteur CSS, éventuellement multiple) est visible ;
+ * le contenu garde une marge basse pour ne jamais être caché.
  */
 import Arrow from './Arrow.astro';
 
 interface Props {
   label?: string;
+  /** Section(s) observée(s) : le bouton disparaît quand l'une d'elles est à l'écran (ex. `#tarif, #demande`). */
   target?: string;
+  /** Destination du bouton. Par défaut, la première section observée. */
+  href?: string;
 }
-const { label = 'Recevoir le programme', target = '#programme' } = Astro.props;
+const { label = 'Faire ma demande', target = '#demande', href } = Astro.props;
+const link = href ?? target.split(',')[0]?.trim() ?? target;
 ---
 
 <div class="mobile-cta" data-mobile-cta data-target={target}>
-  <a class="btn btn--block mobile-cta__btn" href={target}>
+  <a class="btn btn--block mobile-cta__btn" href={link}>
     {label}
     <Arrow />
   </a>
@@ -21,19 +26,28 @@ const { label = 'Recevoir le programme', target = '#programme' } = Astro.props;
 
 <script>
   const bar = document.querySelector<HTMLElement>('[data-mobile-cta]');
-  const target = bar?.dataset.target ? document.querySelector(bar.dataset.target) : null;
-  if (bar && target && 'IntersectionObserver' in window) {
+  let targets: Element[] = [];
+  try {
+    targets = bar?.dataset.target ? [...document.querySelectorAll(bar.dataset.target)] : [];
+  } catch {
+    targets = [];
+  }
+  if (bar && targets.length > 0 && 'IntersectionObserver' in window) {
+    const visible = new Set<Element>();
     const observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
-          bar.toggleAttribute('data-hidden', entry.isIntersecting);
-          // Masqué : ni cliquable, ni atteignable au clavier, ni lu par les lecteurs d'écran.
-          bar.inert = entry.isIntersecting;
+          if (entry.isIntersecting) visible.add(entry.target);
+          else visible.delete(entry.target);
         }
+        const hidden = visible.size > 0;
+        bar.toggleAttribute('data-hidden', hidden);
+        // Masqué : ni cliquable, ni atteignable au clavier, ni lu par les lecteurs d'écran.
+        bar.inert = hidden;
       },
       { threshold: 0.15 },
     );
-    observer.observe(target);
+    targets.forEach((target) => observer.observe(target));
   }
 </script>
 
@@ -71,6 +85,13 @@ const { label = 'Recevoir le programme', target = '#programme' } = Astro.props;
 
   :global(body.has-mobile-cta) {
     padding-bottom: 5.5rem;
+  }
+
+  /* Le champ ou lien qui reçoit le focus ne passe pas sous la barre fixe. */
+  @media (max-width: 63.99rem) {
+    :global(html:has(body.has-mobile-cta)) {
+      scroll-padding-bottom: 6rem;
+    }
   }
 
   @media (min-width: 64rem) {
