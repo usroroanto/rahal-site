@@ -45,7 +45,7 @@ export const faqContact = {
       },
       {
         "question": "Comment se déroule l’inscription ?",
-        "answer": "Le séjour coûte 1 890 €, hors vols internationaux. Après validation de ta demande, tu peux payer en une fois : 1 890 €, en 2 fois : 300 € d’acompte puis 1 590 €, ou en 3 fois : 300 € d’acompte puis deux versements de 795 €, sans frais. Le solde après acompte est de 1 590 €.",
+        "answer": "Le séjour coûte 1 890 €, hors vols internationaux. Après validation de ta demande, tu verses 300 € d’acompte pour réserver ta place. Il reste ensuite un solde de 1 590 €, payable en une fois ou en deux versements de 795 €, sans frais. Tu peux aussi régler la totalité des 1 890 € en une fois.",
         "link": {
           "label": "Faire une demande d’inscription",
           "href": "/experiences/chine/inscription"
