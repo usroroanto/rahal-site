@@ -164,9 +164,9 @@ export const chine: Experience = {
 
   pricing: {
     total: '1 890 €',
-    note: 'par personne, hors vols internationaux · En 1 fois : 1 890 €, ou en 2 ou 3 fois selon le détail ci-dessous',
+    note: 'par personne, hors vols internationaux · Règlement intégral possible : 1 890 €',
     lines: [
-      { label: 'Acompte', value: '300 €', note: 'premier versement du paiement en 2 ou 3 fois, après validation de ta demande' },
+      { label: 'Acompte', value: '300 €', note: 'pour réserver ta place' },
       { label: 'Solde', value: '1 590 €', note: 'en une fois, ou en deux versements de 795 € sans frais' },
     ],
   },
@@ -181,7 +181,7 @@ export const chine: Experience = {
     },
     {
       title: 'Tu confirmes ta place.',
-      text: 'Tu réserves ta place avec 300 € d’acompte en choisissant le paiement en 2 ou 3 fois, ou avec le règlement intégral de 1 890 €. Puis tu rejoins le groupe WhatsApp pour rencontrer les autres participants.',
+      text: 'Tu réserves ta place avec 300 € d’acompte. Le solde de 1 590 € se règle en une fois ou en deux versements de 795 €, sans frais. Tu peux aussi régler les 1 890 € en une fois. Puis tu rejoins le groupe WhatsApp pour rencontrer les autres participants.',
     },
   ],
 
@@ -216,7 +216,7 @@ export const chine: Experience = {
     },
     {
       question: 'Comment se déroule l’inscription ?',
-      answer: 'Tu fais ta demande en ligne, en quelques minutes. Si elle est retenue, tu reçois les modalités de paiement : 1 890 € en une fois, ou 300 € d’acompte puis un versement de 1 590 € ou deux versements de 795 €, sans frais. Une fois ta place validée, tu rejoins le groupe WhatsApp des participants.',
+      answer: 'Tu fais ta demande en ligne, en quelques minutes. Si elle est retenue, tu reçois les modalités de paiement : 300 € d’acompte pour réserver ta place, puis un solde de 1 590 € à régler en une fois ou en deux versements de 795 €, sans frais. Le règlement intégral de 1 890 € est aussi possible. Une fois ta place validée, tu rejoins le groupe WhatsApp des participants.',
       link: { label: 'Faire ma demande', href: '/experiences/chine/inscription' },
     },
   ],
@@ -225,7 +225,7 @@ export const chine: Experience = {
   registration: {
     title: 'Ta demande d’inscription',
     intro:
-      'Trois courtes étapes pour te présenter. Ce formulaire constitue une demande d’inscription : ta place est réservée après validation de ta demande et paiement de 300 € d’acompte si tu choisis le règlement en 2 ou 3 fois, ou de 1 890 € en une fois.',
+      'Trois courtes étapes pour te présenter. Ce formulaire constitue une demande d’inscription : ta place est réservée après validation de ta demande et versement des 300 € d’acompte, ou règlement intégral de 1 890 €. Après acompte, le solde de 1 590 € peut être réglé en une fois ou en deux versements de 795 €, sans frais.',
     subject: 'Demande d’inscription · Chine, janvier 2027',
     steps: [
       {
@@ -251,7 +251,7 @@ export const chine: Experience = {
           { name: 'Pays du passeport', label: 'Quel pays a délivré ton passeport ?', type: 'text', required: true, autocomplete: 'country-name', placeholder: 'Ex. France' },
           { name: 'Assurance voyage', label: 'As-tu souscrit une assurance voyage ?', type: 'choice', required: true, options: ['Oui', 'Pas encore'], hint: 'Elle est obligatoire pour participer.' },
           { name: 'Rythme soutenu', label: 'Es-tu prêt(e) à suivre un rythme soutenu pendant l’immersion kung‑fu ?', type: 'choice', required: true, hint: 'L’expérience est accessible à tous les niveaux, mais elle implique des réveils matinaux, plusieurs heures d’entraînement et l’envie de se challenger.', options: ['Oui, je suis prêt(e) à vivre l’expérience à fond', 'Oui, mais j’ai quelques réserves ou questions', 'Non, ce rythme ne me correspond pas'] },
-          { name: 'Paiement', label: 'Comment souhaites-tu régler ton voyage ?', type: 'choice', required: true, hint: 'Les instructions de paiement te sont transmises après validation de ta demande.', options: ['En 1 fois : 1 890 €', 'En 2 fois : 300 € d’acompte, puis 1 590 €', 'En 3 fois : 300 € d’acompte, puis deux versements de 795 €'] },
+          { name: 'Paiement', label: 'Comment souhaites-tu régler ton voyage ?', type: 'choice', required: true, hint: 'Après validation de ta demande : 300 € d’acompte pour réserver, puis le solde de 1 590 € en une ou deux fois sans frais. Tu peux aussi régler la totalité en une fois.', options: ['Règlement intégral : 1 890 €', 'Acompte de 300 € + solde en 1 fois : 1 590 €', 'Acompte de 300 € + solde en 2 fois : 795 € + 795 €'] },
         ],
       },
       {
@@ -269,7 +269,7 @@ export const chine: Experience = {
       title: 'Ta demande d’inscription est bien envoyée.',
       text: [
         'Tu recevras par email ou WhatsApp les prochaines étapes et les modalités du paiement choisi.',
-        'Ta place sera définitivement réservée après validation de ta demande et réception des 300 € d’acompte pour le paiement en 2 ou 3 fois, ou des 1 890 € pour le paiement en une fois.',
+        'Ta place sera définitivement réservée après validation de ta demande et réception des 300 € d’acompte, ou du règlement intégral de 1 890 €. Après acompte, il restera 1 590 € à régler en une fois ou en deux versements de 795 €, sans frais.',
       ],
     },
     fallbackUrl: 'https://tally.so/r/rj7y2L',
