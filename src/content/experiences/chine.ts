@@ -32,7 +32,7 @@ export const chine: Experience = {
   duration: '10 jours',
   groupSize: '9 personnes',
   price: '1 890 €',
-  priceNote: 'Paiement en 3 fois sans frais · Hors vols internationaux',
+  priceNote: 'Paiement en 1 à 3 fois sans frais · Hors vols internationaux',
 
   dimensions: [
     {
@@ -164,10 +164,10 @@ export const chine: Experience = {
 
   pricing: {
     total: '1 890 €',
-    note: 'par personne, hors vols internationaux',
+    note: 'par personne, hors vols internationaux · En 1 fois : 1 890 €, ou en 2 ou 3 fois selon le détail ci-dessous',
     lines: [
-      { label: 'Acompte', value: '630 €', note: 'pour réserver ta place, après validation de ta demande' },
-      { label: 'Solde', value: '1 260 €', note: 'en une fois, ou en deux versements de 630 € sans frais' },
+      { label: 'Acompte', value: '300 €', note: 'premier versement du paiement en 2 ou 3 fois, après validation de ta demande' },
+      { label: 'Solde', value: '1 590 €', note: 'en une fois, ou en deux versements de 795 € sans frais' },
     ],
   },
   applicationSteps: [
@@ -181,7 +181,7 @@ export const chine: Experience = {
     },
     {
       title: 'Tu confirmes ta place.',
-      text: 'L’acompte de 630 € réserve ta place, puis tu rejoins le groupe WhatsApp pour rencontrer les autres participants.',
+      text: 'Tu réserves ta place avec 300 € d’acompte en choisissant le paiement en 2 ou 3 fois, ou avec le règlement intégral de 1 890 €. Puis tu rejoins le groupe WhatsApp pour rencontrer les autres participants.',
     },
   ],
 
@@ -216,7 +216,7 @@ export const chine: Experience = {
     },
     {
       question: 'Comment se déroule l’inscription ?',
-      answer: 'Tu fais ta demande en ligne, en quelques minutes. Si elle est retenue, tu reçois un email ou un message avec les modalités de l’acompte de 630 €. Une fois ta place validée, tu rejoins le groupe WhatsApp des participants.',
+      answer: 'Tu fais ta demande en ligne, en quelques minutes. Si elle est retenue, tu reçois les modalités de paiement : 1 890 € en une fois, ou 300 € d’acompte puis un versement de 1 590 € ou deux versements de 795 €, sans frais. Une fois ta place validée, tu rejoins le groupe WhatsApp des participants.',
       link: { label: 'Faire ma demande', href: '/experiences/chine/inscription' },
     },
   ],
@@ -225,7 +225,7 @@ export const chine: Experience = {
   registration: {
     title: 'Ta demande d’inscription',
     intro:
-      'Trois courtes étapes pour te présenter. Ce formulaire constitue une demande d’inscription : ta place est réservée après validation de ta demande et versement de l’acompte de 630 €.',
+      'Trois courtes étapes pour te présenter. Ce formulaire constitue une demande d’inscription : ta place est réservée après validation de ta demande et paiement de 300 € d’acompte si tu choisis le règlement en 2 ou 3 fois, ou de 1 890 € en une fois.',
     subject: 'Demande d’inscription · Chine, janvier 2027',
     steps: [
       {
@@ -251,7 +251,7 @@ export const chine: Experience = {
           { name: 'Pays du passeport', label: 'Quel pays a délivré ton passeport ?', type: 'text', required: true, autocomplete: 'country-name', placeholder: 'Ex. France' },
           { name: 'Assurance voyage', label: 'As-tu souscrit une assurance voyage ?', type: 'choice', required: true, options: ['Oui', 'Pas encore'], hint: 'Elle est obligatoire pour participer.' },
           { name: 'Rythme soutenu', label: 'Es-tu prêt(e) à suivre un rythme soutenu pendant l’immersion kung‑fu ?', type: 'choice', required: true, hint: 'L’expérience est accessible à tous les niveaux, mais elle implique des réveils matinaux, plusieurs heures d’entraînement et l’envie de se challenger.', options: ['Oui, je suis prêt(e) à vivre l’expérience à fond', 'Oui, mais j’ai quelques réserves ou questions', 'Non, ce rythme ne me correspond pas'] },
-          { name: 'Paiement', label: 'Comment souhaites-tu régler ton voyage ?', type: 'choice', required: true, hint: 'Les instructions de paiement te sont transmises après validation de ta demande.', options: ['En 1 fois : 1 890 €', 'En 2 fois : 630 € d’acompte, puis 1 260 €', 'En 3 fois : 630 € d’acompte, puis deux versements de 630 €'] },
+          { name: 'Paiement', label: 'Comment souhaites-tu régler ton voyage ?', type: 'choice', required: true, hint: 'Les instructions de paiement te sont transmises après validation de ta demande.', options: ['En 1 fois : 1 890 €', 'En 2 fois : 300 € d’acompte, puis 1 590 €', 'En 3 fois : 300 € d’acompte, puis deux versements de 795 €'] },
         ],
       },
       {
@@ -268,8 +268,8 @@ export const chine: Experience = {
     success: {
       title: 'Ta demande d’inscription est bien envoyée.',
       text: [
-        'Tu recevras par email ou WhatsApp les prochaines étapes et les modalités de versement de l’acompte.',
-        'Ta place sera définitivement réservée après validation de ta demande et réception de l’acompte de 630 €.',
+        'Tu recevras par email ou WhatsApp les prochaines étapes et les modalités du paiement choisi.',
+        'Ta place sera définitivement réservée après validation de ta demande et réception des 300 € d’acompte pour le paiement en 2 ou 3 fois, ou des 1 890 € pour le paiement en une fois.',
       ],
     },
     fallbackUrl: 'https://tally.so/r/rj7y2L',
@@ -279,6 +279,6 @@ export const chine: Experience = {
   seo: {
     title: 'Chapitre 1 : Chine · 10 jours et immersion kung‑fu — RAHAL',
     description:
-      'Du 8 au 18 janvier 2027 : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 3 fois sans frais.',
+      'Du 8 au 18 janvier 2027 : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 1 à 3 fois sans frais.',
   },
 };
