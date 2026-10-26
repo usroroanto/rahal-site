@@ -381,19 +381,33 @@ export function initRegistrationForm() {
     const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
     let sent = false;
     try {
-const response = await fetch(endpoint, {
-  method: 'POST',
-  headers: {
-    'content-type': 'application/json',
-    accept: 'application/json'
-  },
-  body: JSON.stringify(payload),
-  signal: controller.signal,
-});
-      const data = (await response.json().catch(() => ({}))) as { success?: boolean | string; message?: string };
-      // Règle stricte : confirmation uniquement si FormSubmit confirme explicitement la réception.
-      sent = response.ok && (data.success === true || data.success === 'true');
-      if (!sent && data.message) console.warn('[inscription] Envoi refusé :', data.message);
+      const formData = new FormData();
+
+      for (const [name, value] of Object.entries(payload)) {
+        if (name === '_template') continue;
+
+        const fieldName =
+          name === '_subject' ? 'subject' :
+          name === '_honey' ? '_gotcha' : name;
+
+        formData.append(fieldName, value);
+      }
+
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: formData,
+        signal: controller.signal,
+      });
+
+      sent = response.ok;
+
+      if (!sent) {
+        console.warn(
+          '[inscription] Formspree - erreur HTTP :',
+          response.status
+        );
+      }
     } catch (error) {
       console.warn('[inscription] Envoi impossible :', error);
     } finally {
