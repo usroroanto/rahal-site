@@ -29,7 +29,7 @@ export const chine: Experience = {
 
   dates: 'Du 25 mars au 5 avril 2027',
   datesNote: 'Arrivée à Pékin le 26 mars',
-  duration: '12 jours calendaires',
+  duration: '12 jours',
   groupSize: '9 personnes',
   price: '1 890 €',
   priceNote: 'Paiement en 1 à 3 fois sans frais · Hors vols internationaux',
@@ -152,8 +152,8 @@ export const chine: Experience = {
     'Chambres non mixtes partagées à deux durant tout le séjour',
     '5 journées d’immersion, environ 6 h d’entraînement par jour',
     'Uniforme de kung‑fu',
-    '3 repas par jour pendant l’immersion',
-    '2 trains rapides : Pékin → Tengzhou East et Tengzhou East → Shanghai Hongqiao',
+    '3 repas par jour à la cantine de l'école de kung-fu',
+    '2 trains rapides : Pékin → Tengzhou et Tengzhou → Shanghai',
     'Transferts collectifs prévus entre les aéroports, les gares et les hébergements',
     'Cité interdite, Grande Muraille, croisière sur le Huangpu et Shanghai Tower',
     'Accompagnement pendant toute l’expérience',
@@ -163,9 +163,7 @@ export const chine: Experience = {
     'Visa éventuel selon ta nationalité',
     'Assurance voyage obligatoire',
     'Repas à Pékin et Shanghai hors repas de groupe annoncés',
-    'Supplément chambre individuelle',
     'Transferts effectués en dehors des créneaux collectifs',
-    'Dépenses personnelles',
   ],
 
   pricing: {
