@@ -152,7 +152,7 @@ export const chine: Experience = {
     'Chambres non mixtes partagées à deux durant tout le séjour',
     '5 journées d’immersion, environ 6 h d’entraînement par jour',
     'Uniforme de kung‑fu',
-    '3 repas par jour à la cantine de l'école de kung-fu',
+    "3 repas par jour à la cantine de l'école de kung-fu",
     '2 trains rapides : Pékin → Tengzhou et Tengzhou → Shanghai',
     'Transferts collectifs prévus entre les aéroports, les gares et les hébergements',
     'Cité interdite, Grande Muraille, croisière sur le Huangpu et Shanghai Tower',
