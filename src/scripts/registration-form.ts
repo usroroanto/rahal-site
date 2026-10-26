@@ -22,7 +22,7 @@ interface FieldRef {
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const WHATSAPP_RE = /^\+?[0-9 .()-]{6,20}$/;
 const NBSP = ' ';
-const TIMEOUT_MS = 20000;
+const TIMEOUT_MS = 60000;
 
 const prefersReducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const pad = (n: number) => String(n).padStart(2, '0');
