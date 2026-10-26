@@ -5,8 +5,8 @@ export const chine: Experience = {
   name: 'Chapitre 1',
   country: 'Chine',
   practice: 'Kung‑fu',
-  labels: ['Le prochain départ RAHAL', 'Chine', 'Janvier 2027'],
-  tagline: '10 jours pour sortir de ta routine, découvrir la Chine autrement et t’initier au kung‑fu.',
+  labels: ['Le prochain départ RAHAL', 'Chine', 'Mars–avril 2027'],
+  tagline: '12 jours pour sortir de ta routine, découvrir la Chine autrement et t’initier au kung‑fu.',
   summary:
     'Pékin, une immersion kung‑fu à Tengzhou, puis Shanghai. Une première aventure faite pour découvrir, apprendre et se dépasser.',
   intro:
@@ -16,7 +16,7 @@ export const chine: Experience = {
 
   hero: {
     src: 'chine/terrasse-kungfu.jpg',
-    alt: 'Trois pratiquants en tenue grise enchaînent des mouvements de kung‑fu sur une terrasse, devant des toits dorés et les montagnes de Lianqing.',
+    alt: 'Trois pratiquants en tenue grise enchaînent des mouvements de kung‑fu sur une terrasse, devant des toits dorés et les montagnes près de l’école de kung fu.',
     position: 'center 45%',
     mobilePosition: '38% center',
   },
@@ -27,9 +27,9 @@ export const chine: Experience = {
     mobilePosition: '50% 48%',
   },
 
-  dates: 'Du 8 au 18 janvier 2027',
-  datesNote: 'Arrivée à Pékin le 9 au matin',
-  duration: '10 jours',
+  dates: 'Du jeudi 25 mars au lundi 5 avril 2027',
+  datesNote: 'Arrivée à Pékin le 26 mars',
+  duration: '12 jours calendaires',
   groupSize: '9 personnes',
   price: '1 890 €',
   priceNote: 'Paiement en 1 à 3 fois sans frais · Hors vols internationaux',
@@ -45,30 +45,32 @@ export const chine: Experience = {
     },
     {
       title: 'Sortir de sa zone de confort',
-      text: 'Cinq journées d’immersion dans une école de kung‑fu, environ 6 heures d’entraînement par jour. Se lever tôt, essayer, recommencer : le maître adapte le rythme au niveau du groupe.',
+      text: 'Cinq journées d’immersion dans une école de kung fu, environ 6 heures d’entraînement par jour. Se lever tôt, essayer, recommencer : le maître adapte le rythme au niveau du groupe.',
       image: {
-        src: 'chine/zone-de-confort.jpg',
-        alt: 'Deux pratiquants, l’un en tenue grise, l’autre en robe safran, sur un chemin rocheux en forêt, près de Tengzhou.',
+        src: 'chine/immersion-escaliers.jpg',
+        alt: 'Des participants descendent un escalier de pierre vers une cour et des bâtiments aux toits dorés, devant les montagnes boisées.',
+        position: 'center 68%',
+        mobilePosition: 'center 68%',
       },
     },
     {
       title: 'Vivre l’expérience ensemble',
       text: 'Tu arrives seul, tu repars avec une famille. On se motive, on se soutient dans l’effort, dans une ambiance bienveillante, et chacun rentre la tête remplie de souvenirs en commun.',
       image: {
-        src: 'chine/etape-shanghai.jpg',
-        alt: 'Les gratte-ciel de Shanghai et la tour de la Perle de l’Orient illuminés au crépuscule.',
-        position: 'center center',
-        mobilePosition: 'center center',
+        src: 'chine/repas-ensemble.jpg',
+        alt: 'Des voyageurs partagent un repas autour de petites tables en plein air, devant un bâtiment traditionnel chinois.',
+        position: 'center 85%',
+        mobilePosition: 'center 85%',
       },
     },
   ],
 
   programme: {
     intro:
-      'Le voyage commence à Pékin et se termine à Shanghai. Trois étapes, dix jours, une seule aventure.',
+      'Le voyage commence à Pékin et se termine à Shanghai. Trois étapes, douze jours calendaires, une seule aventure.',
     steps: [
       {
-        kicker: '8–10 janvier · Pékin',
+        kicker: '25–28 mars · Pékin',
         title: 'Commencer par la Chine impériale',
         text: 'Rejoindre le groupe à Pékin, découvrir la capitale et la Grande Muraille, puis prendre le train rapide vers Tengzhou.',
         image: {
@@ -77,24 +79,28 @@ export const chine: Experience = {
         },
         days: [
           {
-            title: 'Vendredi 8 janvier · Départ direction la Chine',
-            text: 'Vol vers Pékin : chacun rejoint la capitale pour le samedi 9 janvier au matin. Les billets d’avion pourront être coordonnés selon les villes et les dates de départ de chacun : un groupe sera créé pour s’organiser ensemble. Ne réserve pas ton billet avant la validation de ta demande.',
+            title: 'Jeudi 25 mars · Départ direction la Chine',
+            text: 'Vol vers Pékin : chacun rejoint la capitale pour le vendredi 26 mars. Les billets d’avion pourront être coordonnés selon les villes et les dates de départ de chacun : un groupe sera créé pour s’organiser ensemble. Ne réserve pas ton billet avant la validation de ta demande.',
           },
           {
-            title: 'Samedi 9 janvier · Pékin impérial',
-            text: 'Arrivée le matin, transfert collectif vers l’hôtel et rendez-vous du groupe à 12 h. Découverte de la Cité interdite et de la capitale impériale.',
+            title: 'Vendredi 26 mars · Pékin impérial',
+            text: 'Arrivée à Pékin, transfert collectif vers l’hôtel et rencontre du groupe. Découverte de la Cité interdite et de la capitale impériale. Première nuit à Pékin.',
           },
           {
-            title: 'Dimanche 10 janvier · Grande Muraille et Tengzhou',
-            text: 'Visite de la Grande Muraille, montée en téléphérique et descente en toboggan si la météo le permet. Après le déjeuner, transfert vers la gare et train rapide pour Tengzhou East.',
+            title: 'Samedi 27 mars · Grande Muraille de Chine à Mutianyu',
+            text: 'Visite de la Grande Muraille de Chine à Mutianyu, montée en téléphérique et descente en toboggan si la météo le permet. Retour et deuxième nuit à Pékin.',
+          },
+          {
+            title: 'Dimanche 28 mars · Pékin → Tengzhou',
+            text: 'Pékin, puis transfert vers la gare et train rapide pour Tengzhou East. Installation à l’école de kung fu.',
           },
         ],
       },
       {
-        kicker: '11–15 janvier · Kung‑fu à Tengzhou',
+        kicker: '28 mars–3 avril · Kung‑fu à Tengzhou',
         title: 'Entrer dans l’immersion kung‑fu',
         daysLabel: 'Voir le détail de l’immersion',
-        text: 'Cinq journées au cœur des montagnes de Lianqing, avec environ 6 heures d’entraînement par jour. Le maître adapte les séances au niveau du groupe, à sa progression et à la météo.',
+        text: 'Du 28 mars au 3 avril à l’école de kung fu, avec cinq jours d’entraînement du lundi 29 mars au vendredi 2 avril, environ 6 heures par jour. Le maître adapte les séances au niveau du groupe, à sa progression et à la météo.',
         image: {
           src: 'chine/maitre-escaliers.jpg',
           alt: 'Le maître, en robe safran, descend les escaliers de marbre d’un temple aux toits dorés, dans les montagnes près de Tengzhou.',
@@ -111,12 +117,12 @@ export const chine: Experience = {
           },
           {
             title: 'La vie sur place',
-            text: 'Six nuits à l’école, au rythme du groupe : entraînement, repas à la cantine, récupération et soirées partagées.',
+            text: 'Six nuits à l’école de kung fu, du 28 mars au 3 avril, au rythme du groupe : entraînement, repas à la cantine, récupération et soirées partagées.',
           },
         ],
       },
       {
-        kicker: '16–18 janvier · Shanghai',
+        kicker: '3–5 avril · Shanghai',
         title: 'Terminer entre tradition et futur',
         text: 'Rejoindre Shanghai en train rapide, découvrir Yuyuan, le Bund et Lujiazui, puis prendre le temps de clôturer l’aventure ensemble.',
         image: {
@@ -125,15 +131,15 @@ export const chine: Experience = {
         },
         days: [
           {
-            title: 'Samedi 16 janvier · Tengzhou → Shanghai',
-            text: 'Train rapide vers Shanghai Hongqiao, transfert et installation à l’hôtel. En fin de journée : ruelles illuminées de Yuyuan, Bund et croisière nocturne sur le Huangpu.',
+            title: 'Samedi 3 avril · Tengzhou → Shanghai',
+            text: 'Départ de l’école de kung fu, train rapide vers Shanghai Hongqiao, transfert et installation à l’hôtel pour les nuits des 3 et 4 avril. En fin de journée : ruelles illuminées de Yuyuan, Bund et croisière nocturne sur le Huangpu.',
           },
           {
-            title: 'Dimanche 17 janvier · Shanghai traditionnel et futuriste',
+            title: 'Dimanche 4 avril · Shanghai traditionnel et futuriste',
             text: 'Découverte de Lujiazui et montée à l’observatoire de la Shanghai Tower. Balades et temps libre selon les envies du groupe, puis dîner d’au revoir.',
           },
           {
-            title: 'Lundi 18 janvier · Retour',
+            title: 'Lundi 5 avril · Retour',
             text: 'Check-out et transfert collectif vers l’aéroport de Shanghai.',
           },
         ],
@@ -142,7 +148,7 @@ export const chine: Experience = {
   },
 
   included: [
-    '9 nuits d’hébergement : 1 à Pékin, 6 pendant l’immersion kung‑fu et 2 à Shanghai',
+    '10 nuits d’hébergement : 2 à Pékin, 6 à l’école de kung fu et 2 à Shanghai',
     'Chambres non mixtes partagées à deux durant tout le séjour',
     '5 journées d’immersion, environ 6 h d’entraînement par jour',
     'Uniforme de kung‑fu',
@@ -200,19 +206,19 @@ export const chine: Experience = {
     },
     {
       question: 'Quand commence le voyage, et les vols sont-ils inclus ?',
-      answer: 'Le voyage a lieu du 8 au 18 janvier 2027 : départ le vendredi 8 janvier pour arriver à Pékin le samedi 9 au matin, puis fin du séjour à Shanghai le lundi 18 janvier. Les vols internationaux ne sont pas inclus. Attends la validation de ta demande avant de réserver ton billet. Un groupe WhatsApp sera créé pour coordonner les billets d’avion selon les villes et les dates de départ de chacun.',
+      answer: 'Le voyage a lieu du jeudi 25 mars au lundi 5 avril 2027 : départ le jeudi 25 mars pour arriver à Pékin le vendredi 26 mars, puis fin du séjour à Shanghai le lundi 5 avril. Les vols internationaux ne sont pas inclus. Attends la validation de ta demande avant de réserver ton billet. Un groupe WhatsApp sera créé pour coordonner les billets d’avion selon les villes et les dates de départ de chacun.',
     },
     {
       question: 'Où dort-on, et comment se passent les repas ?',
-      answer: '9 nuits : 1 à Pékin, 6 à l’école de kung‑fu et 2 à Shanghai, en chambres non mixtes partagées à deux. Pendant l’immersion, les 3 repas par jour sont fournis par la cantine de l’école ; à Pékin et à Shanghai, seuls les repas de groupe annoncés sont inclus. Une chambre individuelle est possible avec supplément, sur demande et selon disponibilité.',
+      answer: '10 nuits : 2 à Pékin, 6 à l’école de kung fu et 2 à Shanghai, en chambres non mixtes partagées à deux. Pendant l’immersion, les 3 repas par jour sont fournis par la cantine de l’école ; à Pékin et à Shanghai, seuls les repas de groupe annoncés sont inclus. Une chambre individuelle est possible avec supplément, sur demande et selon disponibilité.',
     },
     {
       question: 'Faut-il un visa et une assurance ?',
-      answer: 'Selon ta nationalité et les règles d’entrée en vigueur en janvier 2027, un visa peut être nécessaire, et ton passeport doit être valide au moins 6 mois après le retour. Une assurance voyage couvrant le séjour est obligatoire.',
+      answer: 'Selon ta nationalité et les règles d’entrée en vigueur en mars–avril 2027, un visa peut être nécessaire, et ton passeport doit être valide au moins 6 mois après le retour. Une assurance voyage couvrant le séjour est obligatoire.',
     },
     {
       question: 'Que mettre dans son sac ?',
-      answer: 'Le voyage a lieu en hiver : prévois des vêtements chauds pour Pékin et la Grande Muraille, une tenue souple et des chaussures confortables. L’uniforme de kung‑fu est fourni.',
+      answer: 'Le voyage a lieu au printemps : prévois des vêtements chauds pour Pékin et la Grande Muraille, une tenue souple et des chaussures confortables. L’uniforme de kung‑fu est fourni.',
     },
     {
       question: 'Comment se déroule l’inscription ?',
@@ -226,7 +232,7 @@ export const chine: Experience = {
     title: 'Ta demande d’inscription',
     intro:
       'Trois courtes étapes pour te présenter. Ce formulaire constitue une demande d’inscription : ta place est réservée après validation de ta demande et versement des 300 € d’acompte, ou règlement intégral de 1 890 €. Après acompte, le solde de 1 590 € peut être réglé en une fois ou en deux versements de 795 €, sans frais.',
-    subject: 'Demande d’inscription · Chine, janvier 2027',
+    subject: 'Demande d’inscription · Chine, mars–avril 2027',
     steps: [
       {
         id: 'toi',
@@ -261,7 +267,7 @@ export const chine: Experience = {
         fields: [
           { name: 'Droit à l’image', label: 'Acceptes-tu que les photos et vidéos du voyage où tu es reconnaissable soient publiées sur les réseaux sociaux de RAHAL ?', type: 'choice', required: true, hint: 'Ton choix n’a aucune incidence sur ta participation au voyage.', options: ['Oui, j’autorise cette utilisation de mon image', 'Non, je ne souhaite pas apparaître sur les publications de RAHAL'] },
           { name: 'Question ou contrainte', label: 'Une question, une contrainte ou un problème de santé à nous signaler ?', type: 'textarea', placeholder: 'Facultatif' },
-          { name: 'Confirmation', label: 'Je confirme avoir pris connaissance du programme, des prestations incluses et non incluses et des modalités d’inscription et de paiement. J’ai compris que les vols internationaux ne sont pas inclus et que je dois être à Pékin le samedi 9 janvier 2027 au matin.', type: 'consent', required: true },
+          { name: 'Confirmation', label: 'Je confirme avoir pris connaissance du programme, des prestations incluses et non incluses et des modalités d’inscription et de paiement. J’ai compris que les vols internationaux ne sont pas inclus et que je dois être à Pékin le vendredi 26 mars 2027.', type: 'consent', required: true },
         ],
       },
     ],
@@ -277,8 +283,8 @@ export const chine: Experience = {
 
   brevo: {},
   seo: {
-    title: 'Chapitre 1 : Chine · 10 jours et immersion kung‑fu — RAHAL',
+    title: 'Chapitre 1 : Chine · 12 jours et immersion kung‑fu — RAHAL',
     description:
-      'Du 8 au 18 janvier 2027 : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 1 à 3 fois sans frais.',
+      'Du jeudi 25 mars au lundi 5 avril 2027 : Pékin, immersion kung‑fu à Tengzhou et Shanghai. 9 voyageurs, 1 890 €, paiement en 1 à 3 fois sans frais.',
   },
 };
