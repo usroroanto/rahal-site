@@ -10,7 +10,7 @@ export const faqContact = {
     "title": "Ce qu’on nous demande souvent.",
     "image": {
       "src": "chine/dragon-cascade.jpg",
-      "alt": "Un dragon doré veille sur une cascade entre les rochers, dans les montagnes de Lianqing, près de Tengzhou.",
+      "alt": "Un dragon doré veille sur une cascade entre les rochers, dans les montagnes près de l’école de kung fu, près de Tengzhou.",
       "position": "center 55%",
       "mobilePosition": "center 60%"
     },
@@ -29,7 +29,7 @@ export const faqContact = {
       },
       {
         "question": "Comment connaître les prochains départs ?",
-        "answer": "Le prochain départ est la Chine, du 8 au 18 janvier 2027. Pour découvrir les prochaines destinations en avant-première, inscris-toi à la liste d’attente.",
+        "answer": "Le prochain départ est la Chine, du 25 mars au 5 avril 2027. Pour découvrir les prochaines destinations en avant-première, inscris-toi à la liste d’attente.",
         "link": {
           "label": "Rejoindre la liste d’attente",
           "href": "/experiences#next-titre"
