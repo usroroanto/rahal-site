@@ -381,12 +381,15 @@ export function initRegistrationForm() {
     const timer = window.setTimeout(() => controller.abort(), TIMEOUT_MS);
     let sent = false;
     try {
-    const response = await fetch(endpoint, {
+const response = await fetch(endpoint, {
   method: 'POST',
-  headers: { accept: 'application/json' },
-  body: new URLSearchParams(payload),
+  headers: {
+    'content-type': 'application/json',
+    accept: 'application/json'
+  },
+  body: JSON.stringify(payload),
   signal: controller.signal,
-      });
+});
       const data = (await response.json().catch(() => ({}))) as { success?: boolean | string; message?: string };
       // Règle stricte : confirmation uniquement si FormSubmit confirme explicitement la réception.
       sent = response.ok && (data.success === true || data.success === 'true');
