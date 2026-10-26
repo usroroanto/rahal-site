@@ -27,7 +27,7 @@ export const chine: Experience = {
     mobilePosition: '50% 48%',
   },
 
-  dates: 'Du jeudi 25 mars au lundi 5 avril 2027',
+  dates: 'Du 25 mars au 5 avril 2027',
   datesNote: 'Arrivée à Pékin le 26 mars',
   duration: '12 jours calendaires',
   groupSize: '9 personnes',
@@ -256,7 +256,6 @@ export const chine: Experience = {
           { name: 'Passeport valide 6 mois après le retour', label: 'As-tu un passeport valide au moins 6 mois après le retour ?', type: 'choice', required: true, options: ['Oui', 'Mon renouvellement est en cours ou prévu', 'Non'] },
           { name: 'Pays du passeport', label: 'Quel pays a délivré ton passeport ?', type: 'text', required: true, autocomplete: 'country-name', placeholder: 'Ex. France' },
           { name: 'Assurance voyage', label: 'As-tu souscrit une assurance voyage ?', type: 'choice', required: true, options: ['Oui', 'Pas encore'], hint: 'Elle est obligatoire pour participer.' },
-          { name: 'Rythme soutenu', label: 'Es-tu prêt(e) à suivre un rythme soutenu pendant l’immersion kung‑fu ?', type: 'choice', required: true, hint: 'L’expérience est accessible à tous les niveaux, mais elle implique des réveils matinaux, plusieurs heures d’entraînement et l’envie de se challenger.', options: ['Oui, je suis prêt(e) à vivre l’expérience à fond', 'Oui, mais j’ai quelques réserves ou questions', 'Non, ce rythme ne me correspond pas'] },
           { name: 'Paiement', label: 'Comment souhaites-tu régler ton voyage ?', type: 'choice', required: true, hint: 'Après validation de ta demande : 300 € d’acompte pour réserver, puis le solde de 1 590 € en une ou deux fois sans frais. Tu peux aussi régler la totalité en une fois.', options: ['Règlement intégral : 1 890 €', 'Acompte de 300 € + solde en 1 fois : 1 590 €', 'Acompte de 300 € + solde en 2 fois : 795 € + 795 €'] },
         ],
       },
